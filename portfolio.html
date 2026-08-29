@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFCTYYZJJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EFCTYYZJJ2');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Kumar Verma — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1210;
+    --surface:#10201B;
+    --surface-2:#152720;
+    --accent-jade:#3B8168;
+    --accent-jade-bright:#57B294;
+    --accent-gold:#E3A542;
+    --text:#EDEDE6;
+    --text-muted:#8FA39A;
+    --line:#22352C;
+    --max-w:1080px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit;}
+
+  /* ---------- Intro sequence ---------- */
+  #intro{
+    position:fixed; inset:0; z-index:1000;
+    background:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity 0.9s ease, visibility 0.9s ease;
+  }
+  #intro.hide{opacity:0; visibility:hidden; pointer-events:none;}
+  #intro svg{width:min(90vw, 700px); height:auto;}
+  .contour-grid{stroke:var(--line); stroke-width:1;}
+  .dragon-path{
+    fill:none;
+    stroke:var(--accent-jade-bright);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px rgba(87,178,148,0.45));
+  }
+  .flash{
+    position:fixed; inset:0; z-index:999;
+    background:radial-gradient(circle at 50% 55%, var(--accent-gold) 0%, rgba(227,165,66,0.4) 35%, rgba(11,18,16,0) 70%);
+    opacity:0;
+    pointer-events:none;
+  }
+  .flash.fire{animation:fireFlash 1.1s ease forwards;}
+  @keyframes fireFlash{
+    0%{opacity:0;}
+    45%{opacity:1;}
+    100%{opacity:0;}
+  }
+  .intro-label{
+    position:absolute; bottom:14%; left:50%; transform:translateX(-50%);
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.15em;
+    text-transform:uppercase; color:var(--text-muted);
+    opacity:0; animation:fadeIn 0.6s ease 1.6s forwards;
+  }
+  @keyframes fadeIn{to{opacity:1;}}
+
+  body.locked{overflow:hidden; height:100vh;}
+
+  /* ---------- Background contour texture ---------- */
+  .contour-bg{
+    position:fixed; inset:0; z-index:-1;
+    background-image:
+      repeating-radial-gradient(circle at 15% 20%, transparent 0, transparent 60px, rgba(59,129,104,0.05) 61px, transparent 62px),
+      repeating-radial-gradient(circle at 85% 75%, transparent 0, transparent 90px, rgba(227,165,66,0.04) 91px, transparent 92px);
+    pointer-events:none;
+  }
+
+  /* ---------- Layout helpers ---------- */
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 1.75rem;}
+  section{padding:6rem 0;}
+  @media(max-width:700px){ section{padding:4rem 0;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--accent-gold); margin-bottom:0.9rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--accent-gold);}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(11,18,16,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:1.1rem; padding-bottom:1.1rem;}
+  .brand{display:flex; align-items:center; gap:0.6rem; font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem;}
+  .brand svg{width:26px; height:26px;}
+  nav ul{list-style:none; display:flex; gap:2rem;}
+  nav a{text-decoration:none; font-size:0.92rem; color:var(--text-muted); transition:color 0.2s;}
+  nav a:hover, nav a:focus-visible{color:var(--accent-jade-bright);}
+  nav a:focus-visible{outline:2px solid var(--accent-gold); outline-offset:4px;}
+  nav a.nav-link.active{color:var(--accent-gold);}
+  @media(max-width:640px){
+    nav .wrap{padding-top:0.9rem; padding-bottom:0.9rem; flex-wrap:wrap; gap:0.7rem;}
+    nav ul{gap:1.1rem; width:100%; overflow-x:auto; padding-bottom:0.2rem; -webkit-overflow-scrolling:touch;}
+    nav ul li{flex-shrink:0;}
+  }
+
+  /* ---------- Page/tab switching ---------- */
+  .page{display:none;}
+  .page.active{display:block; animation:pageIn 0.5s ease;}
+  @keyframes pageIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){ .page.active{animation:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:7rem 0 6rem; position:relative;}
+  .hero .eyebrow{margin-bottom:1.4rem;}
+  .hero h1{font-size:clamp(2.6rem, 7vw, 4.6rem); line-height:1.02; max-width:11ch;}
+  .hero .role{
+    margin-top:1rem; font-size:clamp(1.1rem, 2.4vw, 1.4rem); color:var(--accent-jade-bright);
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+  }
+  .hero p.lede{margin-top:1.6rem; max-width:56ch; color:var(--text-muted); font-size:1.05rem;}
+  .hero .cta-row{margin-top:2.2rem; display:flex; gap:1rem; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.85rem; letter-spacing:0.03em;
+    padding:0.85rem 1.5rem; border-radius:2px; text-decoration:none;
+    border:1px solid var(--accent-jade); transition:all 0.25s ease;
+    display:inline-flex; align-items:center; gap:0.5rem;
+  }
+  .btn.primary{background:var(--accent-jade); color:var(--bg); font-weight:600;}
+  .btn.primary:hover{background:var(--accent-jade-bright); border-color:var(--accent-jade-bright);}
+  .btn.ghost{color:var(--text); border-color:var(--line);}
+  .btn.ghost:hover{border-color:var(--accent-gold); color:var(--accent-gold);}
+
+  .stat-strip{
+    margin-top:3.5rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .stat{background:var(--surface); padding:1.4rem 1.2rem;}
+  .stat .num{font-family:'IBM Plex Mono', monospace; font-size:1.6rem; color:var(--accent-gold); font-weight:500;}
+  .stat .label{font-size:0.8rem; color:var(--text-muted); margin-top:0.3rem;}
+  @media(max-width:640px){ .stat-strip{grid-template-columns:1fr;} }
+
+  /* ---------- About ---------- */
+  section#about p{color:var(--text-muted); margin-bottom:1rem;}
+  .edu-card{
+    background:var(--surface); border:1px solid var(--line); padding:1.6rem;
+    border-left:2px solid var(--accent-jade);
+  }
+  .edu-card .eyebrow{margin-bottom:0.7rem;}
+  .edu-card h3{font-size:1.1rem; font-weight:600;}
+  .edu-card .meta{color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem; font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- Skills ---------- */
+  .skills-legend{
+    display:flex; flex-wrap:wrap; gap:0.8rem;
+  }
+  .skill-chip{
+    display:flex; align-items:flex-start; gap:0.55rem;
+    background:var(--surface); border:1px solid var(--line);
+    padding:0.65rem 1rem; font-size:0.88rem;
+    font-family:'IBM Plex Mono', monospace;
+    transition:border-color 0.2s, transform 0.2s;
+  }
+  .skill-chip:hover{border-color:var(--accent-jade-bright); transform:translateY(-2px);}
+  .skill-dot{width:8px; height:8px; border-radius:50%; background:var(--accent-jade-bright); flex-shrink:0; margin-top:0.4rem;}
+  .skill-chip:nth-child(3n+2) .skill-dot{background:var(--accent-gold);}
+  .skill-chip:nth-child(3n) .skill-dot{background:#6BA5D1;}
+  .skill-name{display:flex; flex-direction:column; gap:0.2rem;}
+  .skill-used{
+    font-family:'IBM Plex Sans', sans-serif; font-size:0.72rem; color:var(--text-muted);
+    font-style:italic;
+  }
+
+  /* ---------- Timeline (Experience) ---------- */
+  .timeline{position:relative; margin-top:2.5rem; padding-left:2.2rem;}
+  .timeline::before{
+    content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px;
+    background:repeating-linear-gradient(var(--line), var(--line) 4px, transparent 4px, transparent 9px);
+  }
+  .t-item{position:relative; padding-bottom:2.6rem;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:attr(data-n);
+    position:absolute; left:-2.2rem; top:0; width:22px; height:22px;
+    background:var(--bg); border:1px solid var(--accent-jade);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--accent-jade-bright);
+  }
+  .t-item h3{font-size:1.15rem;}
+  .t-item .org{color:var(--accent-gold); font-family:'IBM Plex Mono', monospace; font-size:0.85rem; margin-top:0.2rem;}
+  .t-item .when{color:var(--text-muted); font-size:0.82rem; font-family:'IBM Plex Mono', monospace; margin-top:0.15rem;}
+  .t-item ul{margin-top:0.8rem; padding-left:1.2rem; color:var(--text-muted); font-size:0.94rem;}
+  .t-item li{margin-bottom:0.4rem;}
+
+  /* ---------- Projects ---------- */
+  .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; margin-top:2.5rem;}
+  @media(max-width:760px){ .project-grid{grid-template-columns:1fr;} }
+  .project-card{
+    background:var(--surface); border:1px solid var(--line); padding:1.8rem;
+    display:flex; flex-direction:column; transition:border-color 0.25s, transform 0.25s;
+  }
+  .project-card:hover{border-color:var(--accent-jade); transform:translateY(-3px);}
+  .project-card h3{font-size:1.2rem;}
+  .project-card .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--accent-gold);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.6rem;
+  }
+  .project-card p{color:var(--text-muted); font-size:0.93rem; margin-top:0.8rem; flex-grow:1;}
+  .project-card .insights{margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--line);}
+  .project-card .insights div{font-size:0.85rem; color:var(--text-muted); margin-bottom:0.35rem; padding-left:1rem; position:relative;}
+  .project-card .insights div::before{content:'→'; position:absolute; left:0; color:var(--accent-jade-bright);}
+  .project-link{
+    display:inline-block; margin-top:1rem; font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem; color:var(--accent-gold); text-decoration:none; border-bottom:1px solid transparent;
+  }
+  .project-link:hover, .project-link:focus-visible{border-bottom-color:var(--accent-gold);}
+
+  /* ---------- Contact ---------- */
+  .contact-box{
+    background:var(--surface); border:1px solid var(--line); padding:3rem;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .contact-box h2{font-size:clamp(1.8rem, 4vw, 2.6rem);}
+  .contact-box p{color:var(--text-muted); margin-top:1rem; max-width:48ch; margin-left:auto; margin-right:auto;}
+  .contact-links{margin-top:2.2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;}
+
+  footer{padding:2.5rem 0; text-align:center; color:var(--text-muted); font-size:0.82rem; font-family:'IBM Plex Mono', monospace;}
+  footer .dragon-mark{width:28px; height:28px; margin:0 auto 0.8rem; opacity:0.7;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- Contact form ---------- */
+  .contact-form{margin-top:2.2rem; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;}
+  .form-row{display:flex; gap:0.8rem; margin-bottom:0.8rem;}
+  @media(max-width:520px){ .form-row{flex-direction:column;} }
+  .contact-form input, .contact-form textarea{
+    width:100%; background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+    padding:0.75rem 0.9rem; font-family:'IBM Plex Sans', sans-serif; font-size:0.92rem;
+    border-radius:2px; resize:vertical;
+  }
+  .contact-form textarea{margin-bottom:0.8rem;}
+  .contact-form input:focus, .contact-form textarea:focus{outline:1px solid var(--accent-jade-bright); border-color:var(--accent-jade-bright);}
+  .form-note{margin-top:0.7rem; font-size:0.76rem; color:var(--text-muted); text-align:center;}
+
+  .qr-block{margin-top:2.4rem; padding-top:2rem; border-top:1px dashed var(--line); text-align:center;}
+  .qr-block img{border-radius:4px; background:#EDEDE6; padding:8px;}
+  .qr-caption{margin-top:0.6rem; font-size:0.75rem; color:var(--text-muted);}
+
+  /* ---------- Floating chat widget ---------- */
+  #chatWidget{position:fixed; bottom:1.6rem; right:1.6rem; z-index:500; font-family:'IBM Plex Sans', sans-serif;}
+  #chatToggle{
+    width:56px; height:56px; border-radius:50%; border:1px solid var(--accent-jade);
+    background:var(--accent-jade); color:var(--bg); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 18px rgba(0,0,0,0.4); transition:background 0.2s, transform 0.2s;
+  }
+  #chatToggle:hover{background:var(--accent-jade-bright); transform:scale(1.05);}
+  #chatToggle svg{width:24px; height:24px;}
+  #chatPanel{
+    position:absolute; bottom:70px; right:0;
+    width:min(340px, 88vw); max-height:70vh;
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:6px; box-shadow:0 8px 30px rgba(0,0,0,0.5);
+    display:flex; flex-direction:column; overflow:hidden;
+    opacity:0; transform:translateY(12px) scale(0.98); pointer-events:none;
+    transition:opacity 0.25s ease, transform 0.25s ease;
+  }
+  #chatWidget.open #chatPanel{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+  .chat-header{
+    padding:0.9rem 1.1rem; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Fraunces', serif; font-weight:600; color:var(--text);
+  }
+  .chat-sub{font-size:0.65rem; color:var(--text-muted); font-weight:400; text-transform:uppercase; letter-spacing:0.06em;}
+  #chatLog{flex:1; overflow-y:auto; padding:0.9rem 1.1rem; display:flex; flex-direction:column; gap:0.6rem; min-height:140px;}
+  .chat-msg{max-width:85%; padding:0.6rem 0.85rem; border-radius:10px; font-size:0.86rem; line-height:1.45;}
+  .chat-msg.bot{background:var(--surface-2); color:var(--text); align-self:flex-start; border-bottom-left-radius:2px;}
+  .chat-msg.user{background:var(--accent-jade); color:var(--bg); align-self:flex-end; border-bottom-right-radius:2px;}
+  .chat-quick{display:flex; flex-wrap:wrap; gap:0.4rem; padding:0 1.1rem 0.7rem;}
+  .chat-quick button{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; background:none;
+    border:1px solid var(--line); color:var(--text-muted); padding:0.35rem 0.6rem;
+    border-radius:20px; cursor:pointer; transition:border-color 0.2s, color 0.2s;
+  }
+  .chat-quick button:hover{border-color:var(--accent-gold); color:var(--accent-gold);}
+  #chatForm{display:flex; gap:0.5rem; padding:0.8rem; border-top:1px solid var(--line);}
+  #chatInput{
+    flex:1; background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+    padding:0.6rem 0.8rem; border-radius:20px; font-size:0.85rem;
+  }
+  #chatInput:focus{outline:none; border-color:var(--accent-jade-bright);}
+  #chatForm button{
+    width:38px; height:38px; border-radius:50%; border:none; background:var(--accent-gold);
+    color:var(--bg); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  #chatForm button svg{width:16px; height:16px;}
+
+  /* ---------- Accordion (tap heading to expand) ---------- */
+  .acc-trigger{
+    all:unset; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+    width:100%; gap:1rem;
+  }
+  .acc-trigger:focus-visible{outline:2px solid var(--accent-gold); outline-offset:4px;}
+  .acc-chevron{
+    flex-shrink:0; width:22px; height:22px; border:1px solid var(--line);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    transition:transform 0.3s ease, border-color 0.3s ease;
+  }
+  .acc-chevron svg{width:10px; height:10px; stroke:var(--accent-jade-bright);}
+  .acc-trigger[aria-expanded="true"] .acc-chevron{transform:rotate(45deg); border-color:var(--accent-jade-bright);}
+  .acc-panel{
+    max-height:0; overflow:hidden; transition:max-height 0.4s ease, margin-top 0.4s ease;
+  }
+  .acc-panel.open{margin-top:0.8rem;}
+  .t-item .org, .t-item .when{pointer-events:none;}
+  .acc-trigger h3{pointer-events:none;}
+  .tap-hint{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem; opacity:0.7;}
+</style>
+</head>
+<body class="locked">
+
+  <!-- Intro -->
+  <div id="intro" aria-hidden="true">
+    <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+      <g class="contour-grid" opacity="0.35">
+        <circle cx="350" cy="210" r="60" fill="none"/>
+        <circle cx="350" cy="210" r="110" fill="none"/>
+        <circle cx="350" cy="210" r="160" fill="none"/>
+      </g>
+      <path id="dragonPath" class="dragon-path"
+        d="M 60,300 C 120,260 140,340 190,300 C 240,260 220,200 270,190 C 320,180 300,240 350,220 C 400,200 380,140 430,130 C 470,122 480,150 505,140 C 525,132 522,110 545,100 C 565,92 585,98 600,80 C 610,68 605,55 615,45"
+        pathLength="1"/>
+      <g id="dragonHead" opacity="0">
+        <path d="M615,45 L640,35 L628,50 L642,58 L618,58 Z" fill="var(--accent-gold)" opacity="0.9"/>
+      </g>
+    </svg>
+    <div class="intro-label">mapping the terrain</div>
+  </div>
+  <div class="flash" id="flash"></div>
+
+  <div class="contour-bg"></div>
+
+  <nav>
+    <div class="wrap">
+      <a href="#home" class="nav-link brand" data-target="home" style="text-decoration:none;">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4,28 C10,22 12,32 18,26 C24,20 20,12 28,10 C32,9 34,12 36,8" fill="none" stroke="var(--accent-jade-bright)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>Yash Kumar Verma</span>
+      </a>
+      <ul>
+        <li><a href="#home" class="nav-link" data-target="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+        <li><a href="#education" class="nav-link" data-target="education">Education</a></li>
+        <li><a href="#skills" class="nav-link" data-target="skills">Skills</a></li>
+        <li><a href="#experience" class="nav-link" data-target="experience">Experience</a></li>
+        <li><a href="#projects" class="nav-link" data-target="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="home" class="page active hero wrap">
+    <div class="eyebrow reveal">Lucknow, India</div>
+    <h1 class="reveal">Yash Kumar Verma</h1>
+    <div class="role reveal">Aspiring Data Analyst</div>
+    <p class="lede reveal">Aspiring Data Analyst with hands-on experience in QGIS, Tableau, and Excel-based analysis, gained through industry GIS training and AI-powered data analytics simulations. Skilled in translating raw datasets into structured insights, with a strong foundation in database concepts and problem-solving.</p>
+    <div class="cta-row reveal">
+      <a class="btn primary nav-link" href="#projects" data-target="projects">View projects</a>
+      <a class="btn ghost nav-link" href="#contact" data-target="contact">Get in touch</a>
+    </div>
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="num">15,000+</div><div class="label">buildings mapped in QGIS</div></div>
+      <div class="stat"><div class="num">2,200+</div><div class="label">customer records analyzed</div></div>
+      <div class="stat"><div class="num">95%</div><div class="label">score, AI productivity course</div></div>
+    </div>
+  </header>
+
+  <section id="about" class="page wrap">
+    <div class="eyebrow reveal">About</div>
+    <div class="reveal" style="max-width:65ch;">
+      <p>I'm a BCA student in Lucknow building toward a career in data analysis — the kind of work where a messy spreadsheet or a raw geospatial file turns into something a decision-maker can actually use.</p>
+      <p>My background spans two directions that meet in the middle: spatial data work (digitizing and structuring geospatial datasets in QGIS) and analytical work (Excel, Tableau, and AI-assisted data analytics simulations). Both come down to the same instinct — validate the data, find the pattern, explain it clearly.</p>
+    </div>
+  </section>
+
+  <section id="education" class="page wrap">
+    <div class="eyebrow reveal">Education</div>
+    <div class="edu-card reveal">
+      <button class="acc-trigger" aria-expanded="true">
+        <h3>Bachelor's of Computer Application</h3>
+        <span class="acc-chevron" style="transform:rotate(45deg);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      </button>
+      <div class="acc-panel open" style="max-height:100px;">
+        <div class="meta">City College of Management, Tiwariganj</div>
+        <div class="meta">Jul 2025 — 2028 (in progress)</div>
+      </div>
+
+      <button class="acc-trigger" style="margin-top:1.4rem;" aria-expanded="false">
+        <h3>12th — Science Stream (U.P. Board)</h3>
+        <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      </button>
+      <div class="acc-panel">
+        <div class="meta">Mahavir Inter College, Aliganj</div>
+        <div class="meta">77.4% · Apr 2025</div>
+      </div>
+
+      <button class="acc-trigger" style="margin-top:1.4rem;" aria-expanded="false">
+        <h3>10th (U.P. Board)</h3>
+        <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      </button>
+      <div class="acc-panel">
+        <div class="meta">Mahavir Inter College, Aliganj</div>
+        <div class="meta">88.67% · Apr 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="page wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <div class="skills-legend reveal">
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">QGIS<span class="skill-used">Used in: GIS Trainee, Aircode Technologies</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Tableau<span class="skill-used">Used in: Deloitte Job Simulation</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Microsoft Excel<span class="skill-used">Used in: Deloitte Simulation, GIS Trainee</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Data Analysis &amp; Validation<span class="skill-used">Used in: Tata Simulation, Customer Dashboard</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Spatial Data Analysis<span class="skill-used">Used in: GIS Trainee, Aircode Technologies</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Database Management<span class="skill-used">Used in: Customer Analytics Dashboard</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Georeferencing<span class="skill-used">Used in: GIS Trainee, Aircode Technologies</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Microsoft Word<span class="skill-used">Used in: Tata Simulation (exec summary)</span></span></div>
+      <div class="skill-chip"><span class="skill-dot"></span><span class="skill-name">Problem Solving<span class="skill-used">Used in: Password Strength Analyzer</span></span></div>
+    </div>
+  </section>
+
+  <section id="experience" class="page wrap">
+    <div class="eyebrow reveal">Experience &amp; Training</div>
+    <div class="timeline">
+      <div class="t-item reveal" data-n="1">
+        <button class="acc-trigger" aria-expanded="false">
+          <span>
+            <h3>Digital Productivity with AI</h3>
+            <div class="org">UNICEF Program</div>
+            <div class="when">March 2026 · Course score 95%</div>
+          </span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <ul><li>Completed a course on applying AI tools to accelerate data-based workflows.</li></ul>
+        </div>
+      </div>
+      <div class="t-item reveal" data-n="2">
+        <button class="acc-trigger" aria-expanded="false">
+          <span>
+            <h3>GIS Trainee</h3>
+            <div class="org">Aircode Technologies Pvt. Ltd.</div>
+            <div class="when">Jul – Aug 2026 · 6-week industry training</div>
+          </span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <ul>
+            <li>Analyzed raw geospatial location data for 15,000+ buildings using QGIS, identifying uncovered structures and digitizing precise building polygons.</li>
+            <li>Collected and structured building-level attribute data — height, roof age, roof material, facade material and condition, and suburb density — into Excel across the full dataset.</li>
+            <li>Gained practical exposure to GIS, geospatial data handling, and industrial workflow using QGIS.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item reveal" data-n="3">
+        <button class="acc-trigger" aria-expanded="false">
+          <span>
+            <h3>AI for All</h3>
+            <div class="org">TCS · Free Course</div>
+            <div class="when">Completing August 2026</div>
+          </span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <ul><li>Learning practical applications of AI across daily productivity tasks, cybersecurity fundamentals, and data analysis.</li></ul>
+        </div>
+      </div>
+      <div class="t-item reveal" data-n="4">
+        <button class="acc-trigger" aria-expanded="false">
+          <span>
+            <h3>Tata AI-Powered Data Analytics Job Simulation</h3>
+            <div class="org">Forage</div>
+            <div class="when">Job simulation</div>
+          </span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <ul>
+            <li>Performed exploratory data analysis on delinquency datasets, using GenAI tools for missing-data treatment, risk profiling, and synthetic data generation.</li>
+            <li>Designed predictive model logic for customer delinquency and outlined an evaluation plan for model accuracy and reliability.</li>
+            <li>Authored a two-page executive summary and recommendation framework for a Head of Collections, covering key risk factors, delinquency trends, and intervention strategies.</li>
+            <li>Designed a presentation framework for an AI-powered collections system, incorporating bias guardrails and responsible AI principles.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item reveal" data-n="5">
+        <button class="acc-trigger" aria-expanded="false">
+          <span>
+            <h3>Deloitte Data Analytics Job Simulation</h3>
+            <div class="org">Forage</div>
+            <div class="when">Job simulation</div>
+          </span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <ul>
+            <li>Analyzed a provided Excel dataset to identify key trends, then built a Tableau dashboard to visualize findings.</li>
+            <li>Updated and maintained the source Excel sheet to reflect analysis outputs, simulating an end-to-end data analyst workflow.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="page wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <div class="tag">Data Analytics · Dashboard</div>
+        <button class="acc-trigger" aria-expanded="false">
+          <h3>Interactive Customer Analytics Dashboard</h3>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <p>Analyzed a real-world marketing dataset of 2,200+ customers (iFood Customer Personality Analysis, Kaggle) to uncover patterns in spending behavior, campaign performance, and purchase channels — built end-to-end from data cleaning to visualization.</p>
+          <div class="insights">
+            <div>Wine alone made up over 45% of total product spend</div>
+            <div>Latest campaign response rate (~15%) more than doubled earlier ones (~6–7%)</div>
+            <div>In-store purchases outpace web and catalog combined</div>
+          </div>
+          <a class="project-link" href="https://lnkd.in/p/dJYc69rs" target="_blank" rel="noopener">View on LinkedIn →</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="tag">Security · Tool</div>
+        <button class="acc-trigger" aria-expanded="false">
+          <h3>Password Strength Analyzer</h3>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="acc-panel">
+          <p>A rules-based tool that checks password strength against common security criteria, giving instant feedback on how to improve a password's resilience.</p>
+          <a class="project-link" href="https://github.com/yashverma1611/Password_security_Analyzer" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="page wrap">
+    <div class="eyebrow reveal">Contact</div>
+    <div class="contact-box reveal">
+      <h2>Let's talk data.</h2>
+      <p>Open to opportunities, internships, and conversations about data analysis, GIS, or anything spatial. Reach out any time.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:90yashkumar@gmail.com">Email me</a>
+        <a class="btn ghost" href="tel:+918858655356">+91 88586 55356</a>
+        <a class="btn ghost" href="https://github.com/yashverma1611" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/yash-kumar-verma-7405a4405/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <form id="contactForm" class="contact-form">
+        <div class="form-row">
+          <input type="text" id="cf-name" placeholder="Your name" required>
+          <input type="email" id="cf-email" placeholder="Your email" required>
+        </div>
+        <textarea id="cf-message" rows="4" placeholder="Your message" required></textarea>
+        <button type="submit" class="btn primary" style="width:100%; justify-content:center;">Send message</button>
+        <p class="form-note">Opens your email app with this pre-filled — nothing is sent from here.</p>
+      </form>
+
+      <div class="qr-block">
+        <img src="data:image/png;base64,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" alt="QR code linking to yashverma1611.github.io" width="150" height="150">
+        <p class="qr-caption mono">Scan to open this site on your phone</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <svg class="dragon-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4,28 C10,22 12,32 18,26 C24,20 20,12 28,10 C32,9 34,12 36,8" fill="none" stroke="var(--accent-jade-bright)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    © 2026 Yash Kumar Verma — Built with data, curiosity, and one contour-line dragon.
+  </footer>
+
+  <!-- Floating FAQ chat widget -->
+  <div id="chatWidget">
+    <button id="chatToggle" aria-label="Open chat" aria-expanded="false">
+      <svg id="chatIconOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <svg id="chatIconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="chatPanel" aria-hidden="true">
+      <div class="chat-header">
+        <span>Ask about Yash</span>
+        <span class="chat-sub mono">no API · answers locally</span>
+      </div>
+      <div id="chatLog"></div>
+      <div class="chat-quick" id="chatQuick"></div>
+      <form id="chatForm">
+        <input type="text" id="chatInput" placeholder="Ask about skills, projects, education…" autocomplete="off">
+        <button type="submit" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+<script>
+  // ----- Intro sequence -----
+  (function(){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var introEl = document.getElementById('intro');
+    var flash = document.getElementById('flash');
+    var body = document.body;
+    var path = document.getElementById('dragonPath');
+    var head = document.getElementById('dragonHead');
+
+    function finishIntro(){
+      body.classList.remove('locked');
+      introEl.classList.add('hide');
+      setTimeout(function(){ introEl.style.display='none'; }, 950);
+    }
+
+    if(reduced){
+      finishIntro();
+    } else {
+      var len = path.getTotalLength ? path.getTotalLength() : 1000;
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+      path.getBoundingClientRect(); // force reflow
+      path.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(.65,.05,.36,1)';
+      requestAnimationFrame(function(){
+        path.style.strokeDashoffset = 0;
+      });
+      setTimeout(function(){ head.style.transition='opacity 0.3s'; head.style.opacity='1'; }, 1450);
+      setTimeout(function(){
+        flash.classList.add('fire');
+      }, 1650);
+      setTimeout(finishIntro, 2500);
+    }
+
+    // allow skipping the intro on click/tap
+    introEl.addEventListener('click', finishIntro);
+  })();
+
+  // ----- Reveal (immediate, since sections are now paged not continuously scrolled) -----
+  (function(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.classList.add('in');
+    });
+  })();
+
+  // ----- Page/tab switching -----
+  (function(){
+    var navLinks = document.querySelectorAll('.nav-link');
+    var pages = document.querySelectorAll('.page');
+
+    function showPage(id){
+      pages.forEach(function(p){ p.classList.toggle('active', p.id === id); });
+      navLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('data-target') === id); });
+      window.scrollTo({top:0, behavior:'smooth'});
+      // resize any open accordion panels now visible in this page
+      requestAnimationFrame(function(){
+        document.querySelectorAll('#' + id + ' .acc-panel.open').forEach(function(p){
+          p.style.maxHeight = p.scrollHeight + 'px';
+        });
+      });
+    }
+
+    navLinks.forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        var target = link.getAttribute('data-target');
+        if(target){
+          showPage(target);
+          history.replaceState(null, '', '#' + target);
+        }
+      });
+    });
+
+    // deep-link support: open the section matching the URL hash on load
+    var initial = (location.hash || '').replace('#','');
+    var valid = Array.prototype.some.call(pages, function(p){ return p.id === initial; });
+    if(valid){ showPage(initial); }
+  })();
+
+  // ----- Accordion: tap heading to expand/collapse -----
+  (function(){
+    var triggers = document.querySelectorAll('.acc-trigger');
+    triggers.forEach(function(btn){
+      var panel = btn.nextElementSibling;
+      if(!panel || !panel.classList.contains('acc-panel')) return;
+
+      function setOpen(open){
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if(open){
+          panel.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + 'px'; // set current height first for transition
+          requestAnimationFrame(function(){
+            panel.style.maxHeight = '0px';
+          });
+          panel.classList.remove('open');
+        }
+      }
+
+      // initial state from aria-expanded in markup
+      setOpen(btn.getAttribute('aria-expanded') === 'true');
+
+      btn.addEventListener('click', function(){
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        setOpen(!isOpen);
+      });
+    });
+
+    // keep open panels sized correctly if fonts/layout shift after load
+    window.addEventListener('load', function(){
+      document.querySelectorAll('.acc-panel.open').forEach(function(p){
+        p.style.maxHeight = p.scrollHeight + 'px';
+      });
+    });
+  })();
+
+  // ----- Contact form: opens visitor's email app, no backend/keys involved -----
+  (function(){
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      var subject = encodeURIComponent('Portfolio contact from ' + name);
+      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      window.location.href = 'mailto:90yashkumar@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  })();
+
+  // ----- Local FAQ chatbot: no API, no key — answers from a fixed knowledge base -----
+  (function(){
+    var widget = document.getElementById('chatWidget');
+    var toggle = document.getElementById('chatToggle');
+    var panel = document.getElementById('chatPanel');
+    var log = document.getElementById('chatLog');
+    var quick = document.getElementById('chatQuick');
+    var form = document.getElementById('chatForm');
+    var input = document.getElementById('chatInput');
+    var iconOpen = document.getElementById('chatIconOpen');
+    var iconClose = document.getElementById('chatIconClose');
+    if(!widget) return;
+
+    var kb = [
+      { keys:['skill','know','tool','tech','stack'],
+        a:"Yash's core skills: QGIS, Tableau, Microsoft Excel, Data Analysis & Validation, Spatial Data Analysis, Database Management, Georeferencing, and Problem Solving." },
+      { keys:['education','study','college','degree','bca','school','12th','10th'],
+        a:"Yash is pursuing a BCA at City College of Management, Tiwariganj (2025–2028). He completed 12th (Science, U.P. Board) at 77.4% and 10th at 88.67%, both from Mahavir Inter College, Aliganj." },
+      { keys:['experience','job','work','intern','training','gis trainee'],
+        a:"Yash was a GIS Trainee at Aircode Technologies, where he mapped 15,000+ buildings in QGIS. He's also completed a UNICEF AI productivity course (95% score) and is finishing TCS's 'AI for All' course." },
+      { keys:['project','dashboard','password','portfolio site','built'],
+        a:"Two flagship projects: an Interactive Customer Analytics Dashboard (iFood dataset, 2,200+ customers) and a Password Strength Analyzer. Check the Projects tab for links to both." },
+      { keys:['deloitte','tata','simulation','forage'],
+        a:"Yash completed the Deloitte and Tata job simulations on Forage — covering Tableau dashboards, GenAI-assisted risk analysis, and executive reporting." },
+      { keys:['contact','email','phone','reach','hire','linkedin','github'],
+        a:"Best ways to reach Yash: email 90yashkumar@gmail.com, or check the Contact tab for phone, GitHub, and LinkedIn links." },
+      { keys:['location','where','based','live','city'],
+        a:"Yash is based in Lucknow, India." },
+      { keys:['dragon'],
+        a:"That's the site's signature touch — a jade contour-line dragon that draws itself on page load, tying into Yash's GIS/mapping background." },
+      { keys:['who', 'yash', 'about'],
+        a:"Yash Kumar Verma is an aspiring Data Analyst from Lucknow, blending GIS/spatial data work with Excel, Tableau, and AI-assisted analytics." }
+    ];
+
+    var fallback = "I can only answer from a fixed set of info about Yash right now — try asking about his skills, education, experience, or projects. For anything else, use the contact form or email him directly.";
+
+    function addMsg(text, who){
+      var el = document.createElement('div');
+      el.className = 'chat-msg ' + who;
+      el.textContent = text;
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function answer(question){
+      var q = question.toLowerCase();
+      for(var i=0;i<kb.length;i++){
+        for(var j=0;j<kb[i].keys.length;j++){
+          if(q.indexOf(kb[i].keys[j]) !== -1){ return kb[i].a; }
+        }
+      }
+      return fallback;
+    }
+
+    function openChat(){
+      widget.classList.add('open');
+      toggle.setAttribute('aria-expanded','true');
+      panel.setAttribute('aria-hidden','false');
+      iconOpen.style.display='none'; iconClose.style.display='block';
+      input.focus();
+    }
+    function closeChat(){
+      widget.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+      panel.setAttribute('aria-hidden','true');
+      iconOpen.style.display='block'; iconClose.style.display='none';
+    }
+
+    toggle.addEventListener('click', function(){
+      widget.classList.contains('open') ? closeChat() : openChat();
+    });
+
+    if(log.children.length === 0){
+      addMsg("Hi! I'm a simple local FAQ bot — no external AI, nothing to leak. Ask me about Yash's skills, education, experience, or projects.", 'bot');
+    }
+
+    var quickQs = ['Skills?', 'Education?', 'Projects?', 'Contact?'];
+    quickQs.forEach(function(qq){
+      var b = document.createElement('button');
+      b.type='button'; b.textContent = qq;
+      b.addEventListener('click', function(){
+        addMsg(qq, 'user');
+        setTimeout(function(){ addMsg(answer(qq), 'bot'); }, 250);
+      });
+      quick.appendChild(b);
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var val = input.value.trim();
+      if(!val) return;
+      addMsg(val, 'user');
+      input.value = '';
+      setTimeout(function(){ addMsg(answer(val), 'bot'); }, 250);
+    });
+  })();
+</script>
+
+</body>
+</html>
