@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Tracker — Yash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12141a;
+    --panel:#1a1d26;
+    --panel2:#212530;
+    --border:#2a2f3d;
+    --border-soft:#232734;
+    --text:#e7e9ee;
+    --text-dim:#8e94a8;
+    --text-faint:#5b6175;
+    --done-bg: rgba(120,200,150,0.08);
+    --font-mono:'JetBrains Mono', monospace;
+    --font-sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-sans);
+    padding:28px 16px 80px;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-faint);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin:0 0 6px;
+  }
+  h1{
+    font-size:26px;
+    font-weight:700;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .stat{
+    background:var(--panel);
+    border:1px solid var(--border-soft);
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .stat .num{font-family:var(--font-mono);font-size:24px;font-weight:700;}
+  .stat .lbl{font-size:12px;color:var(--text-dim);margin-top:2px;}
+  .overall-bar{
+    height:6px;border-radius:4px;background:var(--panel2);overflow:hidden;margin-top:10px;
+  }
+  .overall-bar > div{height:100%;background:#8ec07c;transition:width .3s;}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .tab{
+    font-family:var(--font-sans);
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-dim);
+    background:var(--panel);
+    border:1px solid var(--border-soft);
+    border-radius:8px;
+    padding:9px 14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:border-color .15s, color .15s;
+  }
+  .tab:hover{color:var(--text);}
+  .tab .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .tab .pct{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);}
+  .tab.active{color:var(--text);border-color:var(--accent,#5aa9e6);background:var(--panel2);}
+
+  .subject-panel{display:none;}
+  .subject-panel.active{display:block;}
+  .subject-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:4px;
+  }
+  .subject-head h2{font-size:18px;margin:0;font-weight:600;}
+  .subject-head .sub-pct{font-family:var(--font-mono);font-size:13px;color:var(--text-dim);}
+  .subject-bar{height:5px;border-radius:4px;background:var(--panel2);overflow:hidden;margin:8px 0 18px;}
+  .subject-bar > div{height:100%;transition:width .3s;}
+
+  details.unit{
+    background:var(--panel);
+    border:1px solid var(--border-soft);
+    border-radius:10px;
+    margin-bottom:10px;
+    overflow:hidden;
+  }
+  details.unit > summary{
+    list-style:none;
+    cursor:pointer;
+    padding:12px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  details.unit > summary::-webkit-details-marker{display:none;}
+  .unit-title{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+  .unit-title .chev{
+    font-size:11px;color:var(--text-faint);transition:transform .15s;
+    display:inline-block;
+  }
+  details[open] .chev{transform:rotate(90deg);}
+  .unit-meta{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-mono);font-size:12px;color:var(--text-dim);
+  }
+  .unit-mini-bar{width:64px;height:4px;border-radius:3px;background:var(--panel2);overflow:hidden;}
+  .unit-mini-bar > div{height:100%;}
+
+  .rows{border-top:1px solid var(--border-soft);}
+  .row{
+    display:grid;
+    grid-template-columns:28px 34px 1fr 132px 1fr;
+    gap:10px;
+    align-items:center;
+    padding:8px 16px;
+    border-bottom:1px solid var(--border-soft);
+    transition:background .15s;
+  }
+  .row:last-child{border-bottom:none;}
+  .row.done{background:var(--done-bg);}
+  .row input[type=checkbox]{
+    width:17px;height:17px;accent-color:#8ec07c;cursor:pointer;
+  }
+  .row .sno{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
+  .row .topic{font-size:13.5px;color:var(--text);}
+  .row.done .topic{color:var(--text-dim);text-decoration:line-through;text-decoration-color:var(--text-faint);}
+  .row input[type=date]{
+    font-family:var(--font-mono);font-size:12px;background:var(--panel2);
+    color:var(--text);border:1px solid var(--border-soft);border-radius:6px;
+    padding:5px 6px;width:100%;color-scheme:dark;
+  }
+  .row input[type=text]{
+    font-family:var(--font-sans);font-size:12.5px;background:var(--panel2);
+    color:var(--text);border:1px solid var(--border-soft);border-radius:6px;
+    padding:6px 8px;width:100%;
+  }
+  .row input[type=text]::placeholder{color:var(--text-faint);}
+  .row input[type=date]:focus,.row input[type=text]:focus{
+    outline:none;border-color:var(--accent,#5aa9e6);
+  }
+
+  @media (max-width:640px){
+    .row{grid-template-columns:24px 26px 1fr;}
+    .row .date-cell,.row .remarks-cell{grid-column:1 / -1;}
+  }
+
+  /* ---- Auth screen ---- */
+  #authScreen{
+    max-width:360px;margin:80px auto;background:var(--panel);
+    border:1px solid var(--border-soft);border-radius:12px;padding:26px;
+  }
+  #authScreen h2{margin:0 0 4px;font-size:19px;}
+  #authScreen p.sub{color:var(--text-dim);font-size:13px;margin:0 0 18px;}
+  #authScreen label{font-size:12px;color:var(--text-dim);display:block;margin:0 0 4px;}
+  #authScreen input{
+    width:100%;font-family:var(--font-sans);font-size:14px;background:var(--panel2);
+    color:var(--text);border:1px solid var(--border-soft);border-radius:8px;
+    padding:10px 12px;margin-bottom:12px;
+  }
+  #authScreen input:focus{outline:none;border-color:#5aa9e6;}
+  #authScreen .authBtns{display:flex;gap:8px;margin-top:4px;}
+  #authScreen button{
+    flex:1;font-family:var(--font-sans);font-weight:600;font-size:13px;
+    border-radius:8px;padding:10px 12px;cursor:pointer;border:1px solid var(--border-soft);
+  }
+  #authScreen #signInBtn{background:#5aa9e6;color:#0c1420;border-color:#5aa9e6;}
+  #authScreen #signUpBtn{background:var(--panel2);color:var(--text);}
+  #authScreen #authError{color:#e08a8a;font-size:12.5px;margin-top:10px;min-height:16px;}
+  #authScreen #authNote{color:var(--text-faint);font-size:11.5px;margin-top:14px;line-height:1.5;}
+
+  #topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;}
+  #userChip{font-family:var(--font-mono);font-size:11.5px;color:var(--text-faint);}
+  #signOutBtn{
+    font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:var(--panel);
+    border:1px solid var(--border-soft);border-radius:6px;padding:5px 10px;cursor:pointer;
+  }
+
+  #app{display:none;}
+
+  /* ---- Section toggle ---- */
+  .top-toggle{display:flex;gap:8px;margin-bottom:20px;}
+  .toggle-btn{
+    font-family:var(--font-sans);font-weight:600;font-size:13.5px;color:var(--text-dim);
+    background:var(--panel);border:1px solid var(--border-soft);border-radius:9px;
+    padding:10px 16px;cursor:pointer;
+  }
+  .toggle-btn.active{color:var(--text);background:var(--panel2);border-color:#5aa9e6;}
+
+  /* ---- Quick Revision ---- */
+  .rev-unit-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 14px;}
+  .rev-unit-pill{
+    font-family:var(--font-mono);font-size:12px;color:var(--text-dim);background:var(--panel);
+    border:1px solid var(--border-soft);border-radius:20px;padding:6px 14px;cursor:pointer;
+  }
+  .rev-unit-pill.active{color:var(--text);background:var(--panel2);border-color:#5aa9e6;}
+
+  .rev-type-tabs{display:flex;gap:8px;margin-bottom:16px;}
+  .rev-type-pill{
+    font-family:var(--font-sans);font-weight:600;font-size:12.5px;color:var(--text-dim);
+    background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;
+    padding:8px 14px;cursor:pointer;
+  }
+  .rev-type-pill.active{color:var(--text);background:var(--panel2);border-color:#8ec07c;}
+  .rev-count{font-family:var(--font-mono);color:var(--text-faint);font-size:11px;margin-left:4px;}
+
+  .qa-list{margin-bottom:18px;}
+  .qa-card{
+    background:var(--panel);border:1px solid var(--border-soft);border-radius:10px;
+    padding:12px 16px;margin-bottom:8px;
+  }
+  .qa-q{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;cursor:pointer;font-size:13.5px;font-weight:600;}
+  .qa-a{
+    display:none;margin-top:10px;font-size:13px;color:var(--text-dim);white-space:pre-wrap;
+    line-height:1.5;border-top:1px solid var(--border-soft);padding-top:10px;
+  }
+  .qa-card.open .qa-a{display:block;}
+  .qa-actions{display:flex;gap:8px;flex-shrink:0;}
+  .qa-actions button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:2px 4px;}
+  .qa-actions button:hover{color:var(--text);}
+
+  .qa-edit-label{display:block;font-size:11px;color:var(--text-faint);margin:6px 0 4px;}
+  .qa-edit-input{
+    width:100%;font-family:var(--font-sans);font-size:13px;background:var(--panel2);color:var(--text);
+    border:1px solid var(--border-soft);border-radius:6px;padding:8px;min-height:50px;resize:vertical;
+  }
+  .qa-edit-btnrow{display:flex;gap:8px;margin-top:8px;}
+  .qa-save-edit-btn,.qa-cancel-edit-btn{
+    font-family:var(--font-sans);font-weight:600;font-size:12px;border-radius:6px;
+    padding:7px 12px;cursor:pointer;border:1px solid var(--border-soft);
+  }
+  .qa-save-edit-btn{background:#5aa9e6;color:#0c1420;border-color:#5aa9e6;}
+  .qa-cancel-edit-btn{background:var(--panel2);color:var(--text);}
+
+  .qa-add-box{background:var(--panel);border:1px dashed var(--border-soft);border-radius:10px;padding:14px 16px;}
+  .qa-add-hint{font-size:11.5px;color:var(--text-faint);margin:0 0 10px;line-height:1.5;}
+  .qa-add-hint code{background:var(--panel2);border-radius:4px;padding:1px 5px;font-family:var(--font-mono);}
+  .qa-paste-area{
+    width:100%;min-height:110px;font-family:var(--font-mono);font-size:12.5px;background:var(--panel2);
+    color:var(--text);border:1px solid var(--border-soft);border-radius:8px;padding:10px;
+    resize:vertical;margin-bottom:10px;
+  }
+  .qa-parse-btn{
+    font-family:var(--font-sans);font-weight:600;font-size:12.5px;color:var(--text);background:var(--panel2);
+    border:1px solid var(--border-soft);border-radius:8px;padding:8px 14px;cursor:pointer;
+  }
+  .qa-preview{margin-top:14px;}
+  .qa-parse-count{font-size:12px;color:var(--text-dim);margin:0 0 10px;}
+  .qa-parse-empty{font-size:12px;color:#e08a8a;}
+  .qa-preview-item{background:var(--panel2);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
+  .qa-preview-q{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .qa-preview-a{font-size:12.5px;color:var(--text-dim);white-space:pre-wrap;}
+  .qa-confirm-btn{
+    font-family:var(--font-sans);font-weight:600;font-size:12.5px;color:#0c1420;background:#8ec07c;
+    border:none;border-radius:8px;padding:9px 14px;cursor:pointer;margin-top:4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ AUTH SCREEN ============ -->
+<div id="authScreen">
+  <h2>Study Tracker</h2>
+  <p class="sub">Sign in to sync your progress across devices.</p>
+
+  <label for="authUsername">Username</label>
+  <input type="text" id="authUsername" autocomplete="username" placeholder="e.g. yashverma" maxlength="20">
+
+  <label for="authPin">PIN</label>
+  <input type="password" id="authPin" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="6-digit PIN" maxlength="6">
+
+  <div class="authBtns">
+    <button id="signInBtn">Sign in</button>
+    <button id="signUpBtn">Create account</button>
+  </div>
+  <div id="authError"></div>
+  <p id="authNote">First time here? Pick a username and a 6-digit PIN, then click "Create account" once — after that, use "Sign in" with the same username + PIN on any device to see the same progress.</p>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div class="wrap" id="app">
+  <div id="topbar">
+    <p class="eyebrow" style="margin:0;">BCA · semester progress</p>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span id="userChip"></span>
+      <button id="signOutBtn">Sign out</button>
+    </div>
+  </div>
+  <h1>Study tracker</h1>
+
+  <div class="top-toggle">
+    <button id="toggleTrackerBtn" class="toggle-btn active">📋 Study Tracker</button>
+    <button id="toggleRevisionBtn" class="toggle-btn">⚡ Quick Revision</button>
+  </div>
+
+  <div id="trackerView">
+    <div class="stats">
+      <div class="stat"><div class="num" id="statDone">0</div><div class="lbl">topics done</div></div>
+      <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">total topics</div></div>
+      <div class="stat"><div class="num" id="statPct">0%</div><div class="lbl">overall progress</div>
+        <div class="overall-bar"><div id="overallBarFill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <p id="saveStatus" style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin:-10px 0 14px;">loading…</p>
+
+    <div style="display:flex;gap:8px;margin-bottom:18px;">
+      <button id="exportBtn" style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim);background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;padding:8px 12px;cursor:pointer;">⬇ Export backup (.json)</button>
+      <button id="importBtn" style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim);background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;padding:8px 12px;cursor:pointer;">⬆ Import backup</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none;">
+    </div>
+
+    <div class="tabs" id="tabs"></div>
+    <div id="panels"></div>
+  </div>
+
+  <div id="revisionView" style="display:none;">
+    <div class="tabs" id="revSubjectTabs"></div>
+    <div id="revSubjectPanels"></div>
+  </div>
+</div>
+
+<!-- ============ FIREBASE ============ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  onAuthStateChanged, signOut, updateProfile
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import {
+  getFirestore, doc, getDoc, setDoc, onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+/* =========================================================================
+   1) PASTE YOUR FIREBASE CONFIG HERE
+   Get this from: Firebase Console → Project settings → General →
+   "Your apps" → Web app → SDK setup and configuration → Config
+   ========================================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyARagYTHHDl-9XkWQhGD_2orqBOKx8KHxY",
+  authDomain: "study-tracker-75137.firebaseapp.com",
+  projectId: "study-tracker-75137",
+  storageBucket: "study-tracker-75137.firebasestorage.app",
+  messagingSenderId: "855042461100",
+  appId: "1:855042461100:web:50ec1bc6f9858f88ed7e09"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* ========================= SUBJECT DATA ========================= */
+const STORAGE_PREFIX = 'study-tracker:';
+const SUBJECTS = [
+  { id:"python", name:"Python Programming", accent:"#e8b339", topics:[
+    ["Unit I","Programming Cycle for Python"],["Unit I","Python IDE"],["Unit I","Interacting with Python Programs"],
+    ["Unit I","Elements of Python"],["Unit I","Variables"],["Unit I","Data Types"],["Unit I","Type Conversion"],
+    ["Unit I","Expressions"],["Unit I","Assignment Statement"],["Unit I","Arithmetic Operators"],
+    ["Unit I","Operator Precedence"],["Unit I","Boolean Expression"],
+    ["Unit II","Conditional Statements"],["Unit II","Looping"],["Unit II","If Statement"],["Unit II","If-Else Statement"],
+    ["Unit II","Nested If"],["Unit II","Else-If Ladder"],["Unit II","For Loop"],["Unit II","While Loop"],
+    ["Unit II","Nested Loop"],["Unit II","Lists – Introduction"],["Unit II","Lists – Properties"],
+    ["Unit II","Accessing List Elements"],["Unit II","List Operations"],["Unit II","List Functions and Methods"],
+    ["Unit II","Tuple – Introduction"],["Unit II","Tuple – Properties"],["Unit II","Accessing Tuple Elements"],
+    ["Unit II","Tuple Operations"],["Unit II","Tuple Functions and Methods"],["Unit II","Dictionaries – Introduction"],
+    ["Unit II","Dictionaries – Properties"],["Unit II","Accessing Dictionary Values"],
+    ["Unit II","Dictionary Functions and Methods"],
+    ["Unit III","String Manipulation"],["Unit III","Accessing Strings"],["Unit III","Basic String Operations"],
+    ["Unit III","String Slices"],["Unit III","Functions – Definition"],["Unit III","Calling a Function"],
+    ["Unit III","Types of Functions"],["Unit III","Function Arguments"],["Unit III","Anonymous Functions (Lambda)"],
+    ["Unit III","Global Variables"],["Unit III","Local Variables"],
+    ["Unit IV","OOP Concepts"],["Unit IV","Classes and Objects"],["Unit IV","Class Definition"],
+    ["Unit IV","Creating Classes"],["Unit IV","Instance Methods"],["Unit IV","New Style Class"],
+    ["Unit IV","Attributes"],["Unit IV","Inheritance"],["Unit IV","Polymorphism"],["Unit IV","Exception Classes"],
+    ["Unit IV","Custom Exception"],["Unit IV","Method Overloading"],["Unit IV","Method Overriding"],
+    ["Unit IV","Data Hiding"],
+    ["Unit V","File Handling in Python"],["Unit V","Opening Files"],["Unit V","Closing Files"],
+    ["Unit V","Reading Files"],["Unit V","Writing Files"],["Unit V","Linear Search"],["Unit V","Binary Search"],
+    ["Unit V","Merge Sort"],["Unit V","Insertion Sort"],["Unit V","Selection Sort"]
+  ]},
+  { id:"ca", name:"Computer Architecture", accent:"#4fa8e0", topics:[
+    ["Unit I","Functional Units of Digital Computer System"],["Unit I","Interconnections of Functional Units"],
+    ["Unit I","Arithmetic and Logic Unit (ALU)"],["Unit I","Basics of Control Unit"],["Unit I","Fundamentals of Memory"],
+    ["Unit I","Input Devices"],["Unit I","Output Devices"],["Unit I","Peripheral Devices"],
+    ["Unit I","Difference Between Computer Organization and Computer Architecture"],
+    ["Unit II","Components of a Computer"],["Unit II","Classification of Computers"],
+    ["Unit II","Flynn's Classification"],["Unit II","Feng's Classification"],["Unit II","RISC Architecture"],
+    ["Unit II","CISC Architecture"],["Unit II","Comparison Between Pipelining and Parallelism"],
+    ["Unit II","Computer Instruction Types"],["Unit II","Instruction Formats"],["Unit II","Instruction Cycle"],
+    ["Unit II","Instruction Sub-Cycle"],["Unit II","Micro Operations"],["Unit II","Execution of Complete Instruction"],
+    ["Unit III","Concept of Parallelism"],["Unit III","Network Models"],["Unit III","Mesh Network"],
+    ["Unit III","Pyramid Network"],["Unit III","Butterfly Network"],["Unit III","Hypercube Network"],
+    ["Unit III","Performance Metrics"],["Unit III","Performance Measures"],["Unit III","Speed-up Performance Laws"],
+    ["Unit III","PRAM (Parallel Random Access Machine) Model"],
+    ["Unit IV","Principle of Pipelining"],["Unit IV","General Structure of Pipelines"],
+    ["Unit IV","Classification of Pipeline Processors"],["Unit IV","General Pipeline"],
+    ["Unit IV","Reservation Tables"],["Unit IV","Designing Pipelined Processor"],
+    ["Unit IV","Pipeline Instruction Execution"],["Unit IV","Pre-fetched Buffer"],["Unit IV","Internal Forwarding"],
+    ["Unit IV","Register Tagging"],["Unit IV","Hazard Detection"],["Unit IV","Hazard Resolution"],
+    ["Unit IV","Pipeline Scheduling Theory"],
+    ["Unit V","Grain Size"],["Unit V","Latency"],["Unit V","Grain Packing"],["Unit V","Scheduling"],
+    ["Unit V","Static Multiprocessor Scheduling"],["Unit V","Program Flow Mechanism"],["Unit V","Control Flow"],
+    ["Unit V","Data Flow"],["Unit V","Demand-Driven Mechanism"],["Unit V","Comparison of Flow Mechanisms"]
+  ]},
+  { id:"se", name:"Software Engineering", accent:"#6bc48a", topics:[
+    ["Unit I","Software Components"],["Unit I","Software Characteristics"],["Unit I","Software Crisis"],
+    ["Unit I","Software Engineering Process"],
+    ["Unit I","Similarities and Differences from Conventional Engineering Processes"],
+    ["Unit I","Software Quality Attributes"],["Unit I","SDLC (Software Development Life Cycle)"],
+    ["Unit I","Waterfall Model"],["Unit I","Prototype Model"],["Unit I","Spiral Model"],
+    ["Unit I","Evolutionary Development Model"],["Unit I","Iterative Enhancement Model"],
+    ["Unit I","Agile Software Development Model"],
+    ["Unit II","Requirement Engineering Process"],["Unit II","Feasibility Study"],["Unit II","Information Modeling"],
+    ["Unit II","Data Flow Diagrams (DFD)"],["Unit II","Entity Relationship Diagrams (ERD)"],
+    ["Unit II","Decision Tables"],["Unit II","SRS (Software Requirement Specification) Document"],
+    ["Unit II","IEEE Standards for SRS"],["Unit II","Software Quality Assurance (SQA)"],["Unit II","Verification"],
+    ["Unit II","Validation"],["Unit II","SQA Plans"],["Unit II","Software Quality Frameworks"],
+    ["Unit II","ISO 9000 Model"],["Unit II","SEI-CMM Model"],
+    ["Unit III","Basic Concepts of Software Design"],["Unit III","Architectural Design"],
+    ["Unit III","Low-Level Design"],["Unit III","Modularization"],["Unit III","Design Structure Charts"],
+    ["Unit III","Pseudocode"],["Unit III","Flowcharts"],["Unit III","Coupling"],["Unit III","Cohesion"],
+    ["Unit III","Design Strategies"],["Unit III","Software Measurement and Metrics"],
+    ["Unit III","Halstead's Software Science"],["Unit III","Function Point (FP) Based Measures"],
+    ["Unit III","Cyclomatic Complexity Measures"],["Unit III","Control Flow Graphs"],
+    ["Unit IV","Testing Objectives"],["Unit IV","Unit Testing"],["Unit IV","Integration Testing"],
+    ["Unit IV","Acceptance Testing"],["Unit IV","Regression Testing"],["Unit IV","Functionality Testing"],
+    ["Unit IV","Performance Testing"],["Unit IV","Top-Down Testing Strategy"],["Unit IV","Bottom-Up Testing Strategy"],
+    ["Unit IV","Test Drivers"],["Unit IV","Test Stubs"],["Unit IV","Structural Testing (White Box Testing)"],
+    ["Unit IV","Functional Testing (Black Box Testing)"],["Unit IV","Test Data Suite Preparation"],
+    ["Unit IV","Alpha Testing"],["Unit IV","Beta Testing"],["Unit IV","Static Testing Strategies"],
+    ["Unit V","Software as an Evolutionary Entity"],["Unit V","Need for Maintenance"],
+    ["Unit V","Categories of Maintenance"],["Unit V","Cost of Maintenance"],["Unit V","Software Re-engineering"],
+    ["Unit V","Reverse Engineering"],["Unit V","Software Configuration Management (SCM)"],
+    ["Unit V","SCM Activities"],["Unit V","Change Control Process"],["Unit V","Software Version Control"],
+    ["Unit V","CASE Tools (Overview)"],["Unit V","Cost Estimation"],["Unit V","Effort Estimation"],
+    ["Unit V","Schedule/Duration Estimation"],["Unit V","COCOMO (Constructive Cost Model)"]
+  ]},
+  { id:"acc", name:"Accountancy", accent:"#a67ed9", topics:[
+    ["Unit I","Basic Concepts of Accounting"],["Unit I","Meaning and Definition of Accounting"],
+    ["Unit I","Objectives of Accounting"],["Unit I","Scope of Accounting"],["Unit I","Advantages of Accounting"],
+    ["Unit I","Limitations of Accounting"],["Unit I","Branches of Accounting"],
+    ["Unit I","Users of Accounting Information"],["Unit I","Accounting Process"],["Unit I","Accounting Equation"],
+    ["Unit I","Generally Accepted Accounting Principles (GAAP)"],["Unit I","Accounting Standards (AS)"],
+    ["Unit I","International Financial Reporting Standards (IFRS)"],["Unit I","Need and Significance of IFRS"],
+    ["Unit I","Ethical Issues in Accounting"],
+    ["Unit II","Systems of Accounting"],["Unit II","Double Entry System of Accounting"],["Unit II","Journal"],
+    ["Unit II","Journalizing Transactions"],["Unit II","Ledger"],["Unit II","Posting"],["Unit II","Trial Balance"],
+    ["Unit II","Meaning of Trial Balance"],["Unit II","Methods of Preparing Trial Balance"],
+    ["Unit II","Capital Expenditure"],["Unit II","Revenue Expenditure"],
+    ["Unit III","Preparation of Final Accounts"],["Unit III","Trading Account"],["Unit III","Profit & Loss Account"],
+    ["Unit III","Balance Sheet"],["Unit III","Closing Stock Adjustment"],["Unit III","Outstanding Expenses"],
+    ["Unit III","Prepaid Expenses"],["Unit III","Depreciation"],["Unit III","Accrued Income"],
+    ["Unit III","Unearned Income"],["Unit III","Interest on Capital"],["Unit III","Interest on Drawings"],
+    ["Unit III","Interest on Loans"],["Unit III","Bad Debts"],["Unit III","Provision for Doubtful Debts"],
+    ["Unit III","Provision for Discount on Debtors"],["Unit III","Manager's Commission"],
+    ["Unit IV","Financial Statement Analysis"],["Unit IV","Meaning of Financial Statement Analysis"],
+    ["Unit IV","Objectives of Financial Statement Analysis"],["Unit IV","Techniques of Financial Statement Analysis"],
+    ["Unit IV","Ratio Analysis"],["Unit IV","Liquidity Ratios"],["Unit IV","Leverage Ratios"],
+    ["Unit IV","Profitability Ratios"],["Unit IV","Activity Ratios"],
+    ["Unit IV","Meaning and Significance of Cash Flow Statement"],["Unit IV","Objectives of Cash Flow Statement"],
+    ["Unit IV","Preparation of Cash Flow Statement (Indirect Method)"],["Unit IV","Simple Numerical Exercises"],
+    ["Unit V","Introduction to Financial Management"],["Unit V","Meaning of Financial Management"],
+    ["Unit V","Nature of Financial Management"],["Unit V","Approaches to Financial Management"],
+    ["Unit V","Objectives of Financial Management"],["Unit V","Financial Decisions"],
+    ["Unit V","Financing Decision"],["Unit V","Investment Decision"],["Unit V","Dividend Decision"],
+    ["Unit V","Liquidity Decisions"],["Unit V","Liquidity vs Profitability Trade-off"],
+    ["Unit V","Time Value of Money"],["Unit V","Basic Valuation Concepts"],["Unit V","Compounding Techniques"],
+    ["Unit V","Discounting Techniques"],["Unit V","Sources of Finance"],["Unit V","Short-Term Sources of Finance"],
+    ["Unit V","Long-Term Sources of Finance"]
+  ]},
+  { id:"java", name:"OOP Using Java", accent:"#e0935a", topics:[
+    ["Unit I","Introduction to Object-Oriented Concepts"],["Unit I","Object-Oriented Analysis"],["Unit I","Modeling"],
+    ["Unit I","Java Environment"],["Unit I","Java Program Structure"],["Unit I","Tokens"],
+    ["Unit I","JVM (Java Virtual Machine)"],["Unit I","Constants and Variables"],["Unit I","Data Types"],
+    ["Unit I","Declaration of Variables"],["Unit I","Scope of Variables"],["Unit I","Symbolic Constants"],
+    ["Unit I","Type Casting"],["Unit I","Arithmetic Operators"],["Unit I","Relational Operators"],
+    ["Unit I","Logical Operators"],["Unit I","Increment & Decrement Operators"],["Unit I","Conditional Operator"],
+    ["Unit I","Bitwise Operators"],
+    ["Unit II","Defining a Class"],["Unit II","Adding Variables and Methods to Classes"],
+    ["Unit II","Creating Objects"],["Unit II","Accessing Class Members"],["Unit II","Constructors"],
+    ["Unit II","this Keyword"],["Unit II","Static Members"],["Unit II","Nesting of Methods"],
+    ["Unit II","Inheritance (Definition)"],["Unit II","Single Inheritance"],["Unit II","Multilevel Inheritance"],
+    ["Unit II","Multiple Inheritance"],["Unit II","Hierarchical Inheritance"],["Unit II","Hybrid Inheritance"],
+    ["Unit II","super Keyword"],
+    ["Unit III","Polymorphism (Definition)"],["Unit III","Types of Polymorphism"],["Unit III","Method Overloading"],
+    ["Unit III","Method Overriding"],["Unit III","Final Variables"],["Unit III","Final Methods"],
+    ["Unit III","final Keyword"],["Unit III","Finalize Methods"],["Unit III","One-Dimensional Arrays"],
+    ["Unit III","Two-Dimensional Arrays"],["Unit III","Strings"],["Unit III","Vectors"],
+    ["Unit III","Wrapper Classes"],
+    ["Unit IV","Abstract Class"],["Unit IV","Interface"],["Unit IV","Extending Interface"],
+    ["Unit IV","Implementing Interface"],["Unit IV","Accessing Interface Variables"],
+    ["Unit IV","Public Access Modifier"],["Unit IV","Private Access Modifier"],["Unit IV","Default Access Modifier"],
+    ["Unit IV","Protected Access Modifier"],["Unit IV","System Packages"],["Unit IV","User-Defined Packages"],
+    ["Unit IV","Encapsulation"],
+    ["Unit V","Concept of Exceptions"],["Unit V","Types of Exceptions"],["Unit V","try and catch Keywords"],
+    ["Unit V","Nested try and catch"],["Unit V","Creating Threads"],["Unit V","Extending Thread Class"],
+    ["Unit V","Thread Life Cycle"],["Unit V","Using Thread Methods"],["Unit V","Thread Exceptions"],
+    ["Unit V","Synchronization"]
+  ]}
+];
+
+const state = {};
+let activeSubject = SUBJECTS[0].id;
+let currentUid = null;
+let unsubscribeSnapshot = null;
+let suppressNextSnapshot = false; // avoid re-rendering from our own write
+
+/* ===================== QUICK REVISION ===================== */
+const REV_UNITS = ["Unit I","Unit II","Unit III","Unit IV","Unit V"];
+const REVISION_PREFIX = 'study-revision:';
+let activeRevSubject = SUBJECTS[0].id;
+let activeRevUnit = 0;
+let activeRevType = 'pyq'; // 'pyq' | 'important'
+let revisionState = {};
+let unsubscribeRevSnapshot = null;
+let suppressNextRevSnapshot = false;
+
+function emptyRevisionState(){
+  const s = {};
+  SUBJECTS.forEach(subj => {
+    s[subj.id] = {};
+    REV_UNITS.forEach((u, idx) => { s[subj.id][idx] = { pyq: [], important: [] }; });
+  });
+  return s;
+}
+
+function revLocalKey(){ return REVISION_PREFIX + currentUid; }
+
+function loadRevisionLocalCache(){
+  revisionState = emptyRevisionState();
+  try{
+    const raw = localStorage.getItem(revLocalKey());
+    if(raw){
+      const parsed = JSON.parse(raw);
+      SUBJECTS.forEach(subj => {
+        if(parsed[subj.id]){
+          for(let idx=0; idx<REV_UNITS.length; idx++){
+            if(parsed[subj.id][idx]) revisionState[subj.id][idx] = parsed[subj.id][idx];
+          }
+        }
+      });
+    }
+  }catch(e){}
+}
+
+function saveRevisionLocalCache(){
+  try{ localStorage.setItem(revLocalKey(), JSON.stringify(revisionState)); }catch(e){}
+}
+
+function revisionDocRef(){
+  return doc(db, 'revisionData', currentUid);
+}
+
+async function loadRevisionFromFirestore(){
+  try{
+    const snap = await getDoc(revisionDocRef());
+    if(snap.exists()){
+      const remote = snap.data();
+      SUBJECTS.forEach(subj => {
+        if(remote[subj.id]){
+          for(let idx=0; idx<REV_UNITS.length; idx++){
+            if(remote[subj.id][idx]) revisionState[subj.id][idx] = remote[subj.id][idx];
+          }
+        }
+      });
+      saveRevisionLocalCache();
+    } else {
+      await setDoc(revisionDocRef(), revisionState);
+    }
+  }catch(e){ console.error('revision load failed', e); }
+}
+
+function listenRevisionRemoteChanges(){
+  if(unsubscribeRevSnapshot) unsubscribeRevSnapshot();
+  unsubscribeRevSnapshot = onSnapshot(revisionDocRef(), (snap) => {
+    if(suppressNextRevSnapshot){ suppressNextRevSnapshot = false; return; }
+    if(!snap.exists()) return;
+    const remote = snap.data();
+    let changed = false;
+    SUBJECTS.forEach(subj => {
+      if(remote[subj.id]){
+        for(let idx=0; idx<REV_UNITS.length; idx++){
+          if(remote[subj.id][idx] && JSON.stringify(remote[subj.id][idx]) !== JSON.stringify(revisionState[subj.id][idx])){
+            revisionState[subj.id][idx] = remote[subj.id][idx];
+            changed = true;
+          }
+        }
+      }
+    });
+    if(changed){
+      saveRevisionLocalCache();
+      renderRevisionPanels();
+      const statusEl = document.getElementById('saveStatus');
+      if(statusEl) statusEl.textContent = 'Quick Revision updated from another device · ' + new Date().toLocaleTimeString();
+    }
+  });
+}
+
+async function saveRevisionUnit(subjId, idx){
+  saveRevisionLocalCache();
+  try{
+    suppressNextRevSnapshot = true;
+    await setDoc(revisionDocRef(), { [`${subjId}.${idx}`]: revisionState[subjId][idx] }, { merge: true });
+  }catch(e){ console.error('revision save failed', e); }
+}
+
+function parseQABlock(text){
+  const normalized = (text || '').replace(/\r\n/g, '\n').trim();
+  if(!normalized) return [];
+  const regex = /Q\s*\d*\s*[:.\)]\s*([\s\S]*?)\n\s*A(?:ns(?:wer)?)?\s*\d*\s*[:.\)]\s*([\s\S]*?)(?=\n\s*Q\s*\d*\s*[:.\)]|$)/gi;
+  const out = [];
+  let m;
+  while((m = regex.exec(normalized)) !== null){
+    const q = m[1].trim();
+    const a = m[2].trim();
+    if(q && a) out.push({q, a});
+  }
+  return out;
+}
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function addParsedEntries(subjId, idx, type, entries){
+  entries.forEach(e => {
+    revisionState[subjId][idx][type].push({
+      id: 'r' + Date.now() + Math.random().toString(36).slice(2, 7),
+      q: e.q, a: e.a
+    });
+  });
+  saveRevisionUnit(subjId, idx);
+  renderRevisionPanels();
+}
+
+function deleteEntry(subjId, idx, type, entryId){
+  revisionState[subjId][idx][type] = revisionState[subjId][idx][type].filter(e => e.id !== entryId);
+  saveRevisionUnit(subjId, idx);
+  renderRevisionPanels();
+}
+
+function updateEntry(subjId, idx, type, entryId, newQ, newA){
+  const entry = revisionState[subjId][idx][type].find(e => e.id === entryId);
+  if(entry){
+    entry.q = newQ; entry.a = newA;
+    saveRevisionUnit(subjId, idx);
+    renderRevisionPanels();
+  }
+}
+
+function renderRevisionTabs(){
+  const tabs = document.getElementById('revSubjectTabs');
+  tabs.innerHTML = '';
+  SUBJECTS.forEach(subj => {
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (subj.id === activeRevSubject ? ' active' : '');
+    btn.style.setProperty('--accent', subj.accent);
+    btn.innerHTML = `<span class="dot" style="background:${subj.accent}"></span>${subj.name}`;
+    btn.addEventListener('click', () => {
+      activeRevSubject = subj.id;
+      activeRevUnit = 0;
+      activeRevType = 'pyq';
+      renderRevisionTabs();
+      renderRevisionPanels();
+    });
+    tabs.appendChild(btn);
+  });
+}
+
+function makeQACard(subjId, idx, type, entry){
+  const card = document.createElement('div');
+  card.className = 'qa-card';
+
+  const qRow = document.createElement('div');
+  qRow.className = 'qa-q';
+  const qText = document.createElement('span');
+  qText.textContent = entry.q;
+  const actions = document.createElement('span');
+  actions.className = 'qa-actions';
+  actions.innerHTML = `<button class="qa-edit" title="Edit">✎</button><button class="qa-del" title="Delete">✕</button>`;
+  qRow.appendChild(qText);
+  qRow.appendChild(actions);
+
+  const aBox = document.createElement('div');
+  aBox.className = 'qa-a';
+  aBox.textContent = entry.a;
+
+  qRow.addEventListener('click', (e) => {
+    if(e.target.closest('.qa-actions')) return;
+    card.classList.toggle('open');
+  });
+  actions.querySelector('.qa-del').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if(confirm('Delete this question?')) deleteEntry(subjId, idx, type, entry.id);
+  });
+  actions.querySelector('.qa-edit').addEventListener('click', (e) => {
+    e.stopPropagation();
+    openEditMode(card, subjId, idx, type, entry);
+  });
+
+  card.appendChild(qRow);
+  card.appendChild(aBox);
+  return card;
+}
+
+function labelEl(text){
+  const l = document.createElement('label');
+  l.className = 'qa-edit-label';
+  l.textContent = text;
+  return l;
+}
+
+function openEditMode(card, subjId, idx, type, entry){
+  card.innerHTML = '';
+  const qInput = document.createElement('textarea');
+  qInput.className = 'qa-edit-input';
+  qInput.value = entry.q;
+  const aInput = document.createElement('textarea');
+  aInput.className = 'qa-edit-input';
+  aInput.value = entry.a;
+
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'qa-save-edit-btn';
+  saveBtn.textContent = 'Save';
+  saveBtn.addEventListener('click', () => {
+    updateEntry(subjId, idx, type, entry.id, qInput.value.trim(), aInput.value.trim());
+  });
+  const cancelBtn = document.createElement('button');
+  cancelBtn.className = 'qa-cancel-edit-btn';
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.addEventListener('click', () => renderRevisionPanels());
+
+  card.appendChild(labelEl('Question'));
+  card.appendChild(qInput);
+  card.appendChild(labelEl('Answer'));
+  card.appendChild(aInput);
+  const btnRow = document.createElement('div');
+  btnRow.className = 'qa-edit-btnrow';
+  btnRow.appendChild(saveBtn);
+  btnRow.appendChild(cancelBtn);
+  card.appendChild(btnRow);
+}
+
+function makeAddBox(subjId, idx, type){
+  const box = document.createElement('div');
+  box.className = 'qa-add-box';
+
+  const hint = document.createElement('p');
+  hint.className = 'qa-add-hint';
+  hint.innerHTML = 'Paste questions below. Format: <code>Q: question text</code> then <code>A: answer text</code>, repeat for each. Also works with "Q1.", "Ans:", etc.';
+
+  const ta = document.createElement('textarea');
+  ta.className = 'qa-paste-area';
+  ta.placeholder = 'Q: What is an ALU?\nA: Arithmetic Logic Unit — performs arithmetic and logic operations...\n\nQ: Define pipelining.\nA: ...';
+
+  const parseBtn = document.createElement('button');
+  parseBtn.className = 'qa-parse-btn';
+  parseBtn.textContent = 'Parse questions';
+
+  const preview = document.createElement('div');
+  preview.className = 'qa-preview';
+
+  parseBtn.addEventListener('click', () => {
+    const parsed = parseQABlock(ta.value);
+    preview.innerHTML = '';
+    if(parsed.length === 0){
+      preview.innerHTML = '<p class="qa-parse-empty">Couldn\'t find any Q/A pairs — check the format above.</p>';
+      return;
+    }
+    const info = document.createElement('p');
+    info.className = 'qa-parse-count';
+    info.textContent = parsed.length + ' question(s) found. Review below, then confirm.';
+    preview.appendChild(info);
+    parsed.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'qa-preview-item';
+      item.innerHTML = `<div class="qa-preview-q">${escapeHtml(p.q)}</div><div class="qa-preview-a">${escapeHtml(p.a)}</div>`;
+      preview.appendChild(item);
+    });
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = 'qa-confirm-btn';
+    confirmBtn.textContent = 'Add ' + parsed.length + ' question(s) to ' + (type === 'pyq' ? 'PYQs' : 'Very Important');
+    confirmBtn.addEventListener('click', () => {
+      addParsedEntries(subjId, idx, type, parsed);
+      ta.value = '';
+      preview.innerHTML = '';
+    });
+    preview.appendChild(confirmBtn);
+  });
+
+  box.appendChild(hint);
+  box.appendChild(ta);
+  box.appendChild(parseBtn);
+  box.appendChild(preview);
+  return box;
+}
+
+function renderRevisionPanels(){
+  const wrap = document.getElementById('revSubjectPanels');
+  wrap.innerHTML = '';
+  const subj = SUBJECTS.find(s => s.id === activeRevSubject);
+
+  const unitTabs = document.createElement('div');
+  unitTabs.className = 'rev-unit-tabs';
+  REV_UNITS.forEach((u, idx) => {
+    const b = document.createElement('button');
+    b.className = 'rev-unit-pill' + (idx === activeRevUnit ? ' active' : '');
+    b.textContent = u;
+    b.addEventListener('click', () => { activeRevUnit = idx; renderRevisionPanels(); });
+    unitTabs.appendChild(b);
+  });
+  wrap.appendChild(unitTabs);
+
+  const typeTabs = document.createElement('div');
+  typeTabs.className = 'rev-type-tabs';
+  [['pyq', 'PYQs'], ['important', 'Very Important']].forEach(([key, label]) => {
+    const b = document.createElement('button');
+    b.className = 'rev-type-pill' + (activeRevType === key ? ' active' : '');
+    const count = revisionState[subj.id][activeRevUnit][key].length;
+    b.innerHTML = `${label} <span class="rev-count">${count}</span>`;
+    b.addEventListener('click', () => { activeRevType = key; renderRevisionPanels(); });
+    typeTabs.appendChild(b);
+  });
+  wrap.appendChild(typeTabs);
+
+  const list = document.createElement('div');
+  list.className = 'qa-list';
+  const entries = revisionState[subj.id][activeRevUnit][activeRevType];
+  if(entries.length === 0){
+    const empty = document.createElement('p');
+    empty.style.cssText = 'color:var(--text-faint);font-size:13px;';
+    empty.textContent = 'No questions added yet for this unit.';
+    list.appendChild(empty);
+  }
+  entries.forEach(entry => list.appendChild(makeQACard(subj.id, activeRevUnit, activeRevType, entry)));
+  wrap.appendChild(list);
+
+  wrap.appendChild(makeAddBox(subj.id, activeRevUnit, activeRevType));
+}
+
+function todayStr(){
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+function groupUnits(topics){
+  const units = [];
+  let cur = null;
+  topics.forEach((t, idx) => {
+    const [unit, name] = t;
+    if(!cur || cur.unit !== unit){
+      cur = {unit, items:[]};
+      units.push(cur);
+    }
+    cur.items.push({sno: idx+1, name});
+  });
+  return units;
+}
+
+/* ===================== LOCAL CACHE (per-user) ===================== */
+function localKey(id){ return STORAGE_PREFIX + currentUid + ':' + id; }
+
+function loadLocalCache(){
+  SUBJECTS.forEach(subj => {
+    let data = {};
+    try{
+      const raw = localStorage.getItem(localKey(subj.id));
+      if(raw) data = JSON.parse(raw);
+    }catch(e){ data = {}; }
+    state[subj.id] = data;
+  });
+}
+
+function saveLocalCache(id){
+  try{ localStorage.setItem(localKey(id), JSON.stringify(state[id])); }catch(e){}
+}
+
+/* ===================== FIRESTORE SYNC ===================== */
+function trackerDocRef(){
+  return doc(db, 'trackerData', currentUid);
+}
+
+async function loadFromFirestore(){
+  const statusEl = document.getElementById('saveStatus');
+  try{
+    const snap = await getDoc(trackerDocRef());
+    if(snap.exists()){
+      const remote = snap.data();
+      SUBJECTS.forEach(s => {
+        if(remote[s.id]){
+          state[s.id] = remote[s.id];
+          saveLocalCache(s.id);
+        }
+      });
+      if(statusEl) statusEl.textContent = 'Synced from cloud · ' + new Date().toLocaleTimeString();
+    } else {
+      // no cloud doc yet — push whatever is local/empty as the initial doc
+      await setDoc(trackerDocRef(), state);
+      if(statusEl) statusEl.textContent = 'Cloud sync ready';
+    }
+  }catch(e){
+    console.error(e);
+    if(statusEl) statusEl.textContent = 'Offline — showing last saved copy on this device.';
+  }
+}
+
+function listenForRemoteChanges(){
+  if(unsubscribeSnapshot) unsubscribeSnapshot();
+  unsubscribeSnapshot = onSnapshot(trackerDocRef(), (snap) => {
+    if(suppressNextSnapshot){ suppressNextSnapshot = false; return; }
+    if(!snap.exists()) return;
+    const remote = snap.data();
+    let changed = false;
+    SUBJECTS.forEach(s => {
+      if(remote[s.id] && JSON.stringify(remote[s.id]) !== JSON.stringify(state[s.id])){
+        state[s.id] = remote[s.id];
+        saveLocalCache(s.id);
+        changed = true;
+      }
+    });
+    if(changed){
+      renderTabs();
+      renderPanels();
+      renderStats();
+      const statusEl = document.getElementById('saveStatus');
+      if(statusEl) statusEl.textContent = 'Updated from another device · ' + new Date().toLocaleTimeString();
+    }
+  });
+}
+
+async function saveSubject(id){
+  const statusEl = document.getElementById('saveStatus');
+  saveLocalCache(id);
+  try{
+    suppressNextSnapshot = true;
+    await setDoc(trackerDocRef(), { [id]: state[id] }, { merge: true });
+    if(statusEl) statusEl.textContent = 'Saved & synced · ' + new Date().toLocaleTimeString();
+  }catch(e){
+    console.error('cloud save failed', e);
+    if(statusEl) statusEl.textContent = 'Saved on this device — will sync when back online.';
+  }
+}
+
+function getEntry(subjId, sno){
+  if(!state[subjId][sno]) state[subjId][sno] = {done:false, date:'', remarks:''};
+  return state[subjId][sno];
+}
+
+function subjectCounts(subj){
+  const total = subj.topics.length;
+  let done = 0;
+  for(let i=1;i<=total;i++){
+    if(state[subj.id][i] && state[subj.id][i].done) done++;
+  }
+  return {done, total};
+}
+
+function renderStats(){
+  let doneAll = 0, totalAll = 0;
+  SUBJECTS.forEach(s => {
+    const {done, total} = subjectCounts(s);
+    doneAll += done; totalAll += total;
+  });
+  const pct = totalAll ? Math.round(doneAll/totalAll*100) : 0;
+  document.getElementById('statDone').textContent = doneAll;
+  document.getElementById('statTotal').textContent = totalAll;
+  document.getElementById('statPct').textContent = pct + '%';
+  document.getElementById('overallBarFill').style.width = pct + '%';
+}
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  SUBJECTS.forEach(subj => {
+    const {done, total} = subjectCounts(subj);
+    const pct = total ? Math.round(done/total*100) : 0;
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (subj.id === activeSubject ? ' active' : '');
+    btn.style.setProperty('--accent', subj.accent);
+    btn.innerHTML = `<span class="dot" style="background:${subj.accent}"></span>${subj.name}<span class="pct">${pct}%</span>`;
+    btn.addEventListener('click', () => {
+      activeSubject = subj.id;
+      renderTabs();
+      renderPanels();
+    });
+    tabs.appendChild(btn);
+  });
+}
+
+function updateSubjectAndUnit(subj, uIdx){
+  const {done, total} = subjectCounts(subj);
+  const pct = total ? Math.round(done/total*100) : 0;
+  const pctEl = document.getElementById('subj-pct-'+subj.id);
+  if(pctEl) pctEl.textContent = done + ' / ' + total + ' topics';
+  const barEl = document.getElementById('subj-bar-'+subj.id);
+  if(barEl) barEl.style.width = pct + '%';
+
+  const units = groupUnits(subj.topics);
+  const u = units[uIdx];
+  const unitDone = u.items.filter(it => state[subj.id][it.sno] && state[subj.id][it.sno].done).length;
+  const unitPct = Math.round(unitDone / u.items.length * 100);
+  const unitBar = document.getElementById('unit-bar-'+subj.id+'-'+uIdx);
+  if(unitBar) unitBar.style.width = unitPct + '%';
+  const unitCount = document.getElementById('unit-count-'+subj.id+'-'+uIdx);
+  if(unitCount) unitCount.textContent = unitDone + '/' + u.items.length;
+}
+
+function makeRow(subj, item, uIdx){
+  const entry = getEntry(subj.id, item.sno);
+  const row = document.createElement('div');
+  row.className = 'row' + (entry.done ? ' done' : '');
+
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.checked = entry.done;
+  cb.addEventListener('change', () => {
+    entry.done = cb.checked;
+    if(entry.done && !entry.date) entry.date = todayStr();
+    row.classList.toggle('done', entry.done);
+    dateInput.value = entry.date || '';
+    saveSubject(subj.id);
+    renderTabs();
+    renderStats();
+    updateSubjectAndUnit(subj, uIdx);
+  });
+
+  const sno = document.createElement('div');
+  sno.className = 'sno';
+  sno.textContent = String(item.sno).padStart(2,'0');
+
+  const topic = document.createElement('div');
+  topic.className = 'topic';
+  topic.textContent = item.name;
+
+  const dateInput = document.createElement('input');
+  dateInput.type = 'date';
+  dateInput.value = entry.date || '';
+  dateInput.addEventListener('change', () => {
+    entry.date = dateInput.value;
+    saveSubject(subj.id);
+  });
+
+  const remarks = document.createElement('input');
+  remarks.type = 'text';
+  remarks.placeholder = 'Add a remark';
+  remarks.value = entry.remarks || '';
+  let remarksTimer;
+  remarks.addEventListener('input', () => {
+    clearTimeout(remarksTimer);
+    remarksTimer = setTimeout(() => {
+      entry.remarks = remarks.value;
+      saveSubject(subj.id);
+    }, 400);
+  });
+  remarks.addEventListener('blur', () => {
+    entry.remarks = remarks.value;
+    saveSubject(subj.id);
+  });
+
+  row.appendChild(cb);
+  row.appendChild(sno);
+  row.appendChild(topic);
+  row.appendChild(dateInput);
+  row.appendChild(remarks);
+  return row;
+}
+
+function renderPanels(){
+  const panels = document.getElementById('panels');
+  panels.innerHTML = '';
+  SUBJECTS.forEach(subj => {
+    const panel = document.createElement('div');
+    panel.className = 'subject-panel' + (subj.id === activeSubject ? ' active' : '');
+
+    const {done, total} = subjectCounts(subj);
+    const pct = total ? Math.round(done/total*100) : 0;
+
+    const head = document.createElement('div');
+    head.className = 'subject-head';
+    head.innerHTML = `<h2>${subj.name}</h2><span class="sub-pct" id="subj-pct-${subj.id}">${done} / ${total} topics</span>`;
+    panel.appendChild(head);
+
+    const bar = document.createElement('div');
+    bar.className = 'subject-bar';
+    bar.innerHTML = `<div id="subj-bar-${subj.id}" style="width:${pct}%;background:${subj.accent}"></div>`;
+    panel.appendChild(bar);
+
+    const units = groupUnits(subj.topics);
+    units.forEach((u, uIdx) => {
+      const unitDone = u.items.filter(it => state[subj.id][it.sno] && state[subj.id][it.sno].done).length;
+      const unitPct = Math.round(unitDone / u.items.length * 100);
+
+      const det = document.createElement('details');
+      det.className = 'unit';
+      if(uIdx === 0) det.open = true;
+
+      const summary = document.createElement('summary');
+      summary.innerHTML = `
+        <span class="unit-title"><span class="chev">&#9656;</span>${u.unit}</span>
+        <span class="unit-meta">
+          <span class="unit-mini-bar"><div id="unit-bar-${subj.id}-${uIdx}" style="width:${unitPct}%;background:${subj.accent}"></div></span>
+          <span id="unit-count-${subj.id}-${uIdx}">${unitDone}/${u.items.length}</span>
+        </span>`;
+      det.appendChild(summary);
+
+      const rowsWrap = document.createElement('div');
+      rowsWrap.className = 'rows';
+      u.items.forEach(item => rowsWrap.appendChild(makeRow(subj, item, uIdx)));
+      det.appendChild(rowsWrap);
+
+      panel.appendChild(det);
+    });
+
+    panels.appendChild(panel);
+  });
+}
+
+function exportBackup(){
+  const payload = { tracker: {}, revision: revisionState };
+  SUBJECTS.forEach(s => { payload.tracker[s.id] = state[s.id]; });
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'study-tracker-backup.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importBackup(file){
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const payload = JSON.parse(reader.result);
+      // Support both the new backup shape ({tracker:{}, revision:{}}) and the older flat shape (just tracker by subject id)
+      const trackerPayload = payload.tracker || payload;
+      const revisionPayload = payload.revision || null;
+
+      SUBJECTS.forEach(s => {
+        if(trackerPayload[s.id]){
+          state[s.id] = trackerPayload[s.id];
+          saveLocalCache(s.id);
+        }
+      });
+      renderTabs();
+      renderPanels();
+      renderStats();
+      suppressNextSnapshot = true;
+      setDoc(trackerDocRef(), state).catch(e => console.error(e));
+
+      if(revisionPayload){
+        SUBJECTS.forEach(s => {
+          if(revisionPayload[s.id]){
+            for(let idx=0; idx<REV_UNITS.length; idx++){
+              if(revisionPayload[s.id][idx]) revisionState[s.id][idx] = revisionPayload[s.id][idx];
+            }
+          }
+        });
+        saveRevisionLocalCache();
+        renderRevisionPanels();
+        suppressNextRevSnapshot = true;
+        setDoc(revisionDocRef(), revisionState).catch(e => console.error(e));
+      }
+
+      const statusEl = document.getElementById('saveStatus');
+      if(statusEl) statusEl.textContent = 'Backup imported & synced · ' + new Date().toLocaleTimeString();
+    }catch(e){
+      alert('Could not read that backup file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+async function bootApp(){
+  loadLocalCache();          // instant render from local cache
+  loadRevisionLocalCache();
+  renderTabs();
+  renderPanels();
+  renderStats();
+  renderRevisionTabs();
+  renderRevisionPanels();
+  document.getElementById('userChip').textContent = auth.currentUser?.displayName || '';
+  await Promise.all([loadFromFirestore(), loadRevisionFromFirestore()]); // then reconcile with cloud
+  renderTabs();
+  renderPanels();
+  renderStats();
+  renderRevisionTabs();
+  renderRevisionPanels();
+  listenForRemoteChanges();
+  listenRevisionRemoteChanges();
+
+  document.getElementById('exportBtn').addEventListener('click', exportBackup);
+  document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
+  document.getElementById('importFile').addEventListener('change', (e) => {
+    if(e.target.files[0]) importBackup(e.target.files[0]);
+  });
+
+  document.getElementById('toggleTrackerBtn').addEventListener('click', () => {
+    document.getElementById('trackerView').style.display = 'block';
+    document.getElementById('revisionView').style.display = 'none';
+    document.getElementById('toggleTrackerBtn').classList.add('active');
+    document.getElementById('toggleRevisionBtn').classList.remove('active');
+  });
+  document.getElementById('toggleRevisionBtn').addEventListener('click', () => {
+    document.getElementById('trackerView').style.display = 'none';
+    document.getElementById('revisionView').style.display = 'block';
+    document.getElementById('toggleRevisionBtn').classList.add('active');
+    document.getElementById('toggleTrackerBtn').classList.remove('active');
+  });
+}
+
+/* ===================== AUTH ===================== */
+function showAuthScreen(){
+  document.getElementById('authScreen').style.display = 'block';
+  document.getElementById('app').style.display = 'none';
+}
+function showApp(){
+  document.getElementById('authScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+function authErr(msg){
+  document.getElementById('authError').textContent = msg;
+}
+
+// Firebase Auth needs an email under the hood — we build one from the
+// username so the person only ever sees/types a username, never an email.
+function usernameToSyntheticEmail(username){
+  const clean = username.trim().toLowerCase().replace(/[^a-z0-9_]/g, '');
+  return clean ? clean + '@study-tracker.local' : '';
+}
+
+function validateUsername(username){
+  const clean = username.trim();
+  if(clean.length < 3 || clean.length > 20) return 'Username must be 3–20 characters.';
+  if(!/^[a-zA-Z0-9_]+$/.test(clean)) return 'Username can only contain letters, numbers, and underscores.';
+  return null;
+}
+
+function validatePin(pin){
+  if(!/^[0-9]{6}$/.test(pin)) return 'PIN must be exactly 6 digits.';
+  return null;
+}
+
+document.getElementById('signInBtn').addEventListener('click', async () => {
+  authErr('');
+  const username = document.getElementById('authUsername').value.trim();
+  const pin = document.getElementById('authPin').value;
+  if(!username || !pin){ authErr('Enter your username and PIN.'); return; }
+  const email = usernameToSyntheticEmail(username);
+  if(!email){ authErr('Enter a valid username.'); return; }
+  try{
+    await signInWithEmailAndPassword(auth, email, pin);
+  }catch(e){
+    if(e.code === 'auth/invalid-credential' || e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password'){
+      authErr('Incorrect username or PIN.');
+    } else {
+      authErr(e.message.replace('Firebase: ', ''));
+    }
+  }
+});
+
+document.getElementById('signUpBtn').addEventListener('click', async () => {
+  authErr('');
+  const username = document.getElementById('authUsername').value.trim();
+  const pin = document.getElementById('authPin').value;
+  if(!username || !pin){ authErr('Enter a username and PIN.'); return; }
+  const usernameErr = validateUsername(username);
+  if(usernameErr){ authErr(usernameErr); return; }
+  const pinErr = validatePin(pin);
+  if(pinErr){ authErr(pinErr); return; }
+  const email = usernameToSyntheticEmail(username);
+  try{
+    const cred = await createUserWithEmailAndPassword(auth, email, pin);
+    await updateProfile(cred.user, { displayName: username });
+  }catch(e){
+    if(e.code === 'auth/email-already-in-use'){
+      authErr('That username is already taken — try another.');
+    } else {
+      authErr(e.message.replace('Firebase: ', ''));
+    }
+  }
+});
+
+document.getElementById('signOutBtn').addEventListener('click', async () => {
+  if(unsubscribeSnapshot) unsubscribeSnapshot();
+  await signOut(auth);
+});
+
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    currentUid = user.uid;
+    showApp();
+    bootApp();
+  } else {
+    currentUid = null;
+    showAuthScreen();
+  }
+});
+</script>
+</body>
+</html>
