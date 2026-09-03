@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yash Kumar Verma — Data Analyst & GIS Specialist</title>
+  
+  <meta name="description" content="Cinematic portfolio of Yash Kumar Verma, Data Analyst and GIS Specialist based in Lucknow, India. Specializing in QGIS, Tableau, Advanced Excel, and GenAI analytics.">
+  <meta name="keywords" content="Yash Kumar Verma, Data Analyst, GIS Specialist, QGIS, Tableau, Excel, Portfolio, Lucknow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yash Kumar Verma — Data Analyst & GIS Specialist">
+  <meta property="og:description" content="A cinematic data portfolio where numbers meet storytelling, spatial analysis meets design, and every scroll feels like a scene.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <div class="film-grain"></div>
+
+  <!-- Ambient Dynamic Lighting -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Reactive Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Dual-Ring Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Cinematic Preloader -->
+  <div id="preloader">
+    <div class="preloader-badge">INITIALIZING ANALYTICS ENGINE // SCENE 00</div>
+    <div class="preloader-counter">
+      <span id="load-val">00</span><span class="pct">%</span>
+    </div>
+    <div class="preloader-bar-track">
+      <div id="load-bar-fill" class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Fixed Cinematic Header -->
+  <header class="site-header">
+    <a href="#hero" class="brand-container">
+      <div class="brand-dot"></div>
+      <div class="brand-name">yash<span>.</span>verma</div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#operations" class="nav-link">01. Operations</a></li>
+      <li><a href="#arsenal" class="nav-link">02. Arsenal</a></li>
+      <li><a href="#trajectory" class="nav-link">03. Trajectory</a></li>
+      <li><a href="#foundation" class="nav-link">04. Education</a></li>
+      <li><a href="#transmission" class="nav-link">05. Transmission</a></li>
+    </ul>
+
+    <div class="header-actions">
+      <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle UI Audio">
+        <i data-lucide="volume-2" style="width: 14px; height: 14px;"></i>
+        <span class="sound-status">AUDIO: OFF</span>
+      </button>
+      <a href="https://github.com/yashverma1611" target="_blank" class="btn-magnetic btn-secondary" style="padding: 0.45rem 1.1rem; font-size: 0.78rem;">
+        <i data-lucide="github" style="width: 14px; height: 14px;"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         SCENE 00: THE AWAKENING (HERO)
+         ========================================================================== -->
+    <section id="hero" class="hero-scene">
+      <div class="hero-backdrop-sky"></div>
+
+      <!-- Parallax Mountain Silhouettes -->
+      <svg class="hero-mountains-svg" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="mtnGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#151C2C" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#060911"/>
+          </linearGradient>
+          <linearGradient id="mtnGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0E1422" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#060911"/>
+          </linearGradient>
+          <linearGradient id="mtnGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#080C16"/>
+            <stop offset="100%" stop-color="#04060B"/>
+          </linearGradient>
+        </defs>
+        <!-- Mountain Layer 1 (Slowest) -->
+        <path class="mtn-layer" data-speed="0.15" fill="url(#mtnGrad1)" d="M0 420 L120 320 220 380 320 300 420 400 520 330 620 410 720 320 820 390 920 310 1000 380 1000 620 0 620 Z"/>
+        <!-- Mountain Layer 2 (Medium) -->
+        <path class="mtn-layer" data-speed="0.3" fill="url(#mtnGrad2)" d="M0 470 L100 400 200 450 300 390 420 460 540 400 660 470 780 410 900 460 1000 420 1000 620 0 620 Z"/>
+        <!-- Mountain Layer 3 (Foreground) -->
+        <path class="mtn-layer" data-speed="0.55" fill="url(#mtnGrad3)" d="M0 540 L140 480 260 530 380 470 520 540 660 480 800 530 900 490 1000 520 1000 620 0 620 Z"/>
+      </svg>
+
+      <div class="hero-content">
+        <div class="status-capsule">
+          <span class="status-dot-pulse"></span>
+          <span>DATA ANALYST & GIS SPECIALIST · LUCKNOW, INDIA</span>
+        </div>
+
+        <h1 class="hero-headline">
+          <span class="split-mask">
+            <span>TURNING RAW DATA</span>
+          </span>
+          <span class="split-mask">
+            <span>INTO <span class="text-gradient-ember">STRUCTURED INSIGHT.</span></span>
+          </span>
+        </h1>
+
+        <p class="hero-tagline">
+          I bridge spatial datasets, predictive modeling, and executive storytelling — QGIS, Tableau, Advanced Excel, and GenAI workflows sharpened through real-world GIS field audits and corporate simulations.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#operations" class="btn-magnetic btn-primary">
+            <span>Explore Projects</span>
+            <i data-lucide="arrow-down-right" style="width: 16px; height: 16px;"></i>
+          </a>
+          <a href="#transmission" class="btn-magnetic btn-secondary">
+            <span>Initiate Contact</span>
+            <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="scroll-prompt">
+        <span>Scroll to enter scene</span>
+        <div class="scroll-prompt-line"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 01: THE MATRIX (CORE METRICS & PHILOSOPHY)
+         ========================================================================== -->
+    <section class="scene-section">
+      <div class="scene-kicker">SCENE 01 // CORE METRICS</div>
+      <h2 class="scene-title">
+        High-scale data processing backed by <span class="highlight">rigorous analytical rigor</span> and field execution.
+      </h2>
+
+      <div class="metrics-banner">
+        <div class="metric-card">
+          <div class="metric-val">15K<span>+</span></div>
+          <div class="metric-label">Buildings Audited</div>
+          <p class="metric-desc">Georeferenced, polygon-digitized, and attribute-structured in QGIS during 6-week industry GIS field training.</p>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-val">2.2K<span>+</span></div>
+          <div class="metric-label">Customer Profiles</div>
+          <p class="metric-desc">End-to-end exploratory data analysis and Tableau dashboard modeling on the iFood consumer behavior dataset.</p>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-val">95<span>%</span></div>
+          <div class="metric-label">AI Proficiency Score</div>
+          <p class="metric-desc">Certified through UNICEF's Digital Productivity with AI program, accelerating data analysis workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 02: SELECTED OPERATIONS (PROJECTS)
+         ========================================================================== -->
+    <section id="operations" class="scene-section">
+      <div class="scene-kicker">SCENE 02 // SELECTED OPERATIONS</div>
+      <h2 class="scene-title">
+        Projects engineered to convert <span class="highlight">messy datasets into actionable decisions.</span>
+      </h2>
+
+      <div class="projects-showcase-grid">
+        <!-- Project 01 -->
+        <div class="project-card-3d">
+          <div class="project-info">
+            <span class="project-num">OPERATION // 01</span>
+            <h3 class="project-title">iFood Customer Personality Analysis</h3>
+            <p class="project-summary">
+              End-to-end data processing on 2,200+ customer records. Uncovered critical purchasing channels, campaign responsiveness, and category spend patterns. Cleaned outliers, transformed variables, and published an executive interactive Tableau dashboard.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">Data Cleaning</span>
+              <span class="tech-tag">Customer Segmentation</span>
+              <span class="tech-tag">Exploratory Data Analysis</span>
+            </div>
+          </div>
+          <div class="project-stat-box">
+            <div class="project-hero-stat">45%</div>
+            <div class="project-hero-stat-label">Total Spend in Wine</div>
+            <a href="https://lnkd.in/p/dJYc69rs" target="_blank" class="project-action-link">
+              <span>View Case Study</span>
+              <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="project-card-3d">
+          <div class="project-info">
+            <span class="project-num">OPERATION // 02</span>
+            <h3 class="project-title">GIS Building Survey — Aircode Technologies</h3>
+            <p class="project-summary">
+              Large-scale geospatial audit across 15,000+ building structures. Digitized high-precision polygon boundaries, flagged unmapped constructions, and architected dense attribute schemas (roof age, materials, facade state, and density classification).
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">QGIS</span>
+              <span class="tech-tag">Spatial Data Analysis</span>
+              <span class="tech-tag">Georeferencing</span>
+              <span class="tech-tag">Polygon Digitization</span>
+              <span class="tech-tag">Attribute Engineering</span>
+            </div>
+          </div>
+          <div class="project-stat-box">
+            <div class="project-hero-stat">15,000+</div>
+            <div class="project-hero-stat-label">Structures Mapped</div>
+            <a href="#trajectory" class="project-action-link">
+              <span>Read Trajectory</span>
+              <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 03 -->
+        <div class="project-card-3d">
+          <div class="project-info">
+            <span class="project-num">OPERATION // 03</span>
+            <h3 class="project-title">Password Security & Strength Analyzer</h3>
+            <p class="project-summary">
+              Algorithmic security tool evaluating credential entropy, common pattern exploitation, and vulnerability thresholds. Provides actionable diagnostics and scoring algorithms to eliminate cybersecurity weaknesses before deployment.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Rule Engine</span>
+              <span class="tech-tag">Cybersecurity Metrics</span>
+              <span class="tech-tag">Data Validation</span>
+            </div>
+          </div>
+          <div class="project-stat-box">
+            <div class="project-hero-stat">01</div>
+            <div class="project-hero-stat-label">Rules Evaluation Engine</div>
+            <a href="https://github.com/yashverma1611/Password_security_Analyzer" target="_blank" class="project-action-link">
+              <span>GitHub Repository</span>
+              <i data-lucide="github" style="width: 14px; height: 14px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 03: THE TACTICAL ARSENAL (SKILLS)
+         ========================================================================== -->
+    <section id="arsenal" class="scene-section">
+      <div class="scene-kicker">SCENE 03 // THE TACTICAL ARSENAL</div>
+      <h2 class="scene-title">
+        Comfortable across the analytics pipeline, <span class="highlight">each tool backed by practical deployment.</span>
+      </h2>
+
+      <div class="skills-dossier-grid">
+        <div class="dossier-card">
+          <div class="dossier-category">Spatial & GIS</div>
+          <h3>QGIS</h3>
+          <p>Digitized polygons and mapped 15,000+ buildings during the Aircode Technologies GIS industry internship.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="map-pin" style="width: 12px; height: 12px;"></i>
+            <span>15K+ Polygon Audit</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Business Intelligence</div>
+          <h3>Tableau</h3>
+          <p>Designed and deployed executive dashboards for the iFood consumer behavior study and the Deloitte simulation.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="bar-chart-2" style="width: 12px; height: 12px;"></i>
+            <span>Interactive Dashboards</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Core Modeling</div>
+          <h3>Advanced Excel</h3>
+          <p>Structured complex raw attribute data across GIS surveys; maintained and transformed source models in Deloitte consulting simulations.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="table" style="width: 12px; height: 12px;"></i>
+            <span>BCA Advanced Coursework</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Quality & Integrity</div>
+          <h3>Data Validation & Cleaning</h3>
+          <p>End-to-end data cleaning, handling missing variables, and validation across 2,200+ consumer records and delinquency data.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i>
+            <span>Zero-Anomaly Audits</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Spatial & GIS</div>
+          <h3>Spatial Data Analysis</h3>
+          <p>Identified uncovered structures, density gradients, and spatial correlations across massive building clusters.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="layers" style="width: 12px; height: 12px;"></i>
+            <span>Geospatial Correlation</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Spatial & GIS</div>
+          <h3>Georeferencing</h3>
+          <p>Trained in accurate coordinate mapping, projection alignment, and rectification during the 6-week Aircode training.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="globe" style="width: 12px; height: 12px;"></i>
+            <span>Precision Mapping</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Artificial Intelligence</div>
+          <h3>GenAI-Assisted Analytics</h3>
+          <p>Leveraged GenAI for missing-data treatment, customer risk profiling, and synthetic data generation in the Tata simulation.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="cpu" style="width: 12px; height: 12px;"></i>
+            <span>Synthetic Imputation</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Foundations</div>
+          <h3>Database Management</h3>
+          <p>Core DBMS theory and relational structure applied to normalize datasets, manage keys, and structure project schemas.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="database" style="width: 12px; height: 12px;"></i>
+            <span>Relational Architecture</span>
+          </div>
+        </div>
+
+        <div class="dossier-card">
+          <div class="dossier-category">Strategy & Ethics</div>
+          <h3>Responsible AI & Problem Solving</h3>
+          <p>Designed an AI-powered collections framework with demographic bias guardrails and responsible AI principles for Tata.</p>
+          <div class="dossier-proof-badge">
+            <i data-lucide="shield-check" style="width: 12px; height: 12px;"></i>
+            <span>Bias Guardrails</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 04: THE TRAJECTORY (EXPERIENCE & SIMULATIONS)
+         ========================================================================== -->
+    <section id="trajectory" class="scene-section">
+      <div class="scene-kicker">SCENE 04 // THE TRAJECTORY</div>
+      <h2 class="scene-title">
+        Hands-on practice across <span class="highlight">GIS fieldwork, corporate simulations, and AI training.</span>
+      </h2>
+
+      <div class="trajectory-timeline">
+        <!-- Milestone 1 -->
+        <div class="timeline-dossier-item">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-period">JULY – AUGUST 2026 // 6-WEEK INDUSTRY INTERNSHIP</div>
+          <h3 class="timeline-role-title">GIS Trainee — <span class="org">Aircode Technologies Pvt. Ltd.</span></h3>
+          <p class="timeline-narrative">
+            Conducted in-depth spatial analysis for 15,000+ buildings using QGIS. Identified unmapped and uncovered structures, digitized high-fidelity polygons, and collected structured attribute data including height, roof age, materials, facade state, and neighborhood density parameters.
+          </p>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="timeline-dossier-item">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-period">FORAGE CONSULTING SIMULATION</div>
+          <h3 class="timeline-role-title">Tata AI-Powered Data Analytics Simulation</h3>
+          <p class="timeline-narrative">
+            Performed exploratory data analysis on credit delinquency datasets using GenAI tools for missing-data imputation and risk profiling. Formulated predictive model logic with evaluation metrics, authored a two-page executive recommendation brief for the Head of Collections, and embedded ethical AI bias guardrails.
+          </p>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="timeline-dossier-item">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-period">FORAGE CONSULTING SIMULATION</div>
+          <h3 class="timeline-role-title">Deloitte Data Analytics Simulation</h3>
+          <p class="timeline-narrative">
+            Simulated an end-to-end data consultant workflow: parsed raw spreadsheet data, modeled business trends in Microsoft Excel, translated insights into an interactive Tableau visual dashboard, and updated master source tables for executive handoff.
+          </p>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="timeline-dossier-item">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-period">MARCH 2026 // UNICEF CERTIFIED</div>
+          <h3 class="timeline-role-title">Digital Productivity with AI — <span class="org">UNICEF Program</span></h3>
+          <p class="timeline-narrative">
+            Completed comprehensive training on leveraging AI workflows to accelerate data extraction, automated validation, and predictive productivity. Graduated with a 95% evaluation score.
+          </p>
+        </div>
+
+        <!-- Milestone 5 -->
+        <div class="timeline-dossier-item">
+          <div class="timeline-node-pin"></div>
+          <div class="timeline-period">2026 // TCS TRAINING</div>
+          <h3 class="timeline-role-title">AI for All — <span class="org">Tata Consultancy Services</span></h3>
+          <p class="timeline-narrative">
+            Coursework covering practical applications of AI across daily productivity tasks, cybersecurity fundamentals, and enterprise data analysis.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 05: ACADEMIC FOUNDATION (EDUCATION)
+         ========================================================================== -->
+    <section id="foundation" class="scene-section">
+      <div class="scene-kicker">SCENE 05 // ACADEMIC FOUNDATION</div>
+      <h2 class="scene-title">
+        Pursuing Computer Applications, <span class="highlight">grounded in computer science and quantitative rigor.</span>
+      </h2>
+
+      <div class="education-cards-wrapper">
+        <div class="edu-card">
+          <div>
+            <h3 class="edu-institution">Bachelor's of Computer Application (BCA)</h3>
+            <p class="edu-details">City College of Management, Tiwariganj · Started July 2025 · Expected 2028</p>
+            <p class="edu-details" style="margin-top: 0.35rem; color: var(--text-muted);">
+              Currently in Semester 4 of 6 (Coursework includes Advanced Excel, Relational Database Management Systems, and Software Engineering).
+            </p>
+          </div>
+          <div class="edu-metric-pill">In Progress (Sem 4)</div>
+        </div>
+
+        <div class="edu-card">
+          <div>
+            <h3 class="edu-institution">Intermediate (12th) — Science Stream</h3>
+            <p class="edu-details">Mahavir Inter College, Aliganj (U.P. Board) · April 2025</p>
+          </div>
+          <div class="edu-metric-pill">77.4%</div>
+        </div>
+
+        <div class="edu-card">
+          <div>
+            <h3 class="edu-institution">High School (10th)</h3>
+            <p class="edu-details">Mahavir Inter College, Aliganj (U.P. Board) · April 2023</p>
+          </div>
+          <div class="edu-metric-pill">88.67%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SCENE 06: TRANSMISSION & TERMINAL (CONTACT)
+         ========================================================================== -->
+    <section id="transmission" class="scene-section">
+      <div class="scene-kicker">SCENE 06 // DIRECT TRANSMISSION</div>
+      <h2 class="scene-title">
+        Open for <span class="highlight">Data Analyst roles, GIS positions, and analytical internships.</span>
+      </h2>
+
+      <div class="transmission-layout">
+        <!-- Interactive Terminal -->
+        <div class="interactive-terminal">
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <span class="terminal-dot close"></span>
+              <span class="terminal-dot minimize"></span>
+              <span class="terminal-dot expand"></span>
+            </div>
+            <span class="terminal-session-title">SESSION // YASH-ANALYTICS-CLI v2.4</span>
+            <span style="font-size: 0.7rem; color: var(--cyan);">CONNECTED</span>
+          </div>
+
+          <div id="terminal-body" class="terminal-body">
+            <div id="terminal-output" class="terminal-output"><span class="cyan">YASH VERMA ANALYTICS SHELL INITIALIZED.</span>
+Type <span class="ember">'help'</span> for available commands or try <span class="gold">'sudo hire'</span>.</div>
+            <div class="terminal-prompt-line">
+              <span>guest@yash-verma:~$</span>
+              <input type="text" id="terminal-input" class="terminal-input" placeholder="type a command (e.g. 'help', 'skills', 'about')..." autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Dispatch Form -->
+        <form id="direct-dispatch-form" class="direct-dispatch-form">
+          <div class="form-field-group">
+            <label for="msg-name" class="form-label">Identity / Name</label>
+            <input type="text" id="msg-name" class="form-input" placeholder="Your name or company" required>
+          </div>
+
+          <div class="form-field-group">
+            <label for="msg-email" class="form-label">Return Frequency / Email</label>
+            <input type="email" id="msg-email" class="form-input" placeholder="your.email@example.com" required>
+          </div>
+
+          <div class="form-field-group">
+            <label for="msg-body" class="form-label">Transmission Brief</label>
+            <textarea id="msg-body" class="form-textarea" rows="4" placeholder="Brief project overview, role details, or question..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-magnetic btn-primary" style="width: 100%;">
+            <span>Dispatch Direct Message</span>
+            <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+          </button>
+
+          <div class="direct-social-links">
+            <a href="mailto:90yashkumar@gmail.com" class="social-pill">
+              <i data-lucide="mail" style="width: 14px; height: 14px; color: var(--ember);"></i>
+              <span>Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/yash-kumar-verma-7405a4405/" target="_blank" class="social-pill">
+              <i data-lucide="linkedin" style="width: 14px; height: 14px; color: var(--cyan);"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/yashverma1611" target="_blank" class="social-pill">
+              <i data-lucide="github" style="width: 14px; height: 14px;"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div>
+      © 2026 Yash Kumar Verma — Designed & Built with Intent, Not Templates.
+    </div>
+    <div>
+      <a href="#hero">Back to Origin ↑</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Application Logic -->
+  <script src="main.js"></script>
+</body>
+</html>
