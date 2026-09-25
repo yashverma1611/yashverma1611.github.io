@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yash Kumar Verma — Data Analyst & GIS Specialist | .arcSUMMIT Edition</title>
+  
+  <meta name="description" content="Cinematic portfolio of Yash Kumar Verma, Data Analyst and GIS Specialist based in Lucknow, India. Specializing in QGIS, Tableau, Advanced Excel, Python, and Full-Stack Event Systems.">
+  <meta name="keywords" content="Yash Kumar Verma, Data Analyst, GIS Specialist, QGIS, Tableau, Excel, Event QR System, Portfolio, Lucknow">
+  
+  <!-- Tailwind CSS via allowlisted gstatic -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    .glass-nav {
+      background: rgba(10, 10, 15, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .editorial-title {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+    }
+    .glow-btn {
+      box-shadow: 0 0 24px rgba(244, 63, 94, 0.45);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 36px rgba(244, 63, 94, 0.75);
+      transform: translateY(-2px) scale(1.02);
+    }
+    .terminal-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#05060A] text-neutral-100 antialiased font-sans min-h-screen selection:bg-rose-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. TOP CONTINUOUS MARQUEE TICKER (.arcSUMMIT Style)
+       ========================================================================= -->
+  <aside class="sticky top-0 z-50 w-full bg-black/95 border-b border-white/10 overflow-hidden py-1.5 select-none backdrop-blur-md">
+    <div class="animate-marquee items-center text-[11px] font-mono tracking-widest text-neutral-300">
+      <div class="flex shrink-0 items-center gap-6 pr-6">
+        <span class="flex items-center gap-3"><span>DATA ANALYST & GIS SPECIALIST</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>LUCKNOW, INDIA</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>QGIS • TABLEAU • PYTHON • FLASK SYSTEMS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>15,000+ STRUCTURES MAPPED</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>EVENT QR SCANNER & SSE ENGINE</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>AVAILABLE FOR ROLES & CONTRACTS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+      </div>
+      <div class="flex shrink-0 items-center gap-6 pr-6" aria-hidden="true">
+        <span class="flex items-center gap-3"><span>DATA ANALYST & GIS SPECIALIST</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>LUCKNOW, INDIA</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>QGIS • TABLEAU • PYTHON • FLASK SYSTEMS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>15,000+ STRUCTURES MAPPED</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>EVENT QR SCANNER & SSE ENGINE</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>AVAILABLE FOR ROLES & CONTRACTS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. CINEMATIC HERO SECTION
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-[96vh] w-full flex flex-col justify-between overflow-hidden">
+    
+    <!-- Background Artwork Layer with Dual Vignette Fallbacks -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-700"
+         style="background-image: url('assets/arc_summit_preview.png'), url('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260823_185512_0cb987db-21aa-4ff0-8d34-bac39cc01791.png'); background-position: center bottom;">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/95"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#05060A] via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Floating Glassmorphism Navbar -->
+    <header class="relative z-30 max-w-7xl w-full mx-auto px-6 pt-5">
+      <div class="glass-nav rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl">
+        
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-1 group">
+          <span class="text-rose-400 font-mono text-xl font-bold tracking-tight">.yash</span>
+          <span class="text-white text-xl font-extrabold tracking-widest uppercase">VERMA</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-300">
+          <a href="#operations" class="hover:text-white transition-colors">01. Operations</a>
+          <a href="#arsenal" class="hover:text-white transition-colors">02. Arsenal</a>
+          <a href="#trajectory" class="hover:text-white transition-colors">03. Trajectory</a>
+          <a href="#transmission" class="hover:text-white transition-colors">04. Terminal</a>
+        </nav>
+
+        <!-- CTA & GitHub Links -->
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/yashverma1611" target="_blank" rel="noopener noreferrer" 
+             class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
+            <i data-lucide="github" class="w-3.5 h-3.5"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="#transmission" class="glow-btn bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white text-xs md:text-sm font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-2">
+            <span>Transmit →</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Bottom Editorial Headline -->
+    <main class="relative z-20 max-w-7xl mx-auto px-6 pb-16 md:pb-24 w-full flex flex-col items-center text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-mono uppercase tracking-wider text-rose-300 mb-6 shadow-lg">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+        <span>Data Analyst & GIS Specialist · Lucknow, India</span>
+      </div>
+
+      <h1 class="editorial-title text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] text-white drop-shadow-[0_12px_45px_rgba(0,0,0,0.95)]">
+        Spatial Data.<br>
+        <span class="italic font-light text-neutral-100">Structured Insight.</span>
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-sm sm:text-base text-neutral-300 drop-shadow-md font-sans leading-relaxed">
+        Bridging geospatial analytics, predictive customer modeling, and real-time event infrastructure — transforming complex data matrices into high-conviction decisions.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#operations" class="px-6 py-3 rounded-full text-xs font-mono tracking-widest text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
+          <span>EXPLORE OPERATIONS</span>
+          <span>↓</span>
+        </a>
+        <button onclick="openNewProjectModal()" class="px-6 py-3 rounded-full text-xs font-mono tracking-widest text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 transition-all flex items-center gap-2">
+          <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+          <span>ADD ANOTHER PROJECT</span>
+        </button>
+      </div>
+    </main>
+  </section>
+
+  <!-- =========================================================================
+       3. SCENE 01: CORE METRICS STRIP
+       ========================================================================= -->
+  <section class="relative z-20 border-y border-white/10 bg-black/60 backdrop-blur-xl py-10 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="flex flex-col">
+        <span class="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white">15,000<span class="text-rose-400">+</span></span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest mt-1">Structures Mapped (QGIS)</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white">2,200<span class="text-rose-400">+</span></span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest mt-1">Customer Records Analyzed</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white">&lt;0.5<span class="text-rose-400">s</span></span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest mt-1">QR Scan & SSE Live Verification</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white">98<span class="text-rose-400">%</span></span>
+        <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest mt-1">Georeferencing Accuracy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. SCENE 02: SELECTED OPERATIONS (PROJECTS SHOWCASE)
+       ========================================================================= -->
+  <section id="operations" class="relative z-20 max-w-7xl mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div>
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">01 / SELECTED OPERATIONS</span>
+        <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Engineered Projects.</h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="openNewProjectModal()" class="px-4 py-2.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 text-xs font-mono flex items-center gap-2 transition-all">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>Submit Project</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Projects Grid Container -->
+    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Project 01: Event QR Pass & Scanner System (NEWEST FEATURED) -->
+      <article class="group relative rounded-2xl bg-neutral-900/60 border border-rose-500/40 hover:border-rose-500 transition-all duration-300 flex flex-col justify-between shadow-[0_0_30px_rgba(244,63,94,0.15)] md:col-span-2 lg:col-span-1">
+        <div class="aspect-[16/10] w-full bg-gradient-to-tr from-rose-950 via-neutral-900 to-amber-950 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10 flex justify-between items-center">
+            <span class="px-2.5 py-1 rounded-md bg-rose-500 text-white text-[10px] font-mono font-bold tracking-wider">FEATURED OPERATION</span>
+            <span class="text-xs text-rose-300 font-mono">OP // 01</span>
+          </div>
+          <div class="relative z-10">
+            <span class="text-[10px] font-mono text-rose-400 uppercase tracking-wider block mb-1">Full-Stack Event Infrastructure</span>
+            <h3 class="editorial-title text-2xl text-white">Event QR Pass & Scanner System</h3>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <p class="text-xs text-neutral-300 leading-relaxed mb-4">
+            Production event verification platform built for university events (BCA Freshers 2026). Engineered with Flask + SQLite, real-time Server-Sent Events (SSE) telemetry, OTP-based admin approval, offline-resilient camera QR scanning, and automated Excel batch imports.
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">Flask</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">SSE Real-Time</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">QR Engine</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">SQLite</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Gunicorn</span>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono">
+              <span class="text-rose-400 font-bold">&lt;0.5s Check-in Speed</span>
+              <a href="https://github.com/yashverma1611/fresher-party" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>View Repository</span>
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 02: iFood Customer Personality Analysis -->
+      <article class="group relative rounded-2xl bg-neutral-900/60 border border-white/10 overflow-hidden hover:border-rose-500/50 transition-all duration-300 flex flex-col justify-between">
+        <div class="aspect-[16/10] w-full bg-gradient-to-tr from-purple-950/80 via-neutral-900 to-rose-950/80 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10 flex justify-between items-center">
+            <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[10px] font-mono text-purple-300 border border-white/10">TABLEAU & EDA</span>
+            <span class="text-xs text-neutral-400 font-mono">OP // 02</span>
+          </div>
+          <div class="relative z-10">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-wider block mb-1">Customer Segmentation</span>
+            <h3 class="editorial-title text-2xl text-white">iFood Personality Analysis</h3>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            End-to-end data pipeline processing 2,200+ customer records. Uncovered that 45% of total spend was concentrated in wine, pinpointed responsive campaign segments, and generated an interactive Tableau dashboard.
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Tableau</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">EDA</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Segmentation</span>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono">
+              <span class="text-purple-400 font-bold">45% Wine Spend</span>
+              <a href="https://lnkd.in/p/dJYc69rs" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>Case Study</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 03: GIS Building Survey - Aircode Technologies -->
+      <article class="group relative rounded-2xl bg-neutral-900/60 border border-white/10 overflow-hidden hover:border-rose-500/50 transition-all duration-300 flex flex-col justify-between">
+        <div class="aspect-[16/10] w-full bg-gradient-to-tr from-cyan-950/80 via-neutral-900 to-blue-950/80 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10 flex justify-between items-center">
+            <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[10px] font-mono text-cyan-300 border border-white/10">QGIS & GEODATA</span>
+            <span class="text-xs text-neutral-400 font-mono">OP // 03</span>
+          </div>
+          <div class="relative z-10">
+            <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block mb-1">Spatial Audit</span>
+            <h3 class="editorial-title text-2xl text-white">GIS Building Survey</h3>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Large-scale geospatial audit across 15,000+ structures. Digitized high-precision polygon boundaries, performed georeferencing, resolved unmapped constructions, and classified dense attribute tables (roof age, materials).
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">QGIS</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Georeferencing</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Digitization</span>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono">
+              <span class="text-cyan-400 font-bold">15,000+ Polygons</span>
+              <a href="#trajectory" class="text-neutral-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>Trajectory</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 04: Password Security & Strength Analyzer -->
+      <article class="group relative rounded-2xl bg-neutral-900/60 border border-white/10 overflow-hidden hover:border-rose-500/50 transition-all duration-300 flex flex-col justify-between">
+        <div class="aspect-[16/10] w-full bg-gradient-to-tr from-amber-950/80 via-neutral-900 to-rose-950/80 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10 flex justify-between items-center">
+            <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[10px] font-mono text-amber-300 border border-white/10">PYTHON ENGINE</span>
+            <span class="text-xs text-neutral-400 font-mono">OP // 04</span>
+          </div>
+          <div class="relative z-10">
+            <span class="text-[10px] font-mono text-amber-400 uppercase tracking-wider block mb-1">Security Diagnostics</span>
+            <h3 class="editorial-title text-2xl text-white">Password Analyzer</h3>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Algorithmic security tool evaluating credential entropy, common pattern exploitation, and vulnerability thresholds. Calculates mathematical strength scores and outputs concrete hardening guidance.
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Python</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Entropy Metrics</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">Rule Engine</span>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono">
+              <span class="text-amber-400 font-bold">Rule Engine v1.0</span>
+              <a href="https://github.com/yashverma1611/Password_security_Analyzer" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>Repository</span>
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slot for More Projects -->
+      <article class="group relative rounded-2xl bg-neutral-900/40 border border-dashed border-rose-500/40 hover:border-rose-500 p-8 flex flex-col justify-between items-center text-center transition-all cursor-pointer" onclick="openNewProjectModal()">
+        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4 group-hover:scale-110 transition-transform">
+          <i data-lucide="plus" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-[10px] font-mono text-rose-400 uppercase tracking-widest block mb-1">AVAILABLE SLOT // OP 05</span>
+          <h3 class="editorial-title text-2xl text-white mb-2">Deploy Another Project</h3>
+          <p class="text-xs text-neutral-400 max-w-xs leading-relaxed">
+            Have more projects (Power BI, Machine Learning, or Spatial Models)? Click here to add them to your live grid!
+          </p>
+        </div>
+        <span class="mt-6 px-4 py-2 rounded-lg bg-rose-500 text-white text-xs font-mono font-medium shadow-md">
+          + Add Project Details
+        </span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. SCENE 03: THE TACTICAL ARSENAL (SKILLS)
+       ========================================================================= -->
+  <section id="arsenal" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+      <div>
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">02 / TACTICAL ARSENAL</span>
+        <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Tools & Capabilities.</h2>
+      </div>
+      <p class="text-sm text-neutral-400 max-w-md font-sans">
+        A balanced toolkit spanning geospatial software, data transformation scripts, executive visualization, and backend event architectures.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Skill Group 1: Geospatial & GIS -->
+      <div class="rounded-2xl bg-neutral-900/50 border border-white/10 p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-mono mb-2">Spatial Analytics & GIS</h3>
+          <p class="text-xs text-neutral-400 mb-6">Expertise in spatial mapping, coordinate projections, and remote sensing classification.</p>
+          <ul class="space-y-2.5 text-xs font-mono text-neutral-300">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span>QGIS (Quantum GIS)</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span>Spatial Data Georeferencing</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span>High-Density Polygon Digitization</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span>Attribute Schema Engineering</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Skill Group 2: Business Intelligence & EDA -->
+      <div class="rounded-2xl bg-neutral-900/50 border border-white/10 p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-4">
+            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-mono mb-2">BI & Executive Storytelling</h3>
+          <p class="text-xs text-neutral-400 mb-6">Visualizing multidimensional datasets and translating complex distributions into boardroom clarity.</p>
+          <ul class="space-y-2.5 text-xs font-mono text-neutral-300">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span>Tableau Interactive Dashboards</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span>Advanced Excel (VLOOKUP, Pivot, DAX)</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span>Exploratory Data Analysis (EDA)</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span><span>Customer Segmentation & Spend Modeling</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Skill Group 3: Scripting, Backend & Data Systems -->
+      <div class="rounded-2xl bg-neutral-900/50 border border-white/10 p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-mono mb-2">Backend & Event Engineering</h3>
+          <p class="text-xs text-neutral-400 mb-6">Python scripting, QR generation & scanning, real-time SSE streaming, and database administration.</p>
+          <ul class="space-y-2.5 text-xs font-mono text-neutral-300">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span>Python & Flask Framework</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span>SQLite & OpenPyXL Excel Pipelines</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span>Server-Sent Events (SSE) Live Streams</span></li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span>Gunicorn & Production Deployment</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. SCENE 04: TRAJECTORY & INDUSTRY SIMULATIONS
+       ========================================================================= -->
+  <section id="trajectory" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+      <div>
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">03 / EXPERIENCE & FOUNDATION</span>
+        <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Career Trajectory.</h2>
+      </div>
+      <p class="text-sm text-neutral-400 max-w-md font-sans">
+        Proven track record across real-world geospatial field contracts, corporate simulations, and formal Computer Application education.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Left Column: Professional & Simulations -->
+      <div class="space-y-6">
+        <h3 class="text-sm font-mono text-rose-400 uppercase tracking-widest border-b border-white/10 pb-3">Professional Experience & Programs</h3>
+        
+        <!-- Experience 1 -->
+        <div class="rounded-xl bg-neutral-900/40 border border-white/10 p-6 hover:border-white/20 transition-all">
+          <div class="flex justify-between items-start gap-4 mb-2">
+            <h4 class="text-base font-bold text-white">GIS Trainee</h4>
+            <span class="text-xs font-mono text-rose-400 shrink-0">May 2024 – Nov 2024</span>
+          </div>
+          <span class="text-xs font-mono text-neutral-400 block mb-3">Aircode Technologies Pvt. Ltd. · Lucknow</span>
+          <p class="text-xs text-neutral-300 leading-relaxed">
+            Digitized over 15,000 building structures in QGIS. Handled georeferencing, base map validation, and dense attribute schema creation for municipal urban planning initiatives.
+          </p>
+        </div>
+
+        <!-- Simulation 2 -->
+        <div class="rounded-xl bg-neutral-900/40 border border-white/10 p-6 hover:border-white/20 transition-all">
+          <div class="flex justify-between items-start gap-4 mb-2">
+            <h4 class="text-base font-bold text-white">AI-Powered Data Analytics Simulation</h4>
+            <span class="text-xs font-mono text-cyan-400 shrink-0">Forage · 2024</span>
+          </div>
+          <span class="text-xs font-mono text-neutral-400 block mb-3">Tata Consultancy Services</span>
+          <p class="text-xs text-neutral-300 leading-relaxed">
+            Conducted exploratory data analysis, visual dashboard storytelling, and predictive risk indicators using AI-augmented data analytics frameworks.
+          </p>
+        </div>
+
+        <!-- Simulation 3 -->
+        <div class="rounded-xl bg-neutral-900/40 border border-white/10 p-6 hover:border-white/20 transition-all">
+          <div class="flex justify-between items-start gap-4 mb-2">
+            <h4 class="text-base font-bold text-white">Data Analytics Simulation</h4>
+            <span class="text-xs font-mono text-purple-400 shrink-0">Forage · 2024</span>
+          </div>
+          <span class="text-xs font-mono text-neutral-400 block mb-3">Deloitte</span>
+          <p class="text-xs text-neutral-300 leading-relaxed">
+            Formulated business intelligence reports, forensic data audit models, and actionable strategy briefs based on corporate client test suites.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Education & Certifications -->
+      <div class="space-y-6">
+        <h3 class="text-sm font-mono text-rose-400 uppercase tracking-widest border-b border-white/10 pb-3">Education & Credentials</h3>
+        
+        <!-- Degree -->
+        <div class="rounded-xl bg-neutral-900/40 border border-white/10 p-6 hover:border-white/20 transition-all">
+          <div class="flex justify-between items-start gap-4 mb-2">
+            <h4 class="text-base font-bold text-white">Bachelor's of Computer Application (BCA)</h4>
+            <span class="text-xs font-mono text-rose-400 shrink-0">2022 – 2025</span>
+          </div>
+          <span class="text-xs font-mono text-neutral-400 block mb-3">Babu Banarasi Das University (BBDU) · Lucknow</span>
+          <p class="text-xs text-neutral-300 leading-relaxed">
+            Core studies in database management systems, data structures, algorithms, and applied software engineering paradigms.
+          </p>
+        </div>
+
+        <!-- Certifications List -->
+        <div class="rounded-xl bg-neutral-900/40 border border-white/10 p-6 hover:border-white/20 transition-all">
+          <h4 class="text-base font-bold text-white mb-4">Recognitions & Training</h4>
+          <ul class="space-y-3 text-xs font-mono text-neutral-300">
+            <li class="flex items-center justify-between border-b border-white/5 pb-2">
+              <span>Digital Productivity with AI (UNICEF)</span>
+              <span class="text-neutral-500">Certified</span>
+            </li>
+            <li class="flex items-center justify-between border-b border-white/5 pb-2">
+              <span>AI for All — Tata Consultancy Services</span>
+              <span class="text-neutral-500">Certified</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>Senior Secondary (12th Science Stream)</span>
+              <span class="text-neutral-500">CBSE</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. SCENE 05: INTERACTIVE CLI & TRANSMISSION TERMINAL
+       ========================================================================= -->
+  <section id="transmission" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+      <div>
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">04 / TRANSMISSION & CONTACT</span>
+        <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Initiate Transmission.</h2>
+      </div>
+      <p class="text-sm text-neutral-400 max-w-md font-sans">
+        Available for full-time Data Analyst roles, GIS Specialist contracts, and analytical consulting engagements.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Interactive Terminal (Left 6 Cols) -->
+      <div class="lg:col-span-6 rounded-2xl bg-black/90 border border-white/15 overflow-hidden shadow-2xl font-mono text-xs">
+        <div class="bg-neutral-900/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+          </div>
+          <span class="text-[11px] text-neutral-400 tracking-wider">YASH-VERMA-SHELL // v2.6</span>
+          <span class="text-emerald-400 text-[10px]">CONNECTED</span>
+        </div>
+
+        <div id="terminalBody" class="p-5 h-72 overflow-y-auto terminal-scroll text-neutral-300 space-y-2">
+          <div class="text-cyan-400">YASH VERMA ANALYTICS CLI INITIALIZED.</div>
+          <div class="text-neutral-400">Type <span class="text-rose-400 font-bold">'help'</span> for available commands or try <span class="text-amber-400 font-bold">'sudo hire'</span>.</div>
+        </div>
+
+        <form id="terminalForm" onsubmit="handleTerminalCommand(event)" class="border-t border-white/10 px-4 py-3 flex items-center gap-2 bg-neutral-950">
+          <span class="text-rose-400 font-bold">guest@yash-verma:~$</span>
+          <input id="terminalInput" type="text" autocomplete="off" spellcheck="false" 
+                 class="flex-1 bg-transparent text-white focus:outline-none text-xs font-mono" 
+                 placeholder="Type a command (e.g. 'skills', 'projects', 'contact')...">
+        </form>
+      </div>
+
+      <!-- Direct Contact Dispatch Form (Right 6 Cols) -->
+      <div class="lg:col-span-6 rounded-2xl bg-neutral-900/50 border border-white/10 p-8 shadow-xl">
+        <h3 class="text-xl font-bold text-white mb-2 font-mono">Direct Dispatch</h3>
+        <p class="text-xs text-neutral-400 mb-6">Send an urgent dispatch directly to Yash's inbox.</p>
+        
+        <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs font-mono">
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Identity / Full Name</label>
+            <input type="text" id="contactName" required placeholder="e.g. Sarah Jenkins or TechCorp HR" 
+                   class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500 transition-colors">
+          </div>
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Return Frequency / Email</label>
+            <input type="email" id="contactEmail" required placeholder="e.g. sarah@techcorp.com" 
+                   class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500 transition-colors">
+          </div>
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Transmission Message</label>
+            <textarea id="contactMessage" rows="3" required placeholder="Project specifications, role description, or timeline..." 
+                      class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500 transition-colors"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-600 shadow-lg hover:opacity-95 transition-all text-xs tracking-wider uppercase">
+            Send Transmission →
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. MODAL: ADD / EDIT NEW PROJECTS
+       ========================================================================= -->
+  <div id="newProjectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-neutral-900 border border-white/20 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+      <button onclick="closeNewProjectModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-4">
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">PORTFOLIO EXPANSION</span>
+        <h3 class="editorial-title text-3xl text-white mt-1">Add Another Project</h3>
+        <p class="text-xs text-neutral-400 mt-1 font-sans">
+          Enter your new project details below to add it directly to this portfolio showcase.
+        </p>
+      </div>
+
+      <form onsubmit="addNewProject(event)" class="space-y-4 text-xs font-mono">
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Project Title</label>
+          <input type="text" id="npTitle" required placeholder="e.g. Geospatial Satellite Classifier" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Domain Tag</label>
+          <input type="text" id="npDomain" required placeholder="e.g. QGIS & SATELLITE IMAGERY" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Key Metric / Stat</label>
+          <input type="text" id="npStat" required placeholder="e.g. 99.2% Accuracy / 50k Records" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Summary</label>
+          <textarea id="npSummary" rows="3" required placeholder="Brief description of methodology, dataset size, and results achieved..." 
+                    class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500"></textarea>
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Tech Stack (comma separated)</label>
+          <input type="text" id="npTags" required placeholder="e.g. Python, QGIS, GDAL, Sentinel-2" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Project / Repository Link</label>
+          <input type="url" id="npLink" placeholder="https://github.com/yashverma1611/your-project" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+          <button type="button" onclick="closeNewProjectModal()" class="px-4 py-2.5 rounded-xl border border-white/10 text-neutral-400 hover:text-white">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold">
+            Deploy to Grid
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       9. FOOTER
+       ========================================================================= -->
+  <footer class="relative z-20 border-t border-white/10 bg-black/90 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-400 font-mono">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-neutral-200">ACTIVE // LUCKNOW, INDIA</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/yashverma1611" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/yashverma1611" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+        <a href="mailto:yashverma1611@gmail.com" class="hover:text-white transition-colors">Email</a>
+      </div>
+      <div>
+        <span>Designed with .arcSUMMIT Aesthetic &copy; 2026 Yash Kumar Verma</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       10. CLIENT SCRIPT (Interactive CLI, Modal, Lucide)
+       ========================================================================= -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Terminal logic
+    const terminalBody = document.getElementById('terminalBody');
+    const terminalInput = document.getElementById('terminalInput');
+
+    const commands = {
+      help: "Available commands:\n  • 'skills'   : Displays technical arsenal & tools\n  • 'projects' : Summary of completed data & GIS operations\n  • 'contact'  : Returns email and LinkedIn transmission endpoints\n  • 'clear'    : Resets terminal screen\n  • 'sudo hire': Unlocks special transmission priority protocol",
+      skills: "TECHNICAL ARSENAL:\n  [+] GIS & Spatial: QGIS, Georeferencing, Spatial Digitization, Attribute Engineering\n  [+] Business Intelligence: Tableau, Advanced Excel (VLOOKUP, Pivot, DAX), EDA\n  [+] Backend Systems: Python, Flask Framework, SQLite, Real-Time SSE Streams, OpenPyXL",
+      projects: "COMPLETED OPERATIONS:\n  01. Event QR Pass & Scanner System (Flask, SQLite, Real-Time SSE, Offline Camera Scanner)\n  02. iFood Customer Personality Analysis (Tableau, 2,200+ records, 45% wine spend)\n  03. GIS Building Survey (Aircode Tech, 15,000+ structures mapped in QGIS)\n  04. Password Security & Strength Analyzer (Python entropy algorithms)",
+      contact: "TRANSMISSION ENDPOINTS:\n  Email   : yashverma1611@gmail.com\n  GitHub  : https://github.com/yashverma1611\n  LinkedIn: https://linkedin.com/in/yashverma1611\n  Location: Lucknow, India",
+      "sudo hire": "ACCESS GRANTED: Candidate Yash Kumar Verma meets priority criteria for Data Analyst & GIS roles.\nReady for immediate onboarding. Please send an offer dispatch via the contact form!",
+      clear: "__CLEAR__"
+    };
+
+    function handleTerminalCommand(e) {
+      e.preventDefault();
+      const raw = terminalInput.value.trim().toLowerCase();
+      if (!raw) return;
+
+      const userLine = document.createElement('div');
+      userLine.innerHTML = `<span class="text-rose-400 font-bold">guest@yash-verma:~$</span> <span class="text-white">${raw}</span>`;
+      terminalBody.appendChild(userLine);
+
+      if (raw === 'clear') {
+        terminalBody.innerHTML = `
+          <div class="text-cyan-400">YASH VERMA ANALYTICS CLI INITIALIZED.</div>
+          <div class="text-neutral-400">Type <span class="text-rose-400 font-bold">'help'</span> for available commands.</div>
+        `;
+      } else if (commands[raw]) {
+        const resp = document.createElement('div');
+        resp.className = "text-neutral-300 whitespace-pre-wrap pl-3 border-l-2 border-rose-500/50";
+        resp.innerText = commands[raw];
+        terminalBody.appendChild(resp);
+      } else {
+        const err = document.createElement('div');
+        err.className = "text-red-400";
+        err.innerText = `Command not recognized: '${raw}'. Type 'help' for instructions.`;
+        terminalBody.appendChild(err);
+      }
+
+      terminalInput.value = '';
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    // Modal logic for new projects
+    function openNewProjectModal() {
+      document.getElementById('newProjectModal').classList.remove('hidden');
+    }
+    function closeNewProjectModal() {
+      document.getElementById('newProjectModal').classList.add('hidden');
+    }
+
+    function addNewProject(e) {
+      e.preventDefault();
+      const title = document.getElementById('npTitle').value;
+      const domain = document.getElementById('npDomain').value;
+      const stat = document.getElementById('npStat').value;
+      const summary = document.getElementById('npSummary').value;
+      const tags = document.getElementById('npTags').value.split(',').map(t => t.trim());
+      const link = document.getElementById('npLink').value || '#';
+
+      const grid = document.getElementById('projectsGrid');
+      const newCard = document.createElement('article');
+      newCard.className = "group relative rounded-2xl bg-neutral-900/60 border border-white/10 overflow-hidden hover:border-rose-500/50 transition-all duration-300 flex flex-col justify-between";
+      
+      const tagsHtml = tags.map(t => `<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/5 text-neutral-400">${t}</span>`).join(' ');
+
+      newCard.innerHTML = `
+        <div class="aspect-[16/10] w-full bg-gradient-to-tr from-emerald-950/80 via-neutral-900 to-teal-950/80 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10 flex justify-between items-center">
+            <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-[10px] font-mono text-emerald-300 border border-white/10">${domain}</span>
+            <span class="text-xs text-neutral-400 font-mono">NEW // LIVE</span>
+          </div>
+          <div class="relative z-10">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider block mb-1">Recent Deployment</span>
+            <h3 class="editorial-title text-2xl text-white">${title}</h3>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            ${summary}
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              ${tagsHtml}
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono">
+              <span class="text-emerald-400 font-bold">${stat}</span>
+              <a href="${link}" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>View Project</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Insert before the last add button
+      grid.insertBefore(newCard, grid.lastElementChild);
+      lucide.createIcons();
+      closeNewProjectModal();
+      e.target.reset();
+      
+      alert(`Project "${title}" added to your live showcase!`);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      alert(`Thank you, ${name}! Your transmission has been queued for dispatch.`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
