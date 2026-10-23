@@ -1498,6 +1498,45 @@
       return 'Direct Visit';
     }
 
+    // Resilient Multi-Provider Geolocation & IP Resolver
+    async function fetchVisitorGeo() {
+      // Provider 1: ipwho.is (Fast, HTTPS, full ISP & city info, generous free tier)
+      try {
+        const res = await fetch("https://ipwho.is/");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.success !== false && data.ip) {
+            return {
+              ip: data.ip,
+              city: data.city || "Unknown",
+              region: data.region || "Unknown",
+              country: data.country || "Unknown",
+              isp: (data.connection && (data.connection.isp || data.connection.org)) || "Unknown"
+            };
+          }
+        }
+      } catch (e1) {}
+
+      // Provider 2: api.ipify.org (100% Guaranteed IP fallback, unlimited)
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.ip) {
+            return {
+              ip: data.ip,
+              city: "Unknown",
+              region: "Unknown",
+              country: "Unknown",
+              isp: "Unknown"
+            };
+          }
+        }
+      } catch (e2) {}
+
+      return { ip: "Unknown", city: "Unknown", region: "Unknown", country: "Unknown", isp: "Unknown" };
+    }
+
     // Global cache for visitor geo
     window.currentVisitorData = {
       ip: 'Unknown',
@@ -1576,35 +1615,13 @@
       if (!handle) return;
 
       currentSubmittedHandle = handle;
-      const widget = document.getElementById('smartConnectWidget');
       const headerEl = document.getElementById('smartConnectHeader');
       const textEl = document.getElementById('smartConnectText');
       const formArea = document.getElementById('smartConnectForm');
 
-      const source = getTrafficSource();
-      const payload = {
-        action: "connect_profile",
-        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-        ip: window.currentVisitorData.ip,
-        city: window.currentVisitorData.city,
-        region: window.currentVisitorData.region,
-        country: window.currentVisitorData.country,
-        isp: window.currentVisitorData.isp,
-        source: source,
-        handle: handle,
-        topic: "Pending Selection",
-        device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
-      };
-
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
-
-      if (GOOGLE_SCRIPT_URL) {
-        fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        }).catch(() => {});
+      // Pre-resolve IP in background
+      if (window.currentVisitorData.ip === 'Unknown') {
+        fetchVisitorGeo().then(geo => { window.currentVisitorData = geo; });
       }
 
       // ⚡ AUTOMATED VIBE CODER CONCIERGE RESPONSE
@@ -1666,6 +1683,11 @@
         `;
       }
 
+      // Ensure IP is resolved before sending
+      if (window.currentVisitorData.ip === 'Unknown') {
+        window.currentVisitorData = await fetchVisitorGeo();
+      }
+
       const source = getTrafficSource();
       const payload = {
         action: "connect_profile",
@@ -1694,7 +1716,7 @@
 
       setTimeout(() => {
         dismissSmartConnect();
-      }, 4000);
+      }, 3500);
     }
 
     // =========================================================================
@@ -1702,37 +1724,20 @@
     // =========================================================================
     (async function logVisitorToSheet() {
       try {
-        // 1. Dev / Owner mute check (via terminal command or ?mute=1 in URL)
+        // Resolve Geolocation with multi-provider fallback
+        const geo = await fetchVisitorGeo();
+        window.currentVisitorData = geo;
+
+        // Dev / Owner mute check (via terminal command or ?mute=1 in URL)
         if (localStorage.getItem('mute_telemetry') === 'true' || window.location.search.includes('mute=1')) {
           initSmartConnect();
           return;
         }
 
-        // Fetch IP & Geolocation
-        const res = await fetch("https://ipapi.co/json/");
-        if (!res.ok) {
-          initSmartConnect();
-          return;
-        }
-        const geo = await res.json();
-        if (geo.ip === "127.0.0.1" || !geo.ip) {
-          initSmartConnect();
-          return;
-        }
-
-        // Cache globally for Smart Connect
-        window.currentVisitorData = {
-          ip: geo.ip || "Unknown",
-          city: geo.city || "Unknown",
-          region: geo.region || "Unknown",
-          country: geo.country_name || "Unknown",
-          isp: geo.org || "Unknown"
-        };
-
         // Initialize Social Connect Widget
         initSmartConnect();
 
-        // 2. Cooldown check: Only log silent view once every 6 hours per unique device/browser
+        // Cooldown check: Only log silent view once every 6 hours per unique device/browser
         const lastLog = localStorage.getItem('visitor_logged_at');
         const now = Date.now();
         const SIX_HOURS = 6 * 60 * 60 * 1000;
@@ -1748,8 +1753,8 @@
           ip: geo.ip || "Unknown",
           city: geo.city || "Unknown",
           region: geo.region || "Unknown",
-          country: geo.country_name || "Unknown",
-          isp: geo.org || "Unknown",
+          country: geo.country || "Unknown",
+          isp: geo.isp || "Unknown",
           source: source,
           referrer: document.referrer || "Direct Visit",
           device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
@@ -1757,7 +1762,7 @@
 
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
 
-        if (GOOGLE_SCRIPT_URL) {
+        if (GOOGLE_SCRIPT_URL && geo.ip !== "Unknown") {
           fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
             mode: "no-cors",
