@@ -967,7 +967,36 @@
   </div>
 
   <!-- =========================================================================
-       14. CLIENT SCRIPTS (3D CYLINDER + BACKSPACE FIX + TELEMETRY + TERMINAL)
+       14. WIDGET: SMART INBOUND SOCIAL CONNECTOR (INSTAGRAM & LINKEDIN)
+       ========================================================================= -->
+  <div id="smartConnectWidget" class="fixed bottom-6 right-6 z-40 max-w-sm w-[calc(100vw-3rem)] sm:w-96 hidden transition-all duration-500 transform translate-y-8 opacity-0">
+    <div class="rounded-2xl bg-neutral-950/95 backdrop-blur-xl border border-white/20 p-5 shadow-[0_15px_40px_rgba(0,0,0,0.85)] relative cert-seal">
+      <button onclick="dismissSmartConnect()" class="absolute top-3.5 right-3.5 text-neutral-400 hover:text-white p-1 rounded-md transition-colors" title="Dismiss">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="smartConnectHeader" class="flex items-center gap-2 mb-2">
+        <!-- Injected via JavaScript based on platform source -->
+      </div>
+
+      <p id="smartConnectText" class="text-xs text-neutral-300 font-sans mb-3.5 leading-relaxed">
+        <!-- Injected via JavaScript -->
+      </p>
+
+      <div id="smartConnectForm" class="flex items-center gap-2">
+        <input type="text" id="visitorHandleInput" placeholder="@handle or profile link" 
+               class="flex-1 bg-black/60 border border-white/15 focus:border-rose-500 rounded-xl px-3.5 py-2 text-xs font-mono text-white placeholder-neutral-500 focus:outline-none transition-colors">
+        <button id="visitorHandleBtn" onclick="submitVisitorHandle()" 
+                class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:opacity-90 text-white font-mono text-xs font-bold transition-all shadow-md flex items-center gap-1.5 whitespace-nowrap">
+          <span>Connect</span>
+          <i data-lucide="send" class="w-3 h-3"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       15. CLIENT SCRIPTS (3D CYLINDER + BACKSPACE FIX + TELEMETRY + TERMINAL)
        ========================================================================= -->
   <script>
     lucide.createIcons();
@@ -1333,7 +1362,7 @@
     const terminalInput = document.getElementById('terminalInput');
 
     const commands = {
-      help: "Available commands:\n  • 'certs'    : Inspect all 5 verified credentials (Aircode, Tata, Deloitte, Mastercard, UNICEF)\n  • 'skills'   : Displays technical arsenal & tools\n  • 'projects' : Summary of completed data & GIS operations\n  • 'contact'  : Returns email and LinkedIn transmission endpoints\n  • 'clear'    : Resets terminal screen\n  • 'sudo hire': Unlocks priority onboarding protocol",
+      help: "Available commands:\n  • 'certs'    : Inspect all 5 verified credentials (Aircode, Tata, Deloitte, Mastercard, UNICEF)\n  • 'skills'   : Displays technical arsenal & tools\n  • 'projects' : Summary of completed data & GIS operations\n  • 'contact'  : Returns email and LinkedIn transmission endpoints\n  • 'mute'     : Silence telemetry logging on your own device/browser\n  • 'clear'    : Resets terminal screen\n  • 'sudo hire': Unlocks priority onboarding protocol",
       certs: "VERIFIED CREDENTIALS (5/5 VERIFIED & SIGNED):\n  [1] Aircode Technologies: GIS Trainee (July-August 2026, 15K+ buildings mapped)\n  [2] Tata Forage: GenAI Powered Data Analytics (Code: aoR769CTBDftiRbAN)\n  [3] Deloitte Forage: Data Analytics & Forensics (Code: pMSNqEi8PTyrND7TJ)\n  [4] Mastercard Forage: Cybersecurity Job Simulation (Code: iAnSKycqZ6qCP4QM4)\n  [5] UNICEF & YuWaah!: Digital Productivity with AI (March 11, 2026 | 95% Score | Signatory: Ms. Giorgia Varisco)",
       skills: "TECHNICAL ARSENAL:\n  [+] Spatial & GIS: QGIS (15K+ Polygon Audit), Spatial Data Analysis, Georeferencing\n  [+] Business Intelligence: Tableau, Advanced Excel (VLOOKUP, Pivot, DAX)\n  [+] Core Engineering: Python, Flask, Server-Sent Events, SQLite, Data Validation & Cleaning",
       projects: "SELECTED OPERATIONS:\n  01. iFood Customer Personality Analysis (Tableau, 2,200+ records, 45% wine spend)\n  02. GIS Building Survey (Aircode Tech, 15,000+ structures mapped in QGIS)\n  03. Password Security & Strength Analyzer (Python entropy algorithms)\n  04. BCA Freshers 2026 QR Pass & Scanner System (Flask, SSE, SQLite)",
@@ -1356,6 +1385,18 @@
           <div class="text-rose-400">YASH VERMA ANALYTICS SHELL INITIALIZED.</div>
           <div class="text-neutral-400">Type <span class="text-rose-400 font-bold">'help'</span> for available commands.</div>
         `;
+      } else if (raw === 'mute') {
+        localStorage.setItem('mute_telemetry', 'true');
+        const resp = document.createElement('div');
+        resp.className = "text-emerald-400 font-mono";
+        resp.innerText = "DEV MODE: Visitor tracking muted on this device. Your personal visits will no longer be logged to Google Sheets.";
+        terminalBody.appendChild(resp);
+      } else if (raw === 'unmute') {
+        localStorage.removeItem('mute_telemetry');
+        const resp = document.createElement('div');
+        resp.className = "text-emerald-400 font-mono";
+        resp.innerText = "DEV MODE: Visitor tracking unmuted on this device.";
+        terminalBody.appendChild(resp);
       } else if (commands[raw]) {
         const resp = document.createElement('div');
         resp.className = "text-neutral-300 whitespace-pre-wrap pl-3 border-l-2 border-rose-500/50";
@@ -1428,20 +1469,288 @@
     }
 
     // =========================================================================
-    // SILENT VISITOR TELEMETRY TO GOOGLE SHEETS
+    // TRAFFIC SOURCE & SMART INBOUND SOCIAL CONNECTOR
+    // =========================================================================
+    function getTrafficSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = (urlParams.get('ref') || urlParams.get('utm_source') || urlParams.get('source') || '').toLowerCase();
+      const referrer = document.referrer.toLowerCase();
+
+      if (ref.includes('insta')) return 'Instagram (Bio Link)';
+      if (ref.includes('linkedin')) return 'LinkedIn (Profile Link)';
+      if (ref.includes('twitter') || ref.includes('x')) return 'Twitter / X';
+      if (ref.includes('github')) return 'GitHub';
+      if (ref) return `Referral (${ref})`;
+
+      if (referrer.includes('instagram.com') || referrer.includes('l.instagram.com')) return 'Instagram App';
+      if (referrer.includes('linkedin.com') || referrer.includes('lnkd.in') || referrer.includes('com.linkedin')) return 'LinkedIn App';
+      if (referrer.includes('t.co') || referrer.includes('twitter.com') || referrer.includes('x.com')) return 'Twitter / X';
+      if (referrer.includes('google.')) return 'Google Search';
+      if (referrer.includes('github.com')) return 'GitHub';
+      if (referrer) {
+        try {
+          return new URL(referrer).hostname;
+        } catch(e) {
+          return referrer.slice(0, 30);
+        }
+      }
+
+      return 'Direct Visit';
+    }
+
+    // Global cache for visitor geo
+    window.currentVisitorData = {
+      ip: 'Unknown',
+      city: 'Unknown',
+      region: 'Unknown',
+      country: 'Unknown',
+      isp: 'Unknown'
+    };
+
+    function initSmartConnect() {
+      if (sessionStorage.getItem('smart_connect_dismissed') === 'true') return;
+      if (localStorage.getItem('mute_telemetry') === 'true') return;
+
+      const source = getTrafficSource();
+      const widget = document.getElementById('smartConnectWidget');
+      const headerEl = document.getElementById('smartConnectHeader');
+      const textEl = document.getElementById('smartConnectText');
+      const inputEl = document.getElementById('visitorHandleInput');
+
+      if (!widget || !headerEl || !textEl || !inputEl) return;
+
+      if (source.includes('Instagram')) {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center border border-pink-500/30">
+            <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-pink-400 uppercase tracking-wider">Instagram Inbound</span>
+        `;
+        textEl.innerHTML = "Visiting from Instagram? Drop your handle so Yash can follow &amp; connect back!";
+        inputEl.placeholder = "@your_instagram_handle";
+      } else if (source.includes('LinkedIn')) {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
+            <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">LinkedIn Inbound</span>
+        `;
+        textEl.innerHTML = "Visiting from LinkedIn? Drop your profile link or handle so we can connect directly!";
+        inputEl.placeholder = "linkedin.com/in/... or @name";
+      } else {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-rose-400 uppercase tracking-wider">Connect with Yash</span>
+        `;
+        textEl.innerHTML = "Liked the portfolio? Drop your LinkedIn or Instagram handle to connect with Yash!";
+        inputEl.placeholder = "@handle, profile URL, or email";
+      }
+
+      lucide.createIcons();
+
+      // Show after 2.5 seconds
+      setTimeout(() => {
+        widget.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          widget.classList.remove('translate-y-8', 'opacity-0');
+        });
+      }, 2500);
+    }
+
+    function dismissSmartConnect() {
+      const widget = document.getElementById('smartConnectWidget');
+      if (widget) {
+        widget.classList.add('translate-y-8', 'opacity-0');
+        setTimeout(() => widget.classList.add('hidden'), 500);
+      }
+      sessionStorage.setItem('smart_connect_dismissed', 'true');
+    }
+
+    let currentSubmittedHandle = "";
+
+    async function submitVisitorHandle() {
+      const input = document.getElementById('visitorHandleInput');
+      const handle = input ? input.value.trim() : '';
+      if (!handle) return;
+
+      currentSubmittedHandle = handle;
+      const widget = document.getElementById('smartConnectWidget');
+      const headerEl = document.getElementById('smartConnectHeader');
+      const textEl = document.getElementById('smartConnectText');
+      const formArea = document.getElementById('smartConnectForm');
+
+      const source = getTrafficSource();
+      const payload = {
+        action: "connect_profile",
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        ip: window.currentVisitorData.ip,
+        city: window.currentVisitorData.city,
+        region: window.currentVisitorData.region,
+        country: window.currentVisitorData.country,
+        isp: window.currentVisitorData.isp,
+        source: source,
+        handle: handle,
+        topic: "Pending Selection",
+        device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
+      };
+
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
+
+      if (GOOGLE_SCRIPT_URL) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+
+      // ⚡ AUTOMATED VIBE CODER CONCIERGE RESPONSE
+      if (headerEl) {
+        headerEl.innerHTML = `
+          <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+          <span class="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-wider">Yash Kumar Verma (Auto-Dispatch)</span>
+        `;
+      }
+
+      if (textEl) {
+        textEl.innerHTML = `"Hello <strong>${handle}</strong>! Great to connect with you. How can I help you today?"`;
+      }
+
+      if (formArea) {
+        formArea.innerHTML = `
+          <div class="grid grid-cols-1 gap-1.5 w-full pt-1">
+            <button onclick="selectVibeTopic('⚡ Ship an MVP / Vibe Code with Me')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-rose-500/20 border border-white/10 hover:border-rose-500/40 text-rose-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>⚡ Ship an MVP / Vibe Code with Me</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('📊 Data Analytics & GIS Pipeline')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-500/40 text-cyan-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>📊 Data Analytics &amp; GIS Pipeline</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('💼 Hiring / Engineering Role')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-blue-500/20 border border-white/10 hover:border-blue-500/40 text-blue-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>💼 Hiring / Engineering Role</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('🤝 Creative Tech & Networking')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 hover:border-purple-500/40 text-purple-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>🤝 Creative Tech &amp; Networking</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+          </div>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    async function selectVibeTopic(topic) {
+      const widget = document.getElementById('smartConnectWidget');
+      const formArea = document.getElementById('smartConnectForm');
+      const textEl = document.getElementById('smartConnectText');
+
+      if (textEl) {
+        textEl.innerHTML = `<span class="text-rose-400 font-mono text-[11px]">Selected: ${topic}</span>`;
+      }
+
+      if (formArea) {
+        formArea.innerHTML = `
+          <div class="py-2.5 text-center space-y-1 w-full bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-3">
+            <div class="text-xs font-mono font-bold text-emerald-300 flex items-center justify-center gap-1.5">
+              <span>⚡ Transmission Dispatched</span>
+            </div>
+            <p class="text-[11px] text-neutral-300 font-sans">
+              Yash has received your handle &amp; topic. Shipped at AI velocity!
+            </p>
+          </div>
+        `;
+      }
+
+      const source = getTrafficSource();
+      const payload = {
+        action: "connect_profile",
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        ip: window.currentVisitorData.ip,
+        city: window.currentVisitorData.city,
+        region: window.currentVisitorData.region,
+        country: window.currentVisitorData.country,
+        isp: window.currentVisitorData.isp,
+        source: source,
+        handle: currentSubmittedHandle,
+        topic: topic,
+        device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
+      };
+
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
+
+      if (GOOGLE_SCRIPT_URL) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+
+      setTimeout(() => {
+        dismissSmartConnect();
+      }, 4000);
+    }
+
+    // =========================================================================
+    // SILENT VISITOR TELEMETRY TO GOOGLE SHEETS (WITH 6-HR DEDUPLICATION)
     // =========================================================================
     (async function logVisitorToSheet() {
       try {
+        // 1. Dev / Owner mute check (via terminal command or ?mute=1 in URL)
+        if (localStorage.getItem('mute_telemetry') === 'true' || window.location.search.includes('mute=1')) {
+          initSmartConnect();
+          return;
+        }
+
+        // Fetch IP & Geolocation
         const res = await fetch("https://ipapi.co/json/");
+        if (!res.ok) {
+          initSmartConnect();
+          return;
+        }
         const geo = await res.json();
+        if (geo.ip === "127.0.0.1" || !geo.ip) {
+          initSmartConnect();
+          return;
+        }
+
+        // Cache globally for Smart Connect
+        window.currentVisitorData = {
+          ip: geo.ip || "Unknown",
+          city: geo.city || "Unknown",
+          region: geo.region || "Unknown",
+          country: geo.country_name || "Unknown",
+          isp: geo.org || "Unknown"
+        };
+
+        // Initialize Social Connect Widget
+        initSmartConnect();
+
+        // 2. Cooldown check: Only log silent view once every 6 hours per unique device/browser
+        const lastLog = localStorage.getItem('visitor_logged_at');
+        const now = Date.now();
+        const SIX_HOURS = 6 * 60 * 60 * 1000;
+        if (lastLog && (now - parseInt(lastLog, 10)) < SIX_HOURS) {
+          return;
+        }
+
+        const source = getTrafficSource();
 
         const payload = {
+          action: "visitor",
           timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
           ip: geo.ip || "Unknown",
           city: geo.city || "Unknown",
           region: geo.region || "Unknown",
           country: geo.country_name || "Unknown",
           isp: geo.org || "Unknown",
+          source: source,
           referrer: document.referrer || "Direct Visit",
           device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
         };
@@ -1454,10 +1763,12 @@
             mode: "no-cors",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(payload)
+          }).then(() => {
+            localStorage.setItem('visitor_logged_at', now.toString());
           }).catch(function() {});
         }
       } catch (err) {
-        // Silently fails so it never interrupts page loading
+        initSmartConnect();
       }
     })();
   </script>
