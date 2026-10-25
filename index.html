@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================================================================
+       1. ENTERPRISE SEARCH ENGINE OPTIMIZATION (SEO) & SOCIAL PREVIEWS
+       ========================================================================= -->
+  <title>Yash Kumar Verma | Vibe Coder &amp; Creative Technologist | .arcSUMMIT Edition</title>
+  <meta name="title" content="Yash Kumar Verma | Vibe Coder &amp; Creative Technologist | .arcSUMMIT Edition" />
+  <meta name="description" content="Portfolio of Yash Kumar Verma — Vibe Coder &amp; Creative Technologist based in Lucknow, India. Rapidly building 0→1 software with AI workflows: real-time event telemetry (SSE), spatial GIS intelligence, and 3D WebGL interfaces." />
+  <meta name="keywords" content="Yash Kumar Verma, Data Analyst Lucknow, GIS Specialist, QGIS, Tableau BI Developer, City College of Management, Aircode Technologies, Spatial Data Auditing, Python Data Analysis, Forage Certified, .arcSUMMIT" />
+  <meta name="author" content="Yash Kumar Verma" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yashverma1611.github.io/" />
+
+  <!-- Open Graph / LinkedIn / WhatsApp Preview Banners -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Yash Kumar Verma — Data Analyst &amp; GIS Specialist" />
+  <meta property="og:description" content="Turning Raw Data Into Structured Insight. 15K+ buildings audited in QGIS, Tableau consumer BI modeling, and rapid full-stack prototype telemetry." />
+  <meta property="og:url" content="https://yashverma1611.github.io/" />
+  <meta property="og:image" content="https://yashverma1611.github.io/arc_summit_preview.png" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yash Kumar Verma — Data Analyst &amp; GIS Specialist" />
+  <meta name="twitter:description" content="15K+ buildings audited in QGIS, Tableau consumer BI modeling, and rapid full-stack prototype telemetry." />
+  <meta name="twitter:image" content="https://yashverma1611.github.io/arc_summit_preview.png" />
+
+  <!-- Security & Browser Theme -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#05060A" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>" />
+
+  <!-- Tailwind CSS & Lucide Icons via Fast CDN -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- =========================================================================
+       2. GOOGLE RICH SNIPPET (JSON-LD SCHEMA)
+       ========================================================================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yash Kumar Verma",
+    "url": "https://yashverma1611.github.io/",
+    "image": "https://yashverma1611.github.io/arc_summit_preview.png",
+    "jobTitle": "Vibe Coder & Creative Technologist",
+    "email": "mailto:90yashkumar@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "India"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "City College of Management, Lucknow"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Mahavir Inter College, Aliganj, Lucknow"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/yashverma1611",
+      "https://www.linkedin.com/in/yash-kumar-verma-7405a4405/"
+    ],
+    "knowsAbout": [
+      "QGIS",
+      "Spatial Data Auditing & Polygon Digitization",
+      "Tableau Desktop & Public",
+      "Exploratory Data Analysis (EDA)",
+      "Python",
+      "Advanced Excel",
+      "Flask & Server-Sent Events (SSE)",
+      "Generative AI Productivity"
+    ]
+  }
+  </script>
+
+  <!-- =========================================================================
+       3. CUSTOM STYLING & 3D CYLINDRICAL DECK ENGINE
+       ========================================================================= -->
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 26s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .editorial-title {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      letter-spacing: -0.035em;
+      line-height: 0.94;
+    }
+
+    .glass-nav {
+      background: rgba(10, 10, 15, 0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Staggered Hero Entrance */
+    @keyframes heroFadeUp {
+      0% { opacity: 0; transform: translateY(22px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero-animate-1 { animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .hero-animate-2 { animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both; }
+    .hero-animate-3 { animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both; }
+    .hero-animate-4 { animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both; }
+
+    /* Scroll Reveals */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mouse Spotlight Glow on Cards */
+    .spotlight-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(244, 63, 94, 0.4),
+        transparent 65%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    /* 3D Cylindrical Stage */
+    .carousel-stage {
+      perspective: 1300px;
+      perspective-origin: 50% 50%;
+      overflow: visible;
+      user-select: none;
+      touch-action: pan-y;
+    }
+    .carousel-ring {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+      will-change: transform;
+    }
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -160px;
+      width: 320px;
+      height: 450px;
+      transform-style: preserve-3d;
+      backface-visibility: visible;
+      transition: filter 0.3s ease, border-color 0.3s ease, transform 0.4s ease;
+      cursor: grab;
+    }
+    .carousel-item:active {
+      cursor: grabbing;
+    }
+    @media (min-width: 768px) {
+      .carousel-item {
+        margin-left: -190px;
+        width: 380px;
+        height: 480px;
+      }
+    }
+
+    .glow-btn {
+      box-shadow: 0 0 24px rgba(244, 63, 94, 0.45);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 36px rgba(244, 63, 94, 0.75);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .cert-seal {
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    }
+
+    .terminal-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-[#05060A] text-neutral-100 antialiased font-sans min-h-screen selection:bg-rose-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. TOP CONTINUOUS MARQUEE TICKER (.arcSUMMIT Style)
+       ========================================================================= -->
+  <aside class="sticky top-0 z-50 w-full bg-black/95 border-b border-white/10 overflow-hidden py-1.5 select-none backdrop-blur-md">
+    <div class="animate-marquee items-center text-[11px] font-mono tracking-widest text-neutral-300">
+      <div class="flex shrink-0 items-center gap-6 pr-6">
+        <span class="flex items-center gap-3"><span>VIBE CODER &amp; CREATIVE TECHNOLOGIST</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>SHIPPING AT AI VELOCITY</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>LUCKNOW, INDIA</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>REAL-TIME SSE &amp; 3D WEBGL ENGINES</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>15K+ SPATIAL FIELD AUDITS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>OPEN FOR FOUNDING &amp; BUILDER ROLES</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+      </div>
+      <div class="flex shrink-0 items-center gap-6 pr-6" aria-hidden="true">
+        <span class="flex items-center gap-3"><span>VIBE CODER &amp; CREATIVE TECHNOLOGIST</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>SHIPPING AT AI VELOCITY</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>LUCKNOW, INDIA</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>REAL-TIME SSE &amp; 3D WEBGL ENGINES</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>15K+ SPATIAL FIELD AUDITS</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+        <span class="flex items-center gap-3"><span>OPEN FOR FOUNDING &amp; BUILDER ROLES</span><span class="inline-block w-1.5 h-1.5 rounded-sm bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. CINEMATIC HERO SECTION (.arcSUMMIT Visual System)
+       ========================================================================= -->
+  <header class="relative w-full overflow-hidden pt-6 pb-20">
+    <div class="absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-700 pointer-events-none"
+         style="background-image: url('arc_summit_preview.png'); background-position: center bottom;">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/40 to-[#05060A]"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#05060A] via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Floating Glassmorphism Navbar -->
+    <nav class="relative z-30 max-w-7xl w-full mx-auto px-6 mb-12">
+      <div class="glass-nav rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl">
+        <a href="#hero" class="flex items-center gap-1 group">
+          <span class="text-rose-400 font-mono text-xl font-bold tracking-tight">.yash</span>
+          <span class="text-white text-xl font-extrabold tracking-widest uppercase">VERMA</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider text-neutral-300">
+          <a href="#showcase" class="hover:text-rose-400 transition-colors">01. 3D DECK</a>
+          <a href="#metrics" class="hover:text-rose-400 transition-colors">02. METRICS</a>
+          <a href="#arsenal" class="hover:text-rose-400 transition-colors">03. ARSENAL</a>
+          <a href="#trajectory" class="hover:text-rose-400 transition-colors text-rose-300 font-semibold">04. TRAJECTORY &amp; CERTIFICATES</a>
+          <a href="#foundation" class="hover:text-rose-400 transition-colors">05. EDUCATION</a>
+          <a href="#transmission" class="hover:text-rose-400 transition-colors">06. TERMINAL</a>
+        </div>
+
+        <!-- External CTAs -->
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/yashverma1611" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
+            <i data-lucide="github" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/yash-kumar-verma-7405a4405/" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono text-blue-300 hover:text-white bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 transition-all">
+            <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">LinkedIn</span>
+          </a>
+          <a href="#transmission" class="glow-btn bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white text-xs font-semibold px-4 py-2 rounded-full inline-flex items-center gap-1.5">
+            <span>Dispatch →</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Editorial Headline -->
+    <div id="hero" class="relative z-20 max-w-5xl mx-auto px-6 text-center">
+      <div class="hero-animate-1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/15 text-[11px] font-mono uppercase tracking-wider text-rose-300 mb-6 shadow-lg">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+        <span>⚡ Vibe Coder &amp; Creative Technologist · Lucknow, India</span>
+      </div>
+
+      <h1 class="hero-animate-2 editorial-title text-5xl sm:text-7xl md:text-8xl text-white drop-shadow-[0_12px_45px_rgba(0,0,0,0.95)]">
+        Idea to Working MVP.<br>
+        <span class="italic font-light text-neutral-100">Shipped at AI Velocity.</span>
+      </h1>
+
+      <p class="hero-animate-3 mt-6 max-w-2xl mx-auto text-sm sm:text-base text-neutral-300 drop-shadow-md font-sans leading-relaxed">
+        I build and ship high-velocity software powered by modern AI workflows — blending real-time event telemetry (SSE), spatial GIS intelligence, and interactive 3D WebGL interfaces. High design taste, zero boilerplate fatigue, and pure 0→1 execution speed.
+      </p>
+
+      <div class="hero-animate-4 mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#showcase" class="px-6 py-3 rounded-full text-xs font-mono tracking-widest text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
+          <span>SPIN 3D PROJECT DECK</span>
+          <span>↓</span>
+        </a>
+        <a href="#trajectory" class="px-6 py-3 rounded-full text-xs font-mono tracking-widest text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 transition-all flex items-center gap-2">
+          <i data-lucide="award" class="w-3.5 h-3.5"></i>
+          <span>VERIFY CERTIFICATES (5)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. CENTERPIECE: 3D CYLINDRICAL CAROUSEL SHOWCASE
+       ========================================================================= -->
+  <section id="showcase" class="relative z-20 py-20 border-t border-white/10 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <div class="text-[11px] font-mono text-rose-400 uppercase tracking-widest mb-2">SCENE 01 // 3D INTERACTIVE STAGE</div>
+        <h2 class="editorial-title text-4xl sm:text-5xl text-white">Flagship 3D Project Deck.</h2>
+        <p class="text-xs text-neutral-400 mt-2 font-mono">
+          Drag horizontally, swipe, or use your scroll-wheel to rotate through the 3D ring. Click any card to inspect.
+        </p>
+      </div>
+
+      <!-- Carousel Navigation Controls & Add Project -->
+      <div class="flex items-center gap-3">
+        <button onclick="openNewProjectModal()" class="px-3.5 py-2.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 text-xs font-mono flex items-center gap-2 transition-all">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>Add Project</span>
+        </button>
+        <button id="prevBtn" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </button>
+        <button id="nextBtn" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all">
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3D Cylindrical Container -->
+    <div class="carousel-stage relative w-full h-[520px] md:h-[560px] flex items-center justify-center">
+      <div id="carouselRing" class="carousel-ring relative w-full h-full flex items-center justify-center">
+
+        <!-- CARD 01: BCA GATEKEEPER QR SYSTEM -->
+        <article class="carousel-item spotlight-card rounded-2xl bg-neutral-900/90 border border-white/15 p-6 shadow-2xl flex flex-col justify-between"
+                 onclick="openCertificateModal('qr')">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-rose-500/20 text-rose-300 font-mono text-[10px] border border-rose-500/30">FULL-STACK &amp; TELEMETRY</span>
+              <span class="text-xs font-mono text-neutral-400">01 / 04</span>
+            </div>
+            <h3 class="editorial-title text-2xl text-white mb-2">BCA Gatekeeper QR System</h3>
+            <p class="text-xs text-neutral-300 leading-relaxed font-sans mb-4">
+              Real-time event check-in architecture featuring Server-Sent Events (SSE) telemetry, sub-0.5s camera QR verification, and offline resilience.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4 font-mono text-[10px] text-neutral-400">
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Flask</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">SQLite</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">SSE Telemetry</span>
+            </div>
+            <button class="w-full py-2 rounded-xl bg-white/10 hover:bg-rose-500 text-white text-xs font-mono transition-colors flex items-center justify-center gap-1.5">
+              <span>Inspect Case Study</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 02: 15K BUILDING SPATIAL AUDIT -->
+        <article class="carousel-item spotlight-card rounded-2xl bg-neutral-900/90 border border-white/15 p-6 shadow-2xl flex flex-col justify-between"
+                 onclick="openCertificateModal('aircode')">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 font-mono text-[10px] border border-blue-500/30">GIS &amp; SPATIAL AUDITING</span>
+              <span class="text-xs font-mono text-neutral-400">02 / 04</span>
+            </div>
+            <h3 class="editorial-title text-2xl text-white mb-2">15K+ Building Spatial Audit</h3>
+            <p class="text-xs text-neutral-300 leading-relaxed font-sans mb-4">
+              Comprehensive 6-week field training at Aircode Technologies. Georeferenced, polygon-digitized, and structured attributes for 15,000+ urban structures.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4 font-mono text-[10px] text-neutral-400">
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">QGIS</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Georeferencing</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Aircode Tech</span>
+            </div>
+            <button class="w-full py-2 rounded-xl bg-white/10 hover:bg-rose-500 text-white text-xs font-mono transition-colors flex items-center justify-center gap-1.5">
+              <span>Verify Experience Certificate</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 03: IFOOD CONSUMER PREDICTIONS -->
+        <article class="carousel-item spotlight-card rounded-2xl bg-neutral-900/90 border border-white/15 p-6 shadow-2xl flex flex-col justify-between"
+                 onclick="openCertificateModal('ifood')">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 font-mono text-[10px] border border-purple-500/30">CONSUMER BI &amp; EDA</span>
+              <span class="text-xs font-mono text-neutral-400">03 / 04</span>
+            </div>
+            <h3 class="editorial-title text-2xl text-white mb-2">iFood Consumer Personality</h3>
+            <p class="text-xs text-neutral-300 leading-relaxed font-sans mb-4">
+              End-to-end exploratory analysis on 2,200+ consumer records. Uncovered purchasing channels, campaign responsiveness, and executive Tableau models.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4 font-mono text-[10px] text-neutral-400">
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Tableau</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Python EDA</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Clustering</span>
+            </div>
+            <button class="w-full py-2 rounded-xl bg-white/10 hover:bg-rose-500 text-white text-xs font-mono transition-colors flex items-center justify-center gap-1.5">
+              <span>Inspect Case Study</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 04: PASSWORD SECURITY ANALYZER -->
+        <article class="carousel-item spotlight-card rounded-2xl bg-neutral-900/90 border border-white/15 p-6 shadow-2xl flex flex-col justify-between"
+                 onclick="openCertificateModal('mastercard')">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px] border border-amber-500/30">CYBERSECURITY OPS</span>
+              <span class="text-xs font-mono text-neutral-400">04 / 04</span>
+            </div>
+            <h3 class="editorial-title text-2xl text-white mb-2">Password Security Analyzer</h3>
+            <p class="text-xs text-neutral-300 leading-relaxed font-sans mb-4">
+              Algorithmic password entropy and strength evaluator inspired by Mastercard cybersecurity job simulation paradigms.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4 font-mono text-[10px] text-neutral-400">
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Python</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Entropy Models</span>
+              <span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">Mastercard</span>
+            </div>
+            <button class="w-full py-2 rounded-xl bg-white/10 hover:bg-rose-500 text-white text-xs font-mono transition-colors flex items-center justify-center gap-1.5">
+              <span>Verify Mastercard Proof</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. SCENE 02: CORE METRICS STRIP (ANIMATED NUMBER COUNTERS)
+       ========================================================================= -->
+  <section id="metrics" class="relative z-20 border-y border-white/10 bg-black/60 backdrop-blur-xl py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-[11px] font-mono text-rose-400 uppercase tracking-widest mb-2">SCENE 02 // QUANTITATIVE RIGOR</div>
+      <h2 class="text-xl sm:text-2xl font-semibold text-white mb-8 max-w-3xl">
+        High-scale data processing backed by <span class="text-rose-400">rigorous analytical verification</span> and field execution.
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal-on-scroll p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+          <div class="text-4xl font-mono font-bold text-white mb-1">
+            <span class="count-up" data-target="15000" data-suffix="K+">0</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-300 font-semibold mb-2">Buildings Audited</div>
+          <p class="text-[11px] text-neutral-400 leading-relaxed font-sans">
+            Georeferenced, polygon-digitized, and attribute-structured in QGIS during 6-week industry GIS field training at Aircode Technologies.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+          <div class="text-4xl font-mono font-bold text-white mb-1">
+            <span class="count-up" data-target="2200" data-suffix="K+">0</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-300 font-semibold mb-2">Customer Profiles</div>
+          <p class="text-[11px] text-neutral-400 leading-relaxed font-sans">
+            End-to-end exploratory data analysis and executive Tableau dashboard modeling on the iFood consumer behavior dataset.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+          <div class="text-4xl font-mono font-bold text-white mb-1">
+            <span class="count-up" data-target="95" data-suffix="%">0</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-300 font-semibold mb-2">AI Proficiency Score</div>
+          <p class="text-[11px] text-neutral-400 leading-relaxed font-sans">
+            Certified through UNICEF's Digital Productivity with AI program, accelerating data analysis workflows.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll p-6 rounded-2xl bg-neutral-900/40 border border-rose-500/30 bg-rose-500/5">
+          <div class="text-4xl font-mono font-bold text-rose-400 mb-1">
+            <span class="count-up" data-target="0.5" data-prefix="<" data-suffix="s" data-decimal="1">0</span>
+          </div>
+          <div class="text-xs font-mono text-rose-300 font-semibold mb-2">Live QR Check-in</div>
+          <p class="text-[11px] text-neutral-400 leading-relaxed font-sans">
+            Real-time Server-Sent Events (SSE) telemetry and offline-resilient camera QR verification for university events.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. SCENE 03: TECHNICAL ARSENAL (9 CORE COMPETENCIES)
+       ========================================================================= -->
+  <section id="arsenal" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="mb-16">
+      <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">SCENE 03 // TECHNICAL ARSENAL</span>
+      <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Tools &amp; Capabilities.</h2>
+      <p class="text-xs text-neutral-400 mt-2 font-mono">
+        Technologies and paradigms deployed across field surveys, business intelligence, and high-velocity builds.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mb-4">
+          <i data-lucide="map" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">QGIS</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Polygon vector digitization, spatial joins, coordinate reference systems (CRS/EPSG), topological verification, and raster-to-vector workflows.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-4">
+          <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Tableau</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Building interactive executive dashboards, calculated fields, level of detail (LOD) expressions, parameters, and customer segment profiling.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+          <i data-lucide="table" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Advanced Excel</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          VLOOKUP / XLOOKUP, INDEX-MATCH, complex multi-condition nested IF statements, Pivot Tables, conditional formatting, and financial forecast models.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+          <i data-lucide="check-circle" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Data Validation &amp; Cleaning</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Deduplication, normalization, handling missing values, identifying outliers, and structuring raw inputs into analysis-ready formats.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Spatial Data Analysis</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Attribute mapping, boundary demarcation, buffer zones, spatial indexing, and structuring geo-tagged datasets for urban analytics.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4">
+          <i data-lucide="compass" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Georeferencing</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Ground Control Point (GCP) alignment, transforming unprojected aerial and scanned maps into accurately calibrated spatial coordinate spaces.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center mb-4">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">GenAI-Assisted Analytics</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Prompt engineering, automated data pipeline synthesis, and AI-accelerated exploratory workflows (UNICEF 95% Certified).
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-4">
+          <i data-lucide="database" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Database Management</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Relational database schemas (SQLite / PostgreSQL), SQL queries, filtering, aggregation, and backend data integrity constraints.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mb-4">
+          <i data-lucide="shield" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white font-mono mb-2">Responsible AI &amp; Problem Solving</h3>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Root cause analysis, ethical AI data considerations, risk governance, and converting operational bottlenecks into automated technical solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. SCENE 04: CAREER TRAJECTORY & VERIFIED CREDENTIALS
+       ========================================================================= -->
+  <section id="trajectory" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="mb-16">
+      <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">SCENE 04 // CAREER TRAJECTORY &amp; VERIFIED CREDENTIALS</span>
+      <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Professional Path &amp; Credentials.</h2>
+      <p class="text-xs text-neutral-400 mt-2 font-mono">
+        Field audits, industry training, and verified certifications from Aircode Technologies, Tata, Deloitte, Mastercard, and UNICEF.
+      </p>
+    </div>
+
+    <div class="relative pl-6 sm:pl-10 border-l border-white/15 space-y-12">
+
+      <!-- Timeline 01: Aircode Technologies -->
+      <div class="relative group">
+        <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-rose-500 border-4 border-[#05060A] shadow-[0_0_12px_#f43f5e]"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <span class="text-[11px] font-mono text-rose-400 font-bold uppercase tracking-wider">JULY 2026 – AUGUST 2026 · 6 WEEKS</span>
+            <h3 class="text-xl font-bold text-white mt-1">GIS Trainee - Aircode Technologies Pvt. Ltd.</h3>
+          </div>
+          <button onclick="openCertificateModal('aircode')" class="px-3.5 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-mono flex items-center gap-1.5 transition-all self-start sm:self-center">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>View Experience Certificate</span>
+          </button>
+        </div>
+        <div class="text-xs font-mono text-neutral-400 mb-3">
+          Relieved: August 31, 2026 · Certificate Dated: September 04, 2026 · Authorized: Abhijeet Singh (Director, ACTPL)
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed font-sans max-w-3xl">
+          Completed intensive field GIS operations for Aircode Technologies Pvt. Ltd. (Indira Nagar, Lucknow). Georeferenced satellite base maps, digitized 15,000+ building footprint vectors in QGIS, and populated dense attribute schema including floor counts, rooftop structure, and building occupancy state.
+        </p>
+      </div>
+
+      <!-- Timeline 02: Tata Simulation -->
+      <div class="relative group">
+        <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#05060A] shadow-[0_0_12px_#22d3ee]"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <span class="text-[11px] font-mono text-cyan-400 font-bold uppercase tracking-wider">JUNE 2026 – JULY 2026</span>
+            <h3 class="text-xl font-bold text-white mt-1">Tata - GenAI Powered Data Analytics Job Simulation</h3>
+          </div>
+          <button onclick="openCertificateModal('tata')" class="px-3.5 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center gap-1.5 transition-all self-start sm:self-center">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>Verify Certificate</span>
+          </button>
+        </div>
+        <div class="text-xs font-mono text-neutral-400 mb-3">
+          Issued: July 28, 2026 · Issuer: Forage · Code: aoR769CTBDftiRbAN
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed font-sans max-w-3xl">
+          Executed practical corporate consulting tasks: exploratory data analysis and risk profiling, predicting delinquency using AI models, business reporting and data storytelling for collections strategies, and deploying an AI-driven collections strategy.
+        </p>
+      </div>
+
+      <!-- Timeline 03: Deloitte Simulation -->
+      <div class="relative group">
+        <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#05060A] shadow-[0_0_12px_#c084fc]"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <span class="text-[11px] font-mono text-purple-400 font-bold uppercase tracking-wider">JUNE 2026</span>
+            <h3 class="text-xl font-bold text-white mt-1">Deloitte - Data Analytics Job Simulation</h3>
+          </div>
+          <button onclick="openCertificateModal('deloitte')" class="px-3.5 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-mono flex items-center gap-1.5 transition-all self-start sm:self-center">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>Verify Certificate</span>
+          </button>
+        </div>
+        <div class="text-xs font-mono text-neutral-400 mb-3">
+          Issued: June 20, 2026 · Issuer: Forage · Code: pMSNqEi8PTyrND7TJ · Tina McCreery (CHRO, Deloitte)
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed font-sans max-w-3xl">
+          Delivered forensic technology audit, structured messy financial transaction records, identified irregular entries, and built analytical dashboards translating technical findings into executive briefs.
+        </p>
+      </div>
+
+      <!-- Timeline 04: Mastercard Simulation -->
+      <div class="relative group">
+        <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-4 border-[#05060A] shadow-[0_0_12px_#fbbf24]"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <span class="text-[11px] font-mono text-amber-400 font-bold uppercase tracking-wider">JUNE 2026</span>
+            <h3 class="text-xl font-bold text-white mt-1">Mastercard - Cybersecurity Job Simulation</h3>
+          </div>
+          <button onclick="openCertificateModal('mastercard')" class="px-3.5 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-mono flex items-center gap-1.5 transition-all self-start sm:self-center">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>Verify Certificate</span>
+          </button>
+        </div>
+        <div class="text-xs font-mono text-neutral-400 mb-3">
+          Issued: June 20, 2026 · Issuer: Forage · Code: iAnSKycqZ6qCP4QM4
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed font-sans max-w-3xl">
+          Designed targeted phishing email simulations to evaluate organizational vulnerabilities, interpreted phishing telemetries, and formulated remediation protocols.
+        </p>
+      </div>
+
+      <!-- Timeline 05: UNICEF AI Program -->
+      <div class="relative group">
+        <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 border-4 border-[#05060A] shadow-[0_0_12px_#34d399]"></div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <span class="text-[11px] font-mono text-emerald-400 font-bold uppercase tracking-wider">MARCH 2026</span>
+            <h3 class="text-xl font-bold text-white mt-1">Digital Productivity with AI - UNICEF Program</h3>
+          </div>
+          <button onclick="openCertificateModal('unicef')" class="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-1.5 transition-all self-start sm:self-center">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>Verify Certificate (95%)</span>
+          </button>
+        </div>
+        <div class="text-xs font-mono text-neutral-400 mb-3">
+          Issued: March 11, 2026 · Issuer: YuWaah! Generation Unlimited &amp; UNICEF · Score: 95%
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed font-sans max-w-3xl">
+          Completed comprehensive AI productivity curriculum covering prompt engineering, workflow automation, and AI-accelerated data synthesis under Ms. Giorgia Varisco (Chief of Generation Unlimited, UNICEF).
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. SCENE 05: ACADEMIC FOUNDATION
+       ========================================================================= -->
+  <section id="foundation" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="mb-16">
+      <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">SCENE 05 // ACADEMIC FOUNDATION</span>
+      <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Academic Foundation.</h2>
+      <p class="text-xs text-neutral-400 mt-2 font-mono">
+        Formal education in Computer Applications and scientific disciplines.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Degree -->
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="flex items-center justify-between mb-4">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">CURRENT DEGREE</span>
+          <span class="text-xs font-mono text-neutral-500">2025 – 2028</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Bachelor's of Computer Application (BCA)</h3>
+        <p class="text-xs text-rose-400 font-mono mb-4">City College of Management, Lucknow</p>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Rigorous academic training in Data Structures, Database Management Systems (DBMS), Advanced Excel, Python programming, and statistical mathematics.
+        </p>
+      </div>
+
+      <!-- 12th -->
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="flex items-center justify-between mb-4">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/10 text-neutral-300 border border-white/10">SENIOR SECONDARY</span>
+          <span class="text-xs font-mono text-neutral-500">2024 – 2025</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Intermediate (12th) - Science Stream (PCB)</h3>
+        <p class="text-xs text-rose-400 font-mono mb-4">Mahavir Inter College, Aliganj, Lucknow</p>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Concentration in Physics, Chemistry, and Biology (PCB). Disciplined scientific methodology, observational data accuracy, and analytical problem-solving.
+        </p>
+      </div>
+
+      <!-- 10th -->
+      <div class="p-6 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <div class="flex items-center justify-between mb-4">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/10 text-neutral-300 border border-white/10">SECONDARY</span>
+          <span class="text-xs font-mono text-neutral-500">2022 – 2023</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">High School (10th)</h3>
+        <p class="text-xs text-rose-400 font-mono mb-4">Mahavir Inter College, Aliganj, Lucknow</p>
+        <p class="text-xs text-neutral-400 leading-relaxed font-sans">
+          Foundational curriculum covering Mathematics, Sciences, and basic computer science literacy.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. SCENE 06: TRANSMISSION TERMINAL & DISPATCH
+       ========================================================================= -->
+  <section id="transmission" class="relative z-20 max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="mb-16">
+      <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">SCENE 06 // INITIATE TRANSMISSION</span>
+      <h2 class="editorial-title text-4xl sm:text-5xl text-white mt-2">Initiate Transmission.</h2>
+      <p class="text-xs text-neutral-400 mt-2 font-mono">
+        Connect directly via the interactive CLI shell or dispatch an executive contact brief.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+      <!-- Interactive Shell Terminal -->
+      <div class="rounded-2xl bg-black border border-white/15 p-6 shadow-2xl font-mono text-xs">
+        <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10 text-neutral-400">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 text-neutral-300">bash — yash-analytics-terminal</span>
+          </div>
+          <span class="text-[10px] text-neutral-500">v2.4.0</span>
+        </div>
+
+        <div id="terminalBody" class="h-64 overflow-y-auto terminal-scroll space-y-3 mb-4 text-neutral-300 leading-relaxed">
+          <div class="text-rose-400">YASH VERMA ANALYTICS SHELL INITIALIZED [arcSUMMIT Kernel].</div>
+          <div class="text-neutral-400">Type <span class="text-rose-400 font-bold">'help'</span> to see available commands or <span class="text-cyan-400 font-bold">'certs'</span> to review verified credentials.</div>
+        </div>
+
+        <form onsubmit="handleTerminalCommand(event)" class="flex items-center gap-2 pt-2 border-t border-white/10">
+          <span class="text-rose-400 font-bold">guest@yash-verma:~$</span>
+          <input type="text" id="terminalInput" placeholder="Type 'help' and press enter..." autocomplete="off"
+                 class="flex-1 bg-transparent border-none text-white focus:outline-none font-mono text-xs placeholder-neutral-600">
+          <button type="submit" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-neutral-300 transition-colors">Run</button>
+        </form>
+      </div>
+
+      <!-- Direct Message Dispatch Form -->
+      <div class="p-8 rounded-2xl bg-neutral-900/40 border border-white/10">
+        <h3 class="text-xl font-bold text-white mb-2 font-mono">Direct Dispatch</h3>
+        <p class="text-xs text-neutral-400 mb-6 font-sans">
+          Have an open Data Analyst or GIS role, a spatial auditing project, or a rapid MVP build? Send a direct dispatch.
+        </p>
+
+        <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs font-mono">
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Your Name / Organization</label>
+            <input type="text" id="contactName" required placeholder="e.g. Hiring Manager / Recruiter"
+                   class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+          </div>
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Transmission Email</label>
+            <input type="email" id="contactEmail" required placeholder="you@company.com"
+                   class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+          </div>
+          <div>
+            <label class="block text-neutral-400 uppercase tracking-wider mb-2">Brief / Opportunity Scope</label>
+            <textarea id="contactMessage" rows="3" required placeholder="Details on your GIS pipeline, data modeling requirements, or candidate profile..."
+                      class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-600 shadow-lg hover:opacity-95 transition-all text-xs tracking-wider uppercase">
+            Dispatch Direct Message →
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. FOOTER
+       ========================================================================= -->
+  <footer class="relative z-20 border-t border-white/10 bg-black/90 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-400 font-mono">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-neutral-200">ACTIVE // LUCKNOW, INDIA</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/yashverma1611" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/yash-kumar-verma-7405a4405/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+        <a href="mailto:90yashkumar@gmail.com" class="hover:text-white transition-colors">Email</a>
+      </div>
+      <div>
+        <span>&copy; 2026 Yash Kumar Verma · All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       12. MODAL: VERIFIED CERTIFICATE LIGHTBOX (WITH BACKSPACE & BACK BUTTON FIX)
+       ========================================================================= -->
+  <div id="certModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex items-center justify-center p-4"
+       onclick="if(event.target === this) closeCertificateModal()">
+    <div class="bg-neutral-900 border border-white/20 rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative cert-seal overflow-y-auto max-h-[90vh]">
+      <button onclick="closeCertificateModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="certModalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       13. MODAL: ADD NEW PROJECT
+       ========================================================================= -->
+  <div id="newProjectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4"
+       onclick="if(event.target === this) closeNewProjectModal()">
+    <div class="bg-neutral-900 border border-white/20 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeNewProjectModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-4">
+        <span class="text-xs font-mono text-rose-400 uppercase tracking-widest">PORTFOLIO EXPANSION</span>
+        <h3 class="editorial-title text-3xl text-white mt-1">Add Another Project</h3>
+        <p class="text-xs text-neutral-400 mt-1 font-sans">
+          Enter your new project details below to add it directly to this portfolio showcase.
+        </p>
+      </div>
+
+      <form onsubmit="addNewProject(event)" class="space-y-4 text-xs font-mono">
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Project Title</label>
+          <input type="text" id="npTitle" required placeholder="e.g. Spatial Land Use Classifier" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Domain Tag</label>
+          <input type="text" id="npDomain" required placeholder="e.g. QGIS & SATELLITE IMAGERY" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Key Metric / Stat</label>
+          <input type="text" id="npStat" required placeholder="e.g. 99.2% Accuracy / 50k Records" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Summary</label>
+          <textarea id="npSummary" rows="3" required placeholder="Brief description of methodology, dataset size, and results achieved..." 
+                    class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500"></textarea>
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Tech Stack (comma separated)</label>
+          <input type="text" id="npTags" required placeholder="e.g. Python, QGIS, GDAL, Sentinel-2" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-neutral-400 uppercase tracking-wider mb-1.5">Project / Repository Link</label>
+          <input type="url" id="npLink" placeholder="https://github.com/yashverma1611/your-project" 
+                 class="w-full bg-black/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-rose-500">
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+          <button type="button" onclick="closeNewProjectModal()" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-400">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold">Publish Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       14. WIDGET: SMART INBOUND SOCIAL CONNECTOR (INSTAGRAM & LINKEDIN)
+       ========================================================================= -->
+  <div id="smartConnectWidget" class="fixed bottom-6 right-6 z-40 max-w-sm w-[calc(100vw-3rem)] sm:w-96 hidden transition-all duration-500 transform translate-y-8 opacity-0">
+    <div class="rounded-2xl bg-neutral-950/95 backdrop-blur-xl border border-white/20 p-5 shadow-[0_15px_40px_rgba(0,0,0,0.85)] relative cert-seal">
+      <button onclick="dismissSmartConnect()" class="absolute top-3.5 right-3.5 text-neutral-400 hover:text-white p-1 rounded-md transition-colors" title="Dismiss">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="smartConnectHeader" class="flex items-center gap-2 mb-2">
+        <!-- Injected via JavaScript based on platform source -->
+      </div>
+
+      <p id="smartConnectText" class="text-xs text-neutral-300 font-sans mb-3.5 leading-relaxed">
+        <!-- Injected via JavaScript -->
+      </p>
+
+      <div id="smartConnectForm" class="flex items-center gap-2">
+        <input type="text" id="visitorHandleInput" placeholder="@handle or profile link" 
+               class="flex-1 bg-black/60 border border-white/15 focus:border-rose-500 rounded-xl px-3.5 py-2 text-xs font-mono text-white placeholder-neutral-500 focus:outline-none transition-colors">
+        <button id="visitorHandleBtn" onclick="submitVisitorHandle()" 
+                class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:opacity-90 text-white font-mono text-xs font-bold transition-all shadow-md flex items-center gap-1.5 whitespace-nowrap">
+          <span>Connect</span>
+          <i data-lucide="send" class="w-3 h-3"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       15. CLIENT SCRIPTS (3D CYLINDER + BACKSPACE FIX + TELEMETRY + TERMINAL)
+       ========================================================================= -->
+  <script>
+    lucide.createIcons();
+
+    // Verifiable Credentials Database
+    const certificates = {
+      aircode: {
+        title: "Experience Certificate — GIS Trainee",
+        issuer: "Aircode Technologies Pvt. Ltd.",
+        date: "September 04, 2026 (Tenure: July 01, 2026 – August 31, 2026)",
+        badge: "VERIFIED INDUSTRY INTERNSHIP",
+        badgeColor: "rose",
+        pdfUrl: "training certificate.pdf",
+        signatory: "Abhijeet Singh (Director, ACTPL)",
+        reg: "TAN: LKNA10813F | PAN: AAPCA4409D | 19/1024 Indira Nagar, Lucknow-226016",
+        tasks: [
+          "Digitized and structured 15,000+ building polygons in QGIS",
+          "Collected and normalized dense attributes (height, roof age, materials, facade state)",
+          "Rendered services with due responsibility, passion, and high commitment as GIS Trainee"
+        ]
+      },
+      tata: {
+        title: "GenAI Powered Data Analytics Job Simulation",
+        issuer: "Tata Consultancy Services (via Forage)",
+        date: "July 28th, 2026 (Period: June 2026 – July 2026)",
+        badge: "VERIFIED FORAGE SIMULATION",
+        badgeColor: "cyan",
+        pdfUrl: "tata.pdf",
+        signatory: "Tom Brunskill (Co-Founder of Forage)",
+        codes: "Enrolment Code: aoR769CTBDftiRbAN | User Hash: 6a32b2e40b43dc591f5404ae",
+        tasks: [
+          "Exploratory data analysis and customer risk profiling",
+          "Predicting delinquency using AI model architectures",
+          "Business report and executive data storytelling for collections strategy",
+          "Implementing an AI-driven collections strategy with bias guardrails"
+        ]
+      },
+      deloitte: {
+        title: "Data Analytics Job Simulation",
+        issuer: "Deloitte (via Forage)",
+        date: "June 20th, 2026 (Period: June 2026)",
+        badge: "VERIFIED FORAGE SIMULATION",
+        badgeColor: "purple",
+        pdfUrl: "deloitte.pdf",
+        signatory: "Tina McCreery (Chief Human Resources Officer, Deloitte)",
+        codes: "Enrolment Code: pMSNqEi8PTyrND7TJ | User Hash: 6a32b2e40b43dc591f5404ae",
+        tasks: [
+          "Data analysis and financial modeling in Microsoft Excel",
+          "Forensic technology analysis and master spreadsheet audit",
+          "Translating consulting insights into executive Tableau dashboard presentations"
+        ]
+      },
+      mastercard: {
+        title: "Cybersecurity Job Simulation",
+        issuer: "Mastercard (via Forage)",
+        date: "June 20th, 2026 (Period: June 2026)",
+        badge: "VERIFIED FORAGE SIMULATION",
+        badgeColor: "amber",
+        pdfUrl: "mastercard.pdf",
+        signatory: "Tom Brunskill (Co-Founder of Forage)",
+        codes: "Enrolment Code: iAnSKycqZ6qCP4QM4 | User Hash: 6a32b2e40b43dc591f5404ae",
+        tasks: [
+          "Design a targeted phishing email security simulation",
+          "Interpret phishing simulation results and evaluate threat exposure",
+          "Identify cybersecurity thresholds to harden organizational defenses"
+        ]
+      },
+      unicef: {
+        title: "Digital Productivity with AI",
+        issuer: "YuWaah! Generation Unlimited & UNICEF (Passport to Earning)",
+        date: "March 11, 2026",
+        badge: "VERIFIED UNICEF CERTIFICATION (95%)",
+        badgeColor: "emerald",
+        pdfUrl: "unicef certificate.pdf",
+        signatory: "Ms. Giorgia Varisco (Chief of Generation Unlimited, UNICEF)",
+        codes: "Final Examination Score: 95% High Honors | Generation Unlimited",
+        tasks: [
+          "Mastering Generative AI for operational synthesis & documentation",
+          "Automated exploratory prompt flows & data cleaning acceleration",
+          "Responsible and ethical AI deployment for professional workflows"
+        ]
+      },
+      qr: {
+        title: "BCA Gatekeeper QR System",
+        issuer: "City College of Management Event Architecture",
+        date: "2026 Operational Build",
+        badge: "FULL-STACK & TELEMETRY",
+        badgeColor: "rose",
+        pdfUrl: null,
+        signatory: "Engineered by Yash Kumar Verma",
+        codes: "Sub-0.5s Camera QR Decode · Offline SQLite Storage · Server-Sent Events",
+        tasks: [
+          "Engineered real-time telemetry streaming via Server-Sent Events (SSE)",
+          "In-browser client-side camera QR scanning with <0.5s check-in latency",
+          "Offline-resilient SQLite local storage preventing admission bottlenecks"
+        ]
+      },
+      ifood: {
+        title: "iFood Consumer Personality Analysis",
+        issuer: "Consumer BI & Predictive Modeling Portfolio",
+        date: "2026 Operational Build",
+        badge: "CONSUMER BI & EDA",
+        badgeColor: "purple",
+        pdfUrl: null,
+        signatory: "Modeled in Tableau & Python",
+        codes: "2,200+ Customer Records Analyzed · 45% Wine Spend Discovery",
+        tasks: [
+          "End-to-end exploratory data analysis across purchasing channels and customer demographics",
+          "Customer segmentation and campaign conversion uplift modeling",
+          "Executive interactive Tableau dashboards for marketing strategy formulation"
+        ]
+      }
+    };
+
+    // =========================================================================
+    // MODAL HANDLER WITH PERMANENT BACKSPACE & BACK-BUTTON FIX
+    // =========================================================================
+    let activeModal = null;
+
+    function openCertificateModal(certKey) {
+      const c = certificates[certKey];
+      if (!c) return;
+
+      const content = `
+        <div class="flex items-center justify-between mb-4">
+          <span class="px-2.5 py-1 rounded-md text-[10px] font-mono tracking-wider font-bold bg-${c.badgeColor}-500/10 text-${c.badgeColor}-300 border border-${c.badgeColor}-500/30">
+            ${c.badge}
+          </span>
+          <span class="text-xs font-mono text-neutral-400">${c.date}</span>
+        </div>
+
+        <h3 class="editorial-title text-3xl text-white mb-1">${c.title}</h3>
+        <p class="text-sm font-mono text-neutral-300 mb-6">${c.issuer}</p>
+
+        <div class="rounded-xl bg-black/60 border border-white/10 p-5 mb-6 text-xs font-mono">
+          <div class="text-neutral-400 uppercase tracking-widest text-[10px] mb-3">Certified Competencies & Practical Tasks:</div>
+          <ul class="space-y-2">
+            ${c.tasks.map(t => `<li class="flex items-start gap-2.5 text-neutral-200"><span class="text-${c.badgeColor}-400 font-bold">✓</span><span>${t}</span></li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/10 text-xs font-mono space-y-2 text-neutral-300">
+          <div><strong class="text-white">Authorized Signatory:</strong> ${c.signatory}</div>
+          ${c.reg ? `<div><strong class="text-white">Official Registration:</strong> ${c.reg}</div>` : ''}
+          ${c.codes ? `<div><strong class="text-white">Verification Tokens:</strong> <span class="text-neutral-400">${c.codes}</span></div>` : ''}
+        </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs font-mono">
+          <span class="text-emerald-400 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+            <span>Document Verified for Yash Kumar Verma</span>
+          </span>
+          <div class="flex items-center gap-3">
+            ${c.pdfUrl ? `
+              <a href="${c.pdfUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-${c.badgeColor}-500/20 hover:bg-${c.badgeColor}-500/30 text-${c.badgeColor}-300 border border-${c.badgeColor}-500/40 flex items-center gap-1.5 transition-all font-semibold">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                <span>Open Original PDF</span>
+              </a>
+            ` : ''}
+            <button onclick="closeCertificateModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all font-semibold">
+              Close Viewer (Esc)
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('certModalContent').innerHTML = content;
+      document.getElementById('certModal').classList.remove('hidden');
+      activeModal = 'certModal';
+      lucide.createIcons();
+
+      // PUSH HISTORY STATE SO BROWSER BACK BUTTON CLOSES ONLY THIS MODAL
+      history.pushState({ modalOpen: 'certModal' }, '', '#credential-view');
+    }
+
+    function closeCertificateModal() {
+      document.getElementById('certModal').classList.add('hidden');
+      activeModal = null;
+      if (window.location.hash === '#credential-view') {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    }
+
+    function openNewProjectModal() {
+      document.getElementById('newProjectModal').classList.remove('hidden');
+      activeModal = 'newProjectModal';
+      history.pushState({ modalOpen: 'newProjectModal' }, '', '#add-project');
+    }
+
+    function closeNewProjectModal() {
+      document.getElementById('newProjectModal').classList.add('hidden');
+      activeModal = null;
+      if (window.location.hash === '#add-project') {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    }
+
+    // INTERCEPT POPSTATE (BROWSER BACK BUTTON & MOBILE BACK SWIPE)
+    window.addEventListener('popstate', (e) => {
+      if (activeModal === 'certModal') closeCertificateModal();
+      else if (activeModal === 'newProjectModal') closeNewProjectModal();
+    });
+
+    // INTERCEPT BACKSPACE & ESCAPE KEYS
+    window.addEventListener('keydown', (e) => {
+      if (activeModal) {
+        if (e.key === 'Backspace' || e.key === 'Escape') {
+          // If user is inside an input/textarea, allow normal Backspace text deletion
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            if (e.key === 'Escape') {
+              if (activeModal === 'certModal') closeCertificateModal();
+              else if (activeModal === 'newProjectModal') closeNewProjectModal();
+            }
+            return;
+          }
+          // Prevent browser from navigating back or closing page
+          e.preventDefault();
+          if (activeModal === 'certModal') closeCertificateModal();
+          else if (activeModal === 'newProjectModal') closeNewProjectModal();
+        }
+      }
+    });
+
+    // =========================================================================
+    // 3D CYLINDRICAL DECK ENGINE
+    // =========================================================================
+    (function init3DDeck() {
+      const ring = document.getElementById('carouselRing');
+      const items = document.querySelectorAll('.carousel-item');
+      const totalItems = items.length;
+      if (!ring || totalItems === 0) return;
+
+      const angleStep = 360 / totalItems;
+      const radius = window.innerWidth < 768 ? 280 : 380;
+
+      let currentAngle = 0;
+      let targetAngle = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startAngle = 0;
+
+      items.forEach((item, index) => {
+        item.style.transform = `rotateY(${index * angleStep}deg) translateZ(${radius}px)`;
+      });
+
+      function updateRing() {
+        currentAngle += (targetAngle - currentAngle) * 0.12;
+        ring.style.transform = `rotateY(${currentAngle}deg)`;
+        requestAnimationFrame(updateRing);
+      }
+      requestAnimationFrame(updateRing);
+
+      const stage = document.querySelector('.carousel-stage');
+
+      stage.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startAngle = targetAngle;
+        stage.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - startX;
+        targetAngle = startAngle + (deltaX * 0.35);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        stage.style.cursor = 'grab';
+        targetAngle = Math.round(targetAngle / angleStep) * angleStep;
+      });
+
+      stage.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startAngle = targetAngle;
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        const deltaX = e.touches[0].clientX - startX;
+        targetAngle = startAngle + (deltaX * 0.45);
+      }, { passive: true });
+
+      stage.addEventListener('touchend', () => {
+        targetAngle = Math.round(targetAngle / angleStep) * angleStep;
+      });
+
+      stage.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+          targetAngle -= e.deltaX * 0.2;
+        } else {
+          targetAngle -= e.deltaY * 0.15;
+        }
+        targetAngle = Math.round(targetAngle / angleStep) * angleStep;
+      }, { passive: true });
+
+      document.getElementById('prevBtn')?.addEventListener('click', () => targetAngle += angleStep);
+      document.getElementById('nextBtn')?.addEventListener('click', () => targetAngle -= angleStep);
+    })();
+
+    // =========================================================================
+    // MOTION: SPOTLIGHT TRACKER + NUMBER COUNTERS + SCROLL REVEALS
+    // =========================================================================
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+    function animateCount(obj, start, end, duration, prefix = '', suffix = '', decimal = 0) {
+      let startTime = null;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = start + (end - start) * ease;
+        let formatted;
+        if (end >= 1000 && suffix.includes('K')) {
+          formatted = (current / 1000).toFixed(current >= end ? 0 : 1);
+        } else if (decimal > 0) {
+          formatted = current.toFixed(decimal);
+        } else {
+          formatted = Math.floor(current).toLocaleString();
+        }
+        obj.innerHTML = `${prefix}${formatted}<span class="text-rose-400">${suffix}</span>`;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counterObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.getAttribute('data-target'));
+          const prefix = el.getAttribute('data-prefix') || '';
+          const suffix = el.getAttribute('data-suffix') || '';
+          const decimal = parseInt(el.getAttribute('data-decimal') || '0', 10);
+          animateCount(el, 0, target, 1600, prefix, suffix, decimal);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.count-up').forEach(el => counterObs.observe(el));
+
+    // =========================================================================
+    // INTERACTIVE TERMINAL ENGINE
+    // =========================================================================
+    const terminalBody = document.getElementById('terminalBody');
+    const terminalInput = document.getElementById('terminalInput');
+
+    const commands = {
+      help: "Available commands:\n  • 'certs'    : Inspect all 5 verified credentials (Aircode, Tata, Deloitte, Mastercard, UNICEF)\n  • 'skills'   : Displays technical arsenal & tools\n  • 'projects' : Summary of completed data & GIS operations\n  • 'contact'  : Returns email and LinkedIn transmission endpoints\n  • 'mute'     : Silence telemetry logging on your own device/browser\n  • 'clear'    : Resets terminal screen\n  • 'sudo hire': Unlocks priority onboarding protocol",
+      certs: "VERIFIED CREDENTIALS (5/5 VERIFIED & SIGNED):\n  [1] Aircode Technologies: GIS Trainee (July-August 2026, 15K+ buildings mapped)\n  [2] Tata Forage: GenAI Powered Data Analytics (Code: aoR769CTBDftiRbAN)\n  [3] Deloitte Forage: Data Analytics & Forensics (Code: pMSNqEi8PTyrND7TJ)\n  [4] Mastercard Forage: Cybersecurity Job Simulation (Code: iAnSKycqZ6qCP4QM4)\n  [5] UNICEF & YuWaah!: Digital Productivity with AI (March 11, 2026 | 95% Score | Signatory: Ms. Giorgia Varisco)",
+      skills: "TECHNICAL ARSENAL:\n  [+] Spatial & GIS: QGIS (15K+ Polygon Audit), Spatial Data Analysis, Georeferencing\n  [+] Business Intelligence: Tableau, Advanced Excel (VLOOKUP, Pivot, DAX)\n  [+] Core Engineering: Python, Flask, Server-Sent Events, SQLite, Data Validation & Cleaning",
+      projects: "SELECTED OPERATIONS:\n  01. iFood Customer Personality Analysis (Tableau, 2,200+ records, 45% wine spend)\n  02. GIS Building Survey (Aircode Tech, 15,000+ structures mapped in QGIS)\n  03. Password Security & Strength Analyzer (Python entropy algorithms)\n  04. BCA Freshers 2026 QR Pass & Scanner System (Flask, SSE, SQLite)",
+      contact: "TRANSMISSION ENDPOINTS:\n  Email   : 90yashkumar@gmail.com\n  GitHub  : https://github.com/yashverma1611\n  LinkedIn: https://linkedin.com/in/yash-kumar-verma-7405a4405/\n  Location: Lucknow, India",
+      "sudo hire": "ACCESS GRANTED: Candidate Yash Kumar Verma meets priority criteria for Data Analyst & GIS roles.\nReady for immediate onboarding. Please send an offer dispatch via the contact form!",
+      clear: "__CLEAR__"
+    };
+
+    function handleTerminalCommand(e) {
+      e.preventDefault();
+      const raw = terminalInput.value.trim().toLowerCase();
+      if (!raw) return;
+
+      const userLine = document.createElement('div');
+      userLine.innerHTML = `<span class="text-rose-400 font-bold">guest@yash-verma:~$</span> <span class="text-white">${raw}</span>`;
+      terminalBody.appendChild(userLine);
+
+      if (raw === 'clear') {
+        terminalBody.innerHTML = `
+          <div class="text-rose-400">YASH VERMA ANALYTICS SHELL INITIALIZED.</div>
+          <div class="text-neutral-400">Type <span class="text-rose-400 font-bold">'help'</span> for available commands.</div>
+        `;
+      } else if (raw === 'mute') {
+        localStorage.setItem('mute_telemetry', 'true');
+        const resp = document.createElement('div');
+        resp.className = "text-emerald-400 font-mono";
+        resp.innerText = "DEV MODE: Visitor tracking muted on this device. Your personal visits will no longer be logged to Google Sheets.";
+        terminalBody.appendChild(resp);
+      } else if (raw === 'unmute') {
+        localStorage.removeItem('mute_telemetry');
+        const resp = document.createElement('div');
+        resp.className = "text-emerald-400 font-mono";
+        resp.innerText = "DEV MODE: Visitor tracking unmuted on this device.";
+        terminalBody.appendChild(resp);
+      } else if (commands[raw]) {
+        const resp = document.createElement('div');
+        resp.className = "text-neutral-300 whitespace-pre-wrap pl-3 border-l-2 border-rose-500/50";
+        resp.innerText = commands[raw];
+        terminalBody.appendChild(resp);
+      } else {
+        const err = document.createElement('div');
+        err.className = "text-red-400";
+        err.innerText = `Command not recognized: '${raw}'. Type 'help' for instructions.`;
+        terminalBody.appendChild(err);
+      }
+
+      terminalInput.value = '';
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    // Dynamic Add Project to 3D Deck Handler
+    function addNewProject(e) {
+      e.preventDefault();
+      const title = document.getElementById('npTitle').value;
+      const domain = document.getElementById('npDomain').value;
+      const stat = document.getElementById('npStat').value;
+      const summary = document.getElementById('npSummary').value;
+      const tags = document.getElementById('npTags').value.split(',').map(t => t.trim());
+      const link = document.getElementById('npLink').value || '#';
+
+      const ring = document.getElementById('carouselRing');
+      const newCard = document.createElement('article');
+      newCard.className = "carousel-item spotlight-card rounded-2xl bg-neutral-900/90 border border-white/15 p-6 shadow-2xl flex flex-col justify-between";
+      
+      const tagsHtml = tags.map(t => `<span class="px-2 py-0.5 rounded bg-black/40 border border-white/5">${t}</span>`).join(' ');
+
+      newCard.innerHTML = `
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded bg-rose-500/20 text-rose-300 font-mono text-[10px] border border-rose-500/30">${domain}</span>
+            <span class="text-xs font-mono text-neutral-400">NEW // LIVE</span>
+          </div>
+          <h3 class="editorial-title text-2xl text-white mb-2">${title}</h3>
+          <p class="text-xs text-neutral-300 leading-relaxed font-sans mb-4">${summary}</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-4 font-mono text-[10px] text-neutral-400">${tagsHtml}</div>
+          <a href="${link}" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl bg-white/10 hover:bg-rose-500 text-white text-xs font-mono transition-colors flex items-center justify-center gap-1.5">
+            <span>${stat || 'View Project'}</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      `;
+
+      ring.appendChild(newCard);
+      const allItems = document.querySelectorAll('.carousel-item');
+      const step = 360 / allItems.length;
+      const rad = window.innerWidth < 768 ? 280 : 380;
+      allItems.forEach((item, idx) => {
+        item.style.transform = `rotateY(${idx * step}deg) translateZ(${rad}px)`;
+      });
+
+      lucide.createIcons();
+      closeNewProjectModal();
+      e.target.reset();
+      alert(`Project "${title}" added directly to your 3D cylindrical showcase!`);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      alert(`Thank you, ${name}! Your transmission has been queued for dispatch.`);
+      e.target.reset();
+    }
+
+    // =========================================================================
+    // TRAFFIC SOURCE & SMART INBOUND SOCIAL CONNECTOR
+    // =========================================================================
+    function getTrafficSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = (urlParams.get('ref') || urlParams.get('utm_source') || urlParams.get('source') || '').toLowerCase();
+      const referrer = document.referrer.toLowerCase();
+
+      if (ref.includes('insta')) return 'Instagram (Bio Link)';
+      if (ref.includes('linkedin')) return 'LinkedIn (Profile Link)';
+      if (ref.includes('twitter') || ref.includes('x')) return 'Twitter / X';
+      if (ref.includes('github')) return 'GitHub';
+      if (ref) return `Referral (${ref})`;
+
+      if (referrer.includes('instagram.com') || referrer.includes('l.instagram.com')) return 'Instagram App';
+      if (referrer.includes('linkedin.com') || referrer.includes('lnkd.in') || referrer.includes('com.linkedin')) return 'LinkedIn App';
+      if (referrer.includes('t.co') || referrer.includes('twitter.com') || referrer.includes('x.com')) return 'Twitter / X';
+      if (referrer.includes('google.')) return 'Google Search';
+      if (referrer.includes('github.com')) return 'GitHub';
+      if (referrer) {
+        try {
+          return new URL(referrer).hostname;
+        } catch(e) {
+          return referrer.slice(0, 30);
+        }
+      }
+
+      return 'Direct Visit';
+    }
+
+    // Resilient Multi-Provider Geolocation & IP Resolver
+    async function fetchVisitorGeo() {
+      // Provider 1: ipwho.is (Fast, HTTPS, full ISP & city info, generous free tier)
+      try {
+        const res = await fetch("https://ipwho.is/");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.success !== false && data.ip) {
+            return {
+              ip: data.ip,
+              city: data.city || "Unknown",
+              region: data.region || "Unknown",
+              country: data.country || "Unknown",
+              isp: (data.connection && (data.connection.isp || data.connection.org)) || "Unknown"
+            };
+          }
+        }
+      } catch (e1) {}
+
+      // Provider 2: api.ipify.org (100% Guaranteed IP fallback, unlimited)
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.ip) {
+            return {
+              ip: data.ip,
+              city: "Unknown",
+              region: "Unknown",
+              country: "Unknown",
+              isp: "Unknown"
+            };
+          }
+        }
+      } catch (e2) {}
+
+      return { ip: "Unknown", city: "Unknown", region: "Unknown", country: "Unknown", isp: "Unknown" };
+    }
+
+    // Global cache for visitor geo
+    window.currentVisitorData = {
+      ip: 'Unknown',
+      city: 'Unknown',
+      region: 'Unknown',
+      country: 'Unknown',
+      isp: 'Unknown'
+    };
+
+    function initSmartConnect() {
+      if (sessionStorage.getItem('smart_connect_dismissed') === 'true') return;
+      if (localStorage.getItem('mute_telemetry') === 'true') return;
+
+      const source = getTrafficSource();
+      const widget = document.getElementById('smartConnectWidget');
+      const headerEl = document.getElementById('smartConnectHeader');
+      const textEl = document.getElementById('smartConnectText');
+      const inputEl = document.getElementById('visitorHandleInput');
+
+      if (!widget || !headerEl || !textEl || !inputEl) return;
+
+      if (source.includes('Instagram')) {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center border border-pink-500/30">
+            <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-pink-400 uppercase tracking-wider">Instagram Inbound</span>
+        `;
+        textEl.innerHTML = "Visiting from Instagram? Drop your handle so Yash can follow &amp; connect back!";
+        inputEl.placeholder = "@your_instagram_handle";
+      } else if (source.includes('LinkedIn')) {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
+            <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">LinkedIn Inbound</span>
+        `;
+        textEl.innerHTML = "Visiting from LinkedIn? Drop your profile link or handle so we can connect directly!";
+        inputEl.placeholder = "linkedin.com/in/... or @name";
+      } else {
+        headerEl.innerHTML = `
+          <div class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          </div>
+          <span class="text-[11px] font-mono font-bold text-rose-400 uppercase tracking-wider">Connect with Yash</span>
+        `;
+        textEl.innerHTML = "Liked the portfolio? Drop your LinkedIn or Instagram handle to connect with Yash!";
+        inputEl.placeholder = "@handle, profile URL, or email";
+      }
+
+      lucide.createIcons();
+
+      // Show after 2.5 seconds
+      setTimeout(() => {
+        widget.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          widget.classList.remove('translate-y-8', 'opacity-0');
+        });
+      }, 2500);
+    }
+
+    function dismissSmartConnect() {
+      const widget = document.getElementById('smartConnectWidget');
+      if (widget) {
+        widget.classList.add('translate-y-8', 'opacity-0');
+        setTimeout(() => widget.classList.add('hidden'), 500);
+      }
+      sessionStorage.setItem('smart_connect_dismissed', 'true');
+    }
+
+    let currentSubmittedHandle = "";
+
+    async function submitVisitorHandle() {
+      const input = document.getElementById('visitorHandleInput');
+      const handle = input ? input.value.trim() : '';
+      if (!handle) return;
+
+      currentSubmittedHandle = handle;
+      const headerEl = document.getElementById('smartConnectHeader');
+      const textEl = document.getElementById('smartConnectText');
+      const formArea = document.getElementById('smartConnectForm');
+
+      // Pre-resolve IP in background
+      if (window.currentVisitorData.ip === 'Unknown') {
+        fetchVisitorGeo().then(geo => { window.currentVisitorData = geo; });
+      }
+
+      // ⚡ AUTOMATED VIBE CODER CONCIERGE RESPONSE
+      if (headerEl) {
+        headerEl.innerHTML = `
+          <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+          <span class="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-wider">Yash Kumar Verma (Auto-Dispatch)</span>
+        `;
+      }
+
+      if (textEl) {
+        textEl.innerHTML = `"Hello <strong>${handle}</strong>! Great to connect with you. How can I help you today?"`;
+      }
+
+      if (formArea) {
+        formArea.innerHTML = `
+          <div class="grid grid-cols-1 gap-1.5 w-full pt-1">
+            <button onclick="selectVibeTopic('⚡ Ship an MVP / Vibe Code with Me')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-rose-500/20 border border-white/10 hover:border-rose-500/40 text-rose-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>⚡ Ship an MVP / Vibe Code with Me</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('📊 Data Analytics & GIS Pipeline')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-500/40 text-cyan-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>📊 Data Analytics &amp; GIS Pipeline</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('💼 Hiring / Engineering Role')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-blue-500/20 border border-white/10 hover:border-blue-500/40 text-blue-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>💼 Hiring / Engineering Role</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+            <button onclick="selectVibeTopic('🤝 Creative Tech & Networking')" class="w-full text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 hover:border-purple-500/40 text-purple-300 text-[11px] font-mono transition-all flex items-center justify-between group">
+              <span>🤝 Creative Tech &amp; Networking</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+            </button>
+          </div>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    async function selectVibeTopic(topic) {
+      const widget = document.getElementById('smartConnectWidget');
+      const formArea = document.getElementById('smartConnectForm');
+      const textEl = document.getElementById('smartConnectText');
+
+      if (textEl) {
+        textEl.innerHTML = `<span class="text-rose-400 font-mono text-[11px]">Selected: ${topic}</span>`;
+      }
+
+      if (formArea) {
+        formArea.innerHTML = `
+          <div class="py-2.5 text-center space-y-1 w-full bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-3">
+            <div class="text-xs font-mono font-bold text-emerald-300 flex items-center justify-center gap-1.5">
+              <span>⚡ Transmission Dispatched</span>
+            </div>
+            <p class="text-[11px] text-neutral-300 font-sans">
+              Yash has received your handle &amp; topic. Shipped at AI velocity!
+            </p>
+          </div>
+        `;
+      }
+
+      // Ensure IP is resolved before sending
+      if (window.currentVisitorData.ip === 'Unknown') {
+        window.currentVisitorData = await fetchVisitorGeo();
+      }
+
+      const source = getTrafficSource();
+      const payload = {
+        action: "connect_profile",
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        ip: window.currentVisitorData.ip,
+        city: window.currentVisitorData.city,
+        region: window.currentVisitorData.region,
+        country: window.currentVisitorData.country,
+        isp: window.currentVisitorData.isp,
+        source: source,
+        handle: currentSubmittedHandle,
+        topic: topic,
+        device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
+      };
+
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
+
+      if (GOOGLE_SCRIPT_URL) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+
+      setTimeout(() => {
+        dismissSmartConnect();
+      }, 3500);
+    }
+
+    // =========================================================================
+    // SILENT VISITOR TELEMETRY TO GOOGLE SHEETS (WITH 6-HR DEDUPLICATION)
+    // =========================================================================
+    (async function logVisitorToSheet() {
+      try {
+        // Resolve Geolocation with multi-provider fallback
+        const geo = await fetchVisitorGeo();
+        window.currentVisitorData = geo;
+
+        // Dev / Owner mute check (via terminal command or ?mute=1 in URL)
+        if (localStorage.getItem('mute_telemetry') === 'true' || window.location.search.includes('mute=1')) {
+          initSmartConnect();
+          return;
+        }
+
+        // Initialize Social Connect Widget
+        initSmartConnect();
+
+        // Cooldown check: Only log silent view once every 6 hours per unique device/browser
+        const lastLog = localStorage.getItem('visitor_logged_at');
+        const now = Date.now();
+        const SIX_HOURS = 6 * 60 * 60 * 1000;
+        if (lastLog && (now - parseInt(lastLog, 10)) < SIX_HOURS) {
+          return;
+        }
+
+        const source = getTrafficSource();
+
+        const payload = {
+          action: "visitor",
+          timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+          ip: geo.ip || "Unknown",
+          city: geo.city || "Unknown",
+          region: geo.region || "Unknown",
+          country: geo.country || "Unknown",
+          isp: geo.isp || "Unknown",
+          source: source,
+          referrer: document.referrer || "Direct Visit",
+          device: `${navigator.platform} — ${navigator.userAgent.split(') ')[0].split('(')[1] || navigator.userAgent}`
+        };
+
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_nfmlQnE6gS2o0NLGbH2oqzJZmKT_i_JBPoJgDhAio_L2FxZsgz5ZreNvbgLqV80vhA/exec";
+
+        if (GOOGLE_SCRIPT_URL && geo.ip !== "Unknown") {
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+          }).then(() => {
+            localStorage.setItem('visitor_logged_at', now.toString());
+          }).catch(function() {});
+        }
+      } catch (err) {
+        initSmartConnect();
+      }
+    })();
+  </script>
+</body>
+</html>
