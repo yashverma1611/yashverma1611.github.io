@@ -38,26 +38,27 @@
       position: relative;
     }
 
-    /* Ambient background gradient glow */
+    /* Ambient background gradient glows */
     .glow-orb {
       position: fixed;
       border-radius: 50%;
       filter: blur(120px);
       z-index: 0;
       pointer-events: none;
+      transition: all 1s ease;
     }
     .glow-orb-1 {
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.28), transparent 70%);
       top: 10%;
       left: 15%;
     }
     .glow-orb-2 {
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.22), transparent 70%);
-      bottom: 15%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.25), transparent 70%);
+      bottom: 12%;
       right: 15%;
     }
 
@@ -69,21 +70,22 @@
       width: 90%;
       margin: 2rem auto;
       text-align: center;
-      padding: 3rem 2rem;
-      border-radius: 28px;
+      padding: 3.5rem 2.25rem;
+      border-radius: 32px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.7);
+      transition: transform 0.4s ease, border-color 0.4s ease;
     }
 
-    /* Subtle Badge */
+    /* Badge */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.45rem 1.1rem;
       border-radius: 9999px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -91,8 +93,8 @@
       text-transform: uppercase;
       background: rgba(99, 102, 241, 0.12);
       border: 1px solid rgba(99, 102, 241, 0.3);
-      color: #818cf8;
-      margin-bottom: 1.5rem;
+      color: #a5b4fc;
+      margin-bottom: 1.75rem;
     }
 
     .badge-dot {
@@ -101,13 +103,19 @@
       background: #818cf8;
       border-radius: 50%;
       box-shadow: 0 0 10px #818cf8;
+      animation: blink 1.8s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     /* Typography */
     h1 {
       font-size: clamp(2rem, 5vw, 2.75rem);
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.25;
       margin-bottom: 1.25rem;
       letter-spacing: -0.02em;
     }
@@ -136,12 +144,12 @@
       justify-content: center;
     }
 
-    /* Viewfinder Corner Marks */
+    /* Corner Marks */
     .corner {
       position: absolute;
       width: 22px;
       height: 22px;
-      border-color: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.35);
       pointer-events: none;
       transition: all 0.3s ease;
     }
@@ -151,15 +159,15 @@
     .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
 
     .camera-frame:hover .corner {
-      border-color: #818cf8;
-      transform: scale(1.1);
+      border-color: #a855f7;
+      transform: scale(1.12);
     }
 
     /* Shutter Button */
     .camera-btn {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -168,14 +176,14 @@
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      box-shadow: 0 10px 30px var(--accent-glow);
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow: 0 12px 35px var(--accent-glow);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
       outline: none;
     }
 
     .camera-btn:hover {
       transform: scale(1.08);
-      box-shadow: 0 16px 40px rgba(99, 102, 241, 0.7);
+      box-shadow: 0 16px 45px rgba(168, 85, 247, 0.65);
     }
 
     .camera-btn:active {
@@ -188,7 +196,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid #818cf8;
+      border: 2px solid rgba(168, 85, 247, 0.6);
       top: 0;
       left: 0;
       animation: pulse 2.2s infinite ease-out;
@@ -207,9 +215,9 @@
     }
 
     .camera-btn svg {
-      width: 48px;
-      height: 48px;
-      transition: transform 0.2s ease;
+      width: 50px;
+      height: 50px;
+      transition: transform 0.25s ease;
     }
 
     .camera-btn:hover svg {
@@ -217,7 +225,7 @@
     }
 
     .hint {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       letter-spacing: 0.02em;
     }
@@ -233,36 +241,84 @@
       z-index: 99999;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.15s ease-out;
+      transition: opacity 0.12s ease-out;
     }
     .flash-overlay.active {
       opacity: 1;
     }
 
-    /* Fallback Screen for browser close restrictions */
-    .closing-modal {
+    /* Output Reveal Screen */
+    .reveal-view {
       display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 11, 16, 0.95);
-      z-index: 10000;
-      flex-direction: column;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-view.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .reveal-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.75rem;
+      border-radius: 50%;
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
-      text-align: center;
+      font-size: 2.25rem;
+      box-shadow: 0 0 40px rgba(236, 72, 153, 0.3);
+      animation: float 3s ease-in-out infinite;
     }
-    .closing-modal.active {
-      display: flex;
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
-    .closing-modal h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+
+    .reveal-title {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #f472b6, #fb7185, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .closing-modal p {
-      color: var(--text-muted);
-      max-width: 450px;
+
+    .reveal-desc {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #f1f5f9;
       line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .reset-btn {
+      padding: 0.85rem 1.85rem;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .reset-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -277,44 +333,55 @@
 
   <!-- Main Card -->
   <div class="container" id="mainContainer">
-    <div class="badge">
-      <span class="badge-dot"></span> Instant Portrait Mirror
+
+    <!-- INITIAL STATE: Camera Button & Intro -->
+    <div id="initialView">
+      <div class="badge">
+        <span class="badge-dot"></span> Instant Portrait Mirror
+      </div>
+
+      <h1>Tap camera button to see <br><span class="gradient-text">your best version</span></h1>
+      
+      <p class="subtitle">
+        Ready to discover perfection? Press the shutter below to reveal who you truly are.
+      </p>
+
+      <!-- Camera viewfinder & trigger -->
+      <div class="camera-frame">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="pulse-ring"></div>
+
+        <button class="camera-btn" id="cameraBtn" title="Take picture" aria-label="Tap camera button to see your best version">
+          <!-- Modern Camera SVG Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+            <circle cx="12" cy="13" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="hint">⚡ Click to capture & witness the masterpiece</div>
     </div>
 
-    <h1>Tap camera button to see <br><span class="gradient-text">your best version</span></h1>
-    
-    <p class="subtitle">
-      Ready to discover perfection? Press the shutter below to reveal who you truly are.
-    </p>
-
-    <!-- Camera viewfinder & trigger -->
-    <div class="camera-frame">
-      <div class="corner corner-tl"></div>
-      <div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div>
-      <div class="corner corner-br"></div>
-      <div class="pulse-ring"></div>
-
-      <button class="camera-btn" id="cameraBtn" title="Take picture" aria-label="Tap camera to see your best version">
-        <!-- Modern Camera SVG Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-          <circle cx="12" cy="13" r="3"/>
+    <!-- REVEAL STATE: The Output Message -->
+    <div class="reveal-view" id="revealView">
+      <div class="reveal-icon">🪞</div>
+      <h1 class="reveal-title">✨ You're already looking at it!</h1>
+      <p class="reveal-desc">
+        Your best version is looking right into the screen right now.
+      </p>
+      <button class="reset-btn" id="resetBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
         </svg>
+        Take Another Look
       </button>
     </div>
 
-    <div class="hint">⚡ Click to capture & witness the masterpiece</div>
-  </div>
-
-  <!-- Fallback Screen in case browser blocks window.close() -->
-  <div class="closing-modal" id="closingModal">
-    <h2>✨ You're already looking at it!</h2>
-    <p>
-      Your best version is looking right into the screen right now.
-      <br><br>
-      <small style="color: #64748b;">(Note: Most modern browsers block scripts from closing tabs not opened via script. You can now safely close this tab.)</small>
-    </p>
   </div>
 
   <script>
@@ -322,7 +389,7 @@
     function playShutterSound() {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const bufferSize = audioCtx.sampleRate * 0.08;
+        const bufferSize = audioCtx.sampleRate * 0.09;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const output = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
@@ -334,11 +401,11 @@
 
         const filter = audioCtx.createBiquadFilter();
         filter.type = 'highpass';
-        filter.frequency.value = 800;
+        filter.frequency.value = 900;
 
         const gainNode = audioCtx.createGain();
         gainNode.gain.setValueAtTime(0.8, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.09);
 
         whiteNoise.connect(filter);
         filter.connect(gainNode);
@@ -350,10 +417,12 @@
 
     const cameraBtn = document.getElementById('cameraBtn');
     const flashOverlay = document.getElementById('flashOverlay');
-    const closingModal = document.getElementById('closingModal');
+    const initialView = document.getElementById('initialView');
+    const revealView = document.getElementById('revealView');
+    const resetBtn = document.getElementById('resetBtn');
 
     cameraBtn.addEventListener('click', () => {
-      // 1. Shutter sound
+      // 1. Play shutter sound
       playShutterSound();
 
       // 2. Camera flash effect
@@ -362,15 +431,16 @@
       setTimeout(() => {
         flashOverlay.classList.remove('active');
 
-        // 3. Attempt to close the window
-        window.open('', '_self', '');
-        window.close();
+        // 3. Switch to output message view
+        initialView.style.display = 'none';
+        revealView.classList.add('show');
+      }, 160);
+    });
 
-        // 4. Fallback if browser security prevents closing tabs directly
-        setTimeout(() => {
-          closingModal.classList.add('active');
-        }, 150);
-      }, 150);
+    // Reset button to test it again
+    resetBtn.addEventListener('click', () => {
+      revealView.classList.remove('show');
+      initialView.style.display = 'block';
     });
   </script>
 </body>
